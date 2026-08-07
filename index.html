@@ -1,0 +1,957 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quicklly - Authentic Indian Groceries &amp; Food Delivery</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#10b981',
+                        'brand-dark': '#059669',
+                        'brand-light': '#ecfdf5',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Tailwind Config & Custom Styles -->
+    <style>
+        :root {
+            --quicklly-black: #000000;
+            --quicklly-green: #10b981;
+            --quicklly-green-dark: #059669;
+            --quicklly-green-light: #ecfdf5;
+            --quicklly-white: #ffffff;
+            --quicklly-background: #ffffff;
+            --quicklly-surface: #ffffff;
+            --quicklly-surface-muted: #f5f5f5;
+            --quicklly-text: #171717;
+            --quicklly-text-muted: #737373;
+            --quicklly-border: #e5e5e5;
+
+            /* Legacy alias */
+            --color-brand-green: var(--quicklly-green);
+            --color-brand-green-dark: var(--quicklly-green-dark);
+        }
+
+        /* Hide scrollbar for horizontal scrolling elements */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* Ensure sharp images globally */
+        img { border-radius: 0 !important; object-fit: cover; }
+        .logo-img { object-fit: contain !important; border-radius: 0 !important; }
+        
+        /* Interactive element transitions */
+        .btn-transition { transition: all 0.2s ease-in-out; }
+    </style>
+</head>
+<body class="font-sans antialiased text-neutral-900 bg-white">
+
+    <!-- 1. Promotional Strip -->
+    <div class="bg-neutral-900 text-white text-xs font-medium py-2 px-4 text-center flex justify-center items-center gap-2">
+        <span>Get $10 off your first order over $50 with code:</span>
+        <span class="text-brand-green font-bold tracking-wide">WELCOME10</span>
+        <button class="ml-4 opacity-70 hover:opacity-100 hidden sm:block" aria-label="Dismiss">
+            <iconify-icon icon="solar:close-circle-linear" width="16"></iconify-icon>
+        </button>
+    </div>
+
+    <!-- 2. Global Header -->
+    <header id="main-header" class="bg-white border-b border-neutral-200 sticky top-0 z-50 transition-shadow duration-200">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-3 md:py-3.5">
+            <!-- Mobile Layout (Top row) -->
+            <div class="flex items-center justify-between md:hidden mb-3">
+                <div class="flex items-center gap-3">
+                    <button class="text-neutral-900 p-1 rounded-lg hover:bg-neutral-100">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="24"></iconify-icon>
+                    </button>
+                    <a href="#" class="flex items-center py-0.5">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-8 w-auto">
+                    </a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="relative p-2 rounded-full hover:bg-neutral-100 transition-colors">
+                        <iconify-icon icon="solar:cart-large-2-linear" width="24"></iconify-icon>
+                        <span class="absolute top-0 right-0 bg-brand-green text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desktop & Mobile Search Layout -->
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
+                
+                <!-- Desktop Logo (Enlarged ~20%) -->
+                <a href="#" class="hidden md:flex items-center shrink-0 py-0.5">
+                    <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-10 lg:h-11 w-auto">
+                </a>
+
+                <!-- Location Selector (Rounded pill) -->
+                <button class="w-full md:w-auto flex items-center justify-between md:justify-start gap-2.5 px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 rounded-full text-sm font-medium transition-colors shrink-0 group">
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:map-point-bold" width="18" class="text-brand-green"></iconify-icon>
+                        <span class="truncate max-w-[120px] md:max-w-none text-left text-neutral-800 group-hover:text-neutral-900">Delivery to <strong class="font-semibold">60601</strong></span>
+                    </div>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" width="16" class="text-neutral-500 group-hover:text-neutral-800"></iconify-icon>
+                </button>
+
+                <!-- Search (Prominent, Rounded, Green focus accent) -->
+                <div class="w-full relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <iconify-icon icon="solar:magnifer-linear" width="20" class="text-neutral-500"></iconify-icon>
+                    </div>
+                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500">
+                    <button class="absolute inset-y-1.5 right-1.5 px-4 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors">
+                        Search
+                    </button>
+                </div>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center gap-1.5 shrink-0">
+                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                        <iconify-icon icon="solar:user-circle-linear" width="20"></iconify-icon>
+                        Sign In
+                    </button>
+                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                        <iconify-icon icon="solar:box-linear" width="20"></iconify-icon>
+                        Orders
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2 ml-1 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors group">
+                        <iconify-icon icon="solar:cart-large-2-linear" width="20"></iconify-icon>
+                        Cart • <span id="cart-count" class="bg-brand-green text-white text-xs font-bold px-2 py-0.5 rounded-full ml-0.5">2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Global Navigation / Category Menu -->
+        <div class="border-t border-neutral-100">
+            <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+                <nav class="flex items-center gap-6 overflow-x-auto hide-scrollbar py-3 text-sm font-medium text-neutral-600">
+                    <a href="#" class="flex items-center gap-1.5 shrink-0 text-neutral-900 font-semibold hover:text-brand-green transition-colors">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="18" class="text-brand-green"></iconify-icon>
+                        All Categories
+                    </a>
+                    <span class="w-px h-4 bg-neutral-200 shrink-0"></span>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Grocery</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
+                    <a href="#" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
+                        <iconify-icon icon="solar:crown-star-bold" width="16"></iconify-icon>
+                        Quicklly Pass
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4. Primary Hero -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-8 md:py-12">
+        <div class="bg-neutral-50 flex flex-col md:flex-row items-center overflow-hidden">
+            <div class="p-8 md:p-16 lg:p-20 flex-1 w-full flex flex-col justify-center items-start">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-light text-brand-dark text-xs font-semibold tracking-wide uppercase rounded-full mb-4">
+                    <span class="w-2 h-2 rounded-full bg-brand-green"></span>
+                    Same Day Delivery
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-900 mb-4 leading-tight">
+                    Authentic flavors, <br>delivered to your door.
+                </h1>
+                <p class="text-neutral-600 text-base md:text-lg mb-8 max-w-md">
+                    Shop fresh Indian groceries, ready-to-eat meals, and authentic sweets from local stores across the US.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors shadow-sm">
+                        Shop Groceries
+                    </button>
+                    <button class="px-8 py-3.5 bg-white border border-neutral-300 text-neutral-900 rounded-full font-medium hover:bg-neutral-50 hover:border-brand-green hover:text-brand-dark transition-colors">
+                        View Offers
+                    </button>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto md:h-[500px] relative">
+                <!-- Sharp image, no border radius -->
+                <img src="https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&amp;fit=crop&amp;q=80&amp;w=1200" alt="Fresh Indian Spices and Groceries" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+        </div>
+        
+        <!-- Hero Carousel Dots (Static Demo with Green Active Accent) -->
+        <div class="flex justify-center items-center gap-2 mt-6">
+            <button class="w-7 h-2.5 rounded-full bg-brand-green" aria-label="Slide 1"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-neutral-300 hover:bg-neutral-400" aria-label="Slide 2"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-neutral-300 hover:bg-neutral-400" aria-label="Slide 3"></button>
+        </div>
+    </section>
+
+    <!-- 5. Marketplace Trust Metrics -->
+    <section class="border-y border-neutral-100 bg-white">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-8">
+            <div class="flex overflow-x-auto hide-scrollbar gap-8 md:gap-0 justify-between items-center text-center">
+                <div class="flex flex-col items-center shrink-0 w-32 md:w-auto md:flex-1 md:border-r border-neutral-200 last:border-0">
+                    <iconify-icon icon="solar:shop-linear" width="32" class="text-neutral-900 mb-2"></iconify-icon>
+                    <span class="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">500+</span>
+                    <span class="text-xs text-neutral-500 font-medium">Local Stores</span>
+                </div>
+                <div class="flex flex-col items-center shrink-0 w-32 md:w-auto md:flex-1 md:border-r border-neutral-200 last:border-0">
+                    <iconify-icon icon="solar:box-minimalistic-linear" width="32" class="text-neutral-900 mb-2"></iconify-icon>
+                    <span class="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">1M+</span>
+                    <span class="text-xs text-neutral-500 font-medium">Orders Delivered</span>
+                </div>
+                <div class="flex flex-col items-center shrink-0 w-32 md:w-auto md:flex-1 md:border-r border-neutral-200 last:border-0">
+                    <iconify-icon icon="solar:star-fall-linear" width="32" class="text-neutral-900 mb-2"></iconify-icon>
+                    <span class="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">4.8</span>
+                    <span class="text-xs text-neutral-500 font-medium">Average Rating</span>
+                </div>
+                <div class="flex flex-col items-center shrink-0 w-32 md:w-auto md:flex-1 md:border-r border-neutral-200 last:border-0">
+                    <iconify-icon icon="solar:map-linear" width="32" class="text-neutral-900 mb-2"></iconify-icon>
+                    <span class="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">Nationwide</span>
+                    <span class="text-xs text-neutral-500 font-medium">Delivery Coverage</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Shop by Category -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-20">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Shop by category</h2>
+                <p class="text-sm text-neutral-500 mt-1">Explore authentic ingredients and meals</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+            <!-- Category Item 1 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square bg-neutral-100 mb-3 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Groceries" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 group-hover:text-brand-green transition-colors">Grocery</h3>
+            </a>
+            <!-- Category Item 2 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square bg-neutral-100 mb-3 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Indian Sweets" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 group-hover:text-brand-green transition-colors">Indian Sweets</h3>
+            </a>
+            <!-- Category Item 3 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square bg-neutral-100 mb-3 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Meal Kits" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 group-hover:text-brand-green transition-colors">Meal Kits</h3>
+            </a>
+            <!-- Category Item 4 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square bg-neutral-100 mb-3 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Roti Kit" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 group-hover:text-brand-green transition-colors">Roti Kit</h3>
+            </a>
+            <!-- Category Item 5 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square bg-neutral-100 mb-3 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Organic" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 group-hover:text-brand-green transition-colors">Organic Grocery</h3>
+            </a>
+            <!-- Category Item 6 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square bg-neutral-100 mb-3 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Gifting" class="w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 group-hover:text-brand-green transition-colors">Gifting</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. Dynamic Product Rows (Keep Shopping) -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 border-t border-neutral-100">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Keep shopping for</h2>
+                <p class="text-sm text-neutral-500 mt-1">Based on your recent browsing and purchases</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-brand-light hover:text-brand-green transition-colors" aria-label="Previous">
+                    <iconify-icon icon="solar:arrow-left-linear" width="20"></iconify-icon>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-brand-light hover:text-brand-green transition-colors" aria-label="Next">
+                    <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex overflow-x-auto hide-scrollbar gap-4 md:gap-6 pb-4 -mx-4 px-4 md:mx-0 md:px-0">
+            <!-- Product Card 1: Default with Green Add Button -->
+            <div class="flex flex-col min-w-[170px] md:min-w-[220px] w-[170px] md:w-[220px] group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden flex items-center justify-center p-3">
+                    <img src="imgs/aashirvaad_atta.png" alt="Aashirvaad Whole Wheat Atta" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Aashirvaad Atta to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">Patel Brothers</span>
+                    <h3 class="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors">Aashirvaad Whole Wheat Atta</h3>
+                    <p class="text-xs text-neutral-500 mb-2">10 lbs</p>
+                    <div class="mt-auto flex items-center justify-between">
+                        <span class="text-base font-bold text-neutral-900">$12.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2: Added to Cart State (Green Stepper) -->
+            <div class="flex flex-col min-w-[170px] md:min-w-[220px] w-[170px] md:w-[220px] group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden flex items-center justify-center p-3">
+                    <img src="imgs/haldiram_aloo_bhujia.png" alt="Haldiram's Aloo Bhujia" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105">
+                    <!-- Green Stepper State -->
+                    <div class="absolute bottom-3 right-3 bg-brand-green text-white rounded-full flex items-center shadow-sm px-1 py-0.5">
+                        <button class="w-7 h-7 flex items-center justify-center text-white hover:bg-brand-dark rounded-full transition-colors" aria-label="Decrease quantity">
+                            <iconify-icon icon="solar:minus-linear" width="14"></iconify-icon>
+                        </button>
+                        <span class="text-xs font-bold text-white px-2">2</span>
+                        <button class="w-7 h-7 flex items-center justify-center text-white hover:bg-brand-dark rounded-full transition-colors" aria-label="Increase quantity">
+                            <iconify-icon icon="solar:add-linear" width="14"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">Quicklly Mart</span>
+                    <h3 class="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors">Haldiram's Aloo Bhujia</h3>
+                    <p class="text-xs text-neutral-500 mb-2">400 g</p>
+                    <div class="mt-auto flex items-center justify-between">
+                        <span class="text-base font-bold text-neutral-900">$4.49</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3: Discounted with Green Add Button & Green Badge -->
+            <div class="flex flex-col min-w-[170px] md:min-w-[220px] w-[170px] md:w-[220px] group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden flex items-center justify-center p-3">
+                    <div class="absolute top-2 left-2 bg-brand-light text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10">15% Off</div>
+                    <img src="imgs/taj_mahal_tea.png" alt="Brooke Bond Taj Mahal Tea" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Taj Mahal Tea to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">Patel Brothers</span>
+                    <h3 class="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors">Brooke Bond Taj Mahal Tea</h3>
+                    <p class="text-xs text-neutral-500 mb-2">900 g</p>
+                    <div class="mt-auto flex items-center gap-2">
+                        <span class="text-base font-bold text-neutral-900">$13.59</span>
+                        <span class="text-xs text-neutral-400 line-through">$15.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4: Out of Stock -->
+            <div class="flex flex-col min-w-[170px] md:min-w-[220px] w-[170px] md:w-[220px] group">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden flex items-center justify-center p-3 opacity-60">
+                    <div class="absolute top-2 left-2 bg-neutral-800 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide z-10">Out of Stock</div>
+                    <img src="imgs/kaju_katli_sweets.png" alt="Premium Kaju Katli" class="w-full h-full object-contain mix-blend-multiply grayscale">
+                </div>
+                <div class="flex flex-col flex-1 opacity-60">
+                    <span class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">Kamdar Plaza</span>
+                    <h3 class="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1">Premium Kaju Katli</h3>
+                    <p class="text-xs text-neutral-500 mb-2">1 lb</p>
+                    <div class="mt-auto flex items-center justify-between">
+                        <span class="text-base font-bold text-neutral-900">$14.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5: Royal Basmati Rice -->
+            <div class="flex flex-col min-w-[170px] md:min-w-[220px] w-[170px] md:w-[220px] group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden flex items-center justify-center p-3">
+                    <img src="imgs/royal_basmati_rice.png" alt="Royal Basmati Rice" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Basmati Rice to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">Quicklly Mart</span>
+                    <h3 class="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors">Royal Basmati Rice</h3>
+                    <p class="text-xs text-neutral-500 mb-2">10 lbs</p>
+                    <div class="mt-auto flex items-center justify-between">
+                        <span class="text-base font-bold text-neutral-900">$18.99</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 6: Garam Masala -->
+            <div class="flex flex-col min-w-[170px] md:min-w-[220px] w-[170px] md:w-[220px] group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden flex items-center justify-center p-3">
+                    <img src="imgs/mdh_garam_masala.png" alt="MDH Garam Masala" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Garam Masala to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">Patel Brothers</span>
+                    <h3 class="text-sm font-semibold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors">MDH Garam Masala</h3>
+                    <p class="text-xs text-neutral-500 mb-2">100 g</p>
+                    <div class="mt-auto flex items-center justify-between">
+                        <span class="text-base font-bold text-neutral-900">$2.99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Promotional Deal Collections (Store Offers) -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-12">
+        <div class="bg-neutral-900 text-white flex flex-col md:flex-row items-center justify-between p-8 md:p-12 mb-8 relative overflow-hidden rounded-2xl">
+            <!-- Decorative bg pattern subtle -->
+            <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+            
+            <div class="relative z-10 w-full md:w-1/2 mb-6 md:mb-0">
+                <span class="inline-block px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Limited Time Offer</span>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-2">Save up to 20% on Patel Brothers</h2>
+                <p class="text-neutral-400 text-sm md:text-base">Stock up on pantry essentials with exclusive discounts this week.</p>
+            </div>
+            <div class="relative z-10 shrink-0">
+                <button class="px-7 py-3.5 bg-white text-neutral-900 rounded-full font-semibold hover:bg-brand-green hover:text-white transition-all shadow-sm">
+                    Shop the Sale
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Quicklly Pass / Membership -->
+    <section class="bg-neutral-50 border-y border-neutral-100">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 bg-white shadow-xl rotate-3 p-6 flex flex-col items-center justify-center border border-neutral-100 relative">
+                    <div class="absolute top-4 right-4 text-brand-green">
+                        <iconify-icon icon="solar:crown-star-bold" width="24"></iconify-icon>
+                    </div>
+                    <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-9 w-auto mb-1">
+                    <span class="text-brand-green font-bold text-xl tracking-tight mb-6">PASS</span>
+                    <div class="w-32 h-32 bg-neutral-100 flex items-center justify-center p-2 border border-neutral-200">
+                        <iconify-icon icon="solar:qr-code-linear" width="100" class="text-neutral-900"></iconify-icon>
+                    </div>
+                    <p class="text-[10px] text-neutral-400 font-medium uppercase tracking-widest mt-4">Scan to learn more</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="flex items-center gap-2 mb-4">
+                    <iconify-icon icon="solar:crown-star-bold" width="24" class="text-brand-green"></iconify-icon>
+                    <span class="text-brand-green font-bold tracking-wide uppercase text-xs">Quicklly Pass</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-900 mb-6 leading-tight">
+                    Zero delivery fees.<br>Exclusive member perks.
+                </h2>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start gap-3">
+                        <iconify-icon icon="solar:check-circle-bold" width="24" class="text-brand-green shrink-0 mt-0.5"></iconify-icon>
+                        <div>
+                            <strong class="block text-neutral-900 font-semibold text-base">Free Delivery</strong>
+                            <span class="text-sm text-neutral-500">On all eligible grocery and food orders over $30.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <iconify-icon icon="solar:check-circle-bold" width="24" class="text-brand-green shrink-0 mt-0.5"></iconify-icon>
+                        <div>
+                            <strong class="block text-neutral-900 font-semibold text-base">Member Discounts</strong>
+                            <span class="text-sm text-neutral-500">Save up to 10% extra on selected items.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <iconify-icon icon="solar:check-circle-bold" width="24" class="text-brand-green shrink-0 mt-0.5"></iconify-icon>
+                        <div>
+                            <strong class="block text-neutral-900 font-semibold text-base">Priority Support</strong>
+                            <span class="text-sm text-neutral-500">Skip the line when you need help with an order.</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="flex items-center gap-4">
+                    <button class="px-8 py-3.5 bg-brand-green text-white rounded-full font-semibold hover:bg-brand-dark transition-all shadow-sm">
+                        Join for $9.99/mo
+                    </button>
+                    <a href="#" class="text-sm font-semibold text-brand-dark hover:underline transition-colors flex items-center gap-1">View all plans <iconify-icon icon="solar:alt-arrow-right-linear" width="16"></iconify-icon></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Popular Brands -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-16">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl font-semibold tracking-tight text-neutral-900">Popular Brands &amp; Stores</h2>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+            <!-- Using text as brand placeholders for clean look, representing logos -->
+            <span class="text-xl font-semibold tracking-tighter text-neutral-900">PATEL BROTHERS</span>
+            <span class="text-xl font-semibold tracking-tight text-neutral-900">HALDIRAM'S</span>
+            <span class="text-xl font-semibold tracking-tight text-neutral-900">AASHIRVAAD</span>
+            <span class="text-xl font-semibold tracking-tighter text-neutral-900">KAMDAR PLAZA</span>
+            <span class="text-xl font-semibold tracking-tight text-neutral-900">MDH</span>
+            <span class="text-xl font-semibold tracking-tight text-neutral-900">DEEP FOODS</span>
+        </div>
+    </section>
+
+    <!-- 11. Delivery Across US / Gifting -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <a href="#" class="group block relative aspect-[16/9] overflow-hidden bg-neutral-100">
+                <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&amp;fit=crop&amp;q=80&amp;w=1200" alt="Nationwide Delivery" class="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-8">
+                    <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2">Nationwide Delivery</h3>
+                    <p class="text-white/80 text-sm md:text-base flex items-center gap-2">
+                        Shop authentic meals across the USA
+                        <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="group block relative aspect-[16/9] overflow-hidden bg-neutral-100">
+                <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd45d1?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Gifting" class="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-8">
+                    <h3 class="text-2xl md:text-3xl font-semibold text-white mb-2">Send a Gift</h3>
+                    <p class="text-white/80 text-sm md:text-base flex items-center gap-2">
+                        Premium sweets boxes for any occasion
+                        <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 12. Customer Reviews -->
+    <section class="bg-neutral-50 py-16 md:py-24 border-y border-neutral-100">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">Loved by our community</h2>
+                <div class="flex items-center justify-center gap-1 text-brand-green mb-2">
+                    <iconify-icon icon="solar:star-bold" width="20"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" width="20"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" width="20"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" width="20"></iconify-icon>
+                    <iconify-icon icon="solar:star-bold" width="20"></iconify-icon>
+                </div>
+                <p class="text-neutral-600 text-sm font-medium">Based on 10,000+ reviews from happy customers nationwide.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review Card 1 -->
+                <div class="bg-white p-6 border border-neutral-200/80 rounded-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-1 text-brand-green">
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                        </div>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-brand-light text-brand-dark text-[11px] font-semibold rounded-full">
+                            <iconify-icon icon="solar:verified-check-bold" width="14"></iconify-icon> Verified
+                        </span>
+                    </div>
+                    <p class="text-neutral-700 text-sm leading-relaxed mb-6">"Finding authentic Indian groceries in my small town was impossible. Quicklly delivers everything I need directly to my door perfectly packed. The meal kits are a lifesaver on busy weekdays."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brand-light text-brand-dark font-bold rounded-full flex items-center justify-center text-sm">
+                            P
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-neutral-900">Priya M.</p>
+                            <p class="text-xs text-neutral-500">Texas, USA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review Card 2 -->
+                <div class="bg-white p-6 border border-neutral-200/80 rounded-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-1 text-brand-green">
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                        </div>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-brand-light text-brand-dark text-[11px] font-semibold rounded-full">
+                            <iconify-icon icon="solar:verified-check-bold" width="14"></iconify-icon> Verified
+                        </span>
+                    </div>
+                    <p class="text-neutral-700 text-sm leading-relaxed mb-6">"I ordered a box of premium sweets for Diwali to send to my parents in another state. It arrived perfectly fresh and beautifully packaged. The Quicklly Pass is totally worth it for the free delivery alone."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brand-light text-brand-dark font-bold rounded-full flex items-center justify-center text-sm">
+                            R
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-neutral-900">Rahul S.</p>
+                            <p class="text-xs text-neutral-500">New York, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-white p-6 border border-neutral-200/80 rounded-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-1 text-brand-green">
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-half-bold" width="16"></iconify-icon>
+                        </div>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-brand-light text-brand-dark text-[11px] font-semibold rounded-full">
+                            <iconify-icon icon="solar:verified-check-bold" width="14"></iconify-icon> Verified
+                        </span>
+                    </div>
+                    <p class="text-neutral-700 text-sm leading-relaxed mb-6">"Great selection of local stores aggregated in one place. I used to drive 40 minutes to get to a Patel Brothers. Now I just use the app. The search function is fast and customer service is responsive."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brand-light text-brand-dark font-bold rounded-full flex items-center justify-center text-sm">
+                            A
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-neutral-900">Anita K.</p>
+                            <p class="text-xs text-neutral-500">California, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Additional Product Collections (Ready to Eat) -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-12">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Ready to Eat Meals</h2>
+                <p class="text-sm text-neutral-500 mt-1">Fresh Indian entrees and dishes delivered hot or frozen</p>
+            </div>
+            <a href="#" class="text-sm font-semibold text-brand-green hover:text-brand-dark transition-colors flex items-center gap-1">View all <iconify-icon icon="solar:alt-arrow-right-linear" width="16"></iconify-icon></a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <!-- Ready to Eat Card 1 -->
+            <div class="flex flex-col group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Biryani" class="w-full h-full object-cover">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Biryani to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 leading-snug mb-1 group-hover:text-brand-green transition-colors">Hyderabadi Chicken Biryani</h3>
+                <p class="text-xs text-neutral-500 mb-2">Haldiram's • Frozen</p>
+                <div class="mt-auto flex items-center gap-2">
+                    <span class="text-base font-bold text-neutral-900">$6.99</span>
+                </div>
+            </div>
+            <!-- Ready to Eat Card 2 -->
+            <div class="flex flex-col group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Paneer" class="w-full h-full object-cover">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Palak Paneer to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 leading-snug mb-1 group-hover:text-brand-green transition-colors">Palak Paneer Meal</h3>
+                <p class="text-xs text-neutral-500 mb-2">Deep Foods • Frozen</p>
+                <div class="mt-auto flex items-center gap-2">
+                    <span class="text-base font-bold text-neutral-900">$5.49</span>
+                </div>
+            </div>
+            <!-- Ready to Eat Card 3 -->
+            <div class="flex flex-col group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Samosa" class="w-full h-full object-cover">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Samosa to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 leading-snug mb-1 group-hover:text-brand-green transition-colors">Punjabi Samosa (8 Pcs)</h3>
+                <p class="text-xs text-neutral-500 mb-2">Swad • Frozen</p>
+                <div class="mt-auto flex items-center gap-2">
+                    <span class="text-base font-bold text-neutral-900">$4.99</span>
+                </div>
+            </div>
+            <!-- Ready to Eat Card 4 -->
+            <div class="flex flex-col group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Dal Makhani" class="w-full h-full object-cover">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Dal Makhani to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 leading-snug mb-1 group-hover:text-brand-green transition-colors">Dal Makhani Combo</h3>
+                <p class="text-xs text-neutral-500 mb-2">Haldiram's • Heat &amp; Eat</p>
+                <div class="mt-auto flex items-center gap-2">
+                    <span class="text-base font-bold text-neutral-900">$3.99</span>
+                </div>
+            </div>
+            <!-- Ready to Eat Card 5 -->
+            <div class="hidden lg:flex flex-col group cursor-pointer">
+                <div class="aspect-square bg-neutral-50 mb-3 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Naan" class="w-full h-full object-cover">
+                    <button class="absolute bottom-3 right-3 px-3 py-1.5 bg-brand-green hover:bg-brand-dark text-white text-xs font-semibold rounded-full flex items-center gap-1 shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-all transform active:scale-95" aria-label="Add Garlic Naan to cart">
+                        <iconify-icon icon="solar:add-linear" width="16"></iconify-icon> Add
+                    </button>
+                </div>
+                <h3 class="text-sm font-semibold text-neutral-900 leading-snug mb-1 group-hover:text-brand-green transition-colors">Garlic Naan (5 Pcs)</h3>
+                <p class="text-xs text-neutral-500 mb-2">Deep Foods • Frozen</p>
+                <div class="mt-auto flex items-center gap-2">
+                    <span class="text-base font-bold text-neutral-900">$2.99</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Quicklly App Download -->
+    <section class="border-y border-neutral-100 bg-neutral-900 text-white overflow-hidden">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-0">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 py-16 md:py-24 pr-0 md:pr-12">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-green/20 text-brand-green border border-brand-green/30 text-xs font-semibold tracking-widest uppercase rounded-full mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span> Official Quicklly App
+                    </span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4">There's an app for that.</h2>
+                    <p class="text-neutral-400 text-base md:text-lg mb-8 max-w-md">Get the full Quicklly experience on your phone. Order groceries, track deliveries, and manage your Pass seamlessly.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="flex items-center gap-2 px-5 py-3 bg-white text-neutral-900 rounded-xl hover:bg-brand-light hover:text-brand-dark transition-colors">
+                            <iconify-icon icon="ic:baseline-apple" width="24"></iconify-icon>
+                            <div class="text-left">
+                                <div class="text-[10px] leading-none text-neutral-500">Download on the</div>
+                                <div class="text-sm font-semibold leading-none mt-1">App Store</div>
+                            </div>
+                        </button>
+                        <button class="flex items-center gap-2 px-5 py-3 bg-white text-neutral-900 rounded-xl hover:bg-brand-light hover:text-brand-dark transition-colors">
+                            <iconify-icon icon="logos:google-play-icon" width="20"></iconify-icon>
+                            <div class="text-left ml-1">
+                                <div class="text-[10px] leading-none text-neutral-500">GET IT ON</div>
+                                <div class="text-sm font-semibold leading-none mt-1">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <!-- Phone Mockup Logo -->
+                <div class="w-full md:w-1/2 flex justify-center items-end self-stretch pt-12 md:pt-0">
+                    <div class="w-64 h-[400px] md:h-[500px] border-4 border-b-0 border-neutral-800 rounded-t-[2.5rem] bg-black relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute top-0 w-32 h-6 bg-neutral-800 rounded-b-2xl"></div>
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly App" class="logo-img h-9 w-auto opacity-60 invert">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. Editorial and Service Content Sections -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-16 md:py-24 space-y-16 md:space-y-32">
+        <!-- Editorial Block 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div class="aspect-[4/3] bg-neutral-100 relative">
+                <img src="https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Indian Groceries" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">Authentic ingredients, no compromises.</h2>
+                <p class="text-neutral-600 text-base leading-relaxed mb-6">We partner directly with trusted local South Asian grocery stores to bring you the freshest produce, rarest spices, and authentic brands you know and love. Quality and heritage delivered directly to your kitchen.</p>
+                <a href="#" class="inline-flex items-center gap-2 text-neutral-900 font-semibold hover:text-brand-green transition-colors">
+                    Learn about our sourcing <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Editorial Block 2 (Alternating) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div class="md:order-last aspect-[4/3] bg-neutral-100 relative">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Meal Delivery" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">Fresh meals, prepared daily.</h2>
+                <p class="text-neutral-600 text-base leading-relaxed mb-6">Not in the mood to cook? Browse our selection of ready-to-eat meals and tiffins from local restaurants and certified home kitchens. From comforting curries to fresh rotis, enjoy home-cooked flavors without the effort.</p>
+                <a href="#" class="inline-flex items-center gap-2 text-neutral-900 font-semibold hover:text-brand-green transition-colors">
+                    Explore Tiffin services <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. Blog / Articles -->
+    <section class="max-w-[1360px] mx-auto px-4 md:px-8 py-16 border-t border-neutral-100">
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-2xl font-semibold tracking-tight text-neutral-900">Read the Quicklly Blog</h2>
+            <a href="#" class="text-sm font-medium text-neutral-900 hover:text-brand-green transition-colors">View all</a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <!-- Article Card -->
+            <a href="#" class="group block">
+                <div class="aspect-[16/9] bg-neutral-100 mb-4 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1605807646983-377bc5a76493?auto=format&amp;fit=crop&amp;q=80&amp;w=600" alt="Diwali Recipes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <span class="text-[10px] font-semibold text-brand-green uppercase tracking-widest mb-2 block">Recipes</span>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2 leading-tight group-hover:underline decoration-2 underline-offset-2">5 Essential Sweets to Make This Diwali</h3>
+                <p class="text-sm text-neutral-600 line-clamp-2">Discover traditional recipes for Kaju Katli, Gulab Jamun, and more, using ingredients delivered straight from Quicklly.</p>
+            </a>
+            <!-- Article Card -->
+            <a href="#" class="group block">
+                <div class="aspect-[16/9] bg-neutral-100 mb-4 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&amp;fit=crop&amp;q=80&amp;w=600" alt="Spices Guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <span class="text-[10px] font-semibold text-brand-green uppercase tracking-widest mb-2 block">Guide</span>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2 leading-tight group-hover:underline decoration-2 underline-offset-2">The Ultimate Guide to Indian Spices</h3>
+                <p class="text-sm text-neutral-600 line-clamp-2">Learn the difference between Garam Masala and Chaat Masala, and how to build your first spice box (Masala Dabba).</p>
+            </a>
+            <!-- Article Card -->
+            <a href="#" class="group block hidden md:block">
+                <div class="aspect-[16/9] bg-neutral-100 mb-4 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&amp;fit=crop&amp;q=80&amp;w=600" alt="Quick Meals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <span class="text-[10px] font-semibold text-brand-green uppercase tracking-widest mb-2 block">Lifestyle</span>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2 leading-tight group-hover:underline decoration-2 underline-offset-2">15-Minute Meals Using Ready-to-Eat Basics</h3>
+                <p class="text-sm text-neutral-600 line-clamp-2">Short on time? See how you can elevate frozen parathas and heat-and-eat curries into a feast.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- 17. Global Footer -->
+    <footer class="bg-neutral-950 text-white pt-16 pb-8 border-t border-neutral-900">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
+                <!-- Brand Col -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="mb-4 block">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-9 w-auto invert">
+                    </a>
+                    <p class="text-neutral-400 text-sm mb-6 max-w-sm">
+                        The ultimate destination for authentic South Asian groceries, food, and culture, delivered to your door.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
+                            <iconify-icon icon="mdi:instagram" width="24"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
+                            <iconify-icon icon="mdi:facebook" width="24"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
+                            <iconify-icon icon="mdi:twitter" width="24"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Cols -->
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Press</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Track Order</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Return Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-sm text-neutral-500">
+                    © 2023 Quicklly Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-sm text-neutral-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prototype Scripts -->
+    <script>
+        // Simple Header Scroll Effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+
+        // Cart Count Demo (Interactive demonstration only)
+        const cartBtns = document.querySelectorAll('button[aria-label="Add to cart"]');
+        const cartCountDisplay = document.getElementById('cart-count');
+        let count = 2;
+
+        // In a real scenario, this would be handled by state management, 
+        // this is just to show interactive visual state for prototype.
+        document.querySelectorAll('.solar\\:add-linear').forEach(icon => {
+           let btn = icon.closest('button');
+           if(btn && !btn.closest('.bg-neutral-100') && !btn.closest('.rounded-r-full')) { // exclude arrows and stepper
+               btn.addEventListener('click', (e) => {
+                   e.preventDefault();
+                   count++;
+                   if(cartCountDisplay) cartCountDisplay.innerText = count;
+                   
+                   // Visual feedback on button
+                   const originalHTML = btn.innerHTML;
+                   btn.innerHTML = '<iconify-icon icon="solar:check-circle-linear" width="20"></iconify-icon>';
+                   btn.classList.add('bg-brand-green', 'text-white', 'border-brand-green');
+                   btn.classList.remove('text-neutral-900', 'bg-white');
+                   
+                   setTimeout(() => {
+                       btn.innerHTML = originalHTML;
+                       btn.classList.remove('bg-brand-green', 'text-white', 'border-brand-green');
+                       btn.classList.add('text-neutral-900', 'bg-white');
+                   }, 1000);
+               });
+           }
+        });
+    </script>
+
+</body></html>
