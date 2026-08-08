@@ -1,0 +1,1543 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery - Quicklly Indian Grocery &amp; Food Delivery</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#10b981',
+                        'brand-dark': '#059669',
+                        'brand-light': '#ecfdf5',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Tailwind Config & Custom Styles -->
+    <style>
+        :root {
+            --quicklly-black: #000000;
+            --quicklly-green: #10b981;
+            --quicklly-green-dark: #059669;
+            --quicklly-green-light: #ecfdf5;
+            --quicklly-white: #ffffff;
+            --quicklly-background: #ffffff;
+            --quicklly-surface: #ffffff;
+            --quicklly-surface-muted: #f5f5f5;
+            --quicklly-text: #171717;
+            --quicklly-text-muted: #737373;
+            --quicklly-border: #e5e5e5;
+
+            /* Legacy alias */
+            --color-brand-green: var(--quicklly-green);
+            --color-brand-green-dark: var(--quicklly-green-dark);
+        }
+
+        /* Hide scrollbar for horizontal scrolling elements */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* Ensure sharp images globally */
+        img { border-radius: 0 !important; object-fit: cover; }
+        .logo-img { object-fit: contain !important; border-radius: 0 !important; }
+        
+        /* Interactive element transitions */
+        .btn-transition { transition: all 0.2s ease-in-out; }
+
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #10b981;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-neutral-900 bg-white">
+
+    <!-- 1. Promotional Strip (IDENTICAL TO index.html) -->
+    <div class="bg-neutral-900 text-white text-xs font-medium py-2 px-4 text-center flex justify-center items-center gap-2">
+        <span>Get $10 off your first order over $50 with code:</span>
+        <span class="text-brand-green font-bold tracking-wide">WELCOME10</span>
+        <button class="ml-4 opacity-70 hover:opacity-100 hidden sm:block" aria-label="Dismiss">
+            <iconify-icon icon="solar:close-circle-linear" width="16"></iconify-icon>
+        </button>
+    </div>
+
+    <!-- 2. Global Header (IDENTICAL TO index.html) -->
+    <header id="main-header" class="bg-white border-b border-neutral-200 sticky top-0 z-50 transition-shadow duration-200">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-3 md:py-3.5">
+            <!-- Mobile Layout (Top row) -->
+            <div class="flex items-center justify-between md:hidden mb-3">
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-btn" class="text-neutral-900 p-1 rounded-lg hover:bg-neutral-100 cursor-pointer" aria-label="Open menu">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="24"></iconify-icon>
+                    </button>
+                    <a href="#" class="flex items-center py-0.5">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-8 w-auto">
+                    </a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="relative p-2 rounded-full hover:bg-neutral-100 transition-colors">
+                        <iconify-icon icon="solar:cart-large-2-linear" width="24"></iconify-icon>
+                        <span class="absolute top-0 right-0 bg-brand-green text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desktop & Mobile Search Layout -->
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
+                
+                <!-- Desktop Logo -->
+                <a href="#" class="hidden md:flex items-center shrink-0 py-0.5">
+                    <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-10 lg:h-11 w-auto">
+                </a>
+
+                <!-- Location Selector (Rounded pill trigger for Address Picker Modal) -->
+                <button id="location-selector-btn" onclick="openAddressModal()" class="w-full md:w-auto flex items-center justify-between md:justify-start gap-2.5 px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 rounded-full text-sm font-medium transition-colors shrink-0 group cursor-pointer" aria-label="Choose delivery address">
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:map-point-bold" width="18" class="text-brand-green"></iconify-icon>
+                        <span class="truncate max-w-[140px] md:max-w-[220px] text-left text-neutral-800 group-hover:text-neutral-900">Delivery to <strong id="header-location-text" class="font-semibold">60601</strong></span>
+                    </div>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" width="16" class="text-neutral-500 group-hover:text-neutral-800"></iconify-icon>
+                </button>
+
+                <!-- Search -->
+                <div class="w-full relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <iconify-icon icon="solar:magnifer-linear" width="20" class="text-neutral-500"></iconify-icon>
+                    </div>
+                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500">
+                    <button class="absolute inset-y-1.5 right-1.5 px-4 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors">
+                        Search
+                    </button>
+                </div>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center gap-1.5 shrink-0">
+                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                        <iconify-icon icon="solar:user-circle-linear" width="20"></iconify-icon>
+                        Sign In
+                    </button>
+                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                        <iconify-icon icon="solar:box-linear" width="20"></iconify-icon>
+                        Orders
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2 ml-1 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors group">
+                        <iconify-icon icon="solar:cart-large-2-linear" width="20"></iconify-icon>
+                        Cart • <span id="cart-count" class="bg-brand-green text-white text-xs font-bold px-2 py-0.5 rounded-full ml-0.5">2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Global Navigation / Category Menu (IDENTICAL TO index.html — Grocery highlighted) -->
+        <div class="border-t border-neutral-100">
+            <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+                <nav class="flex items-center gap-6 overflow-x-auto hide-scrollbar py-3 text-sm font-medium text-neutral-600">
+                    <button id="all-categories-btn" class="flex items-center gap-1.5 shrink-0 text-neutral-900 font-semibold hover:text-brand-green transition-colors cursor-pointer" aria-label="All Categories">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="18" class="text-brand-green"></iconify-icon>
+                        All Categories
+                    </button>
+                    <span class="w-px h-4 bg-neutral-200 shrink-0"></span>
+                    <a href="#" class="shrink-0 text-brand-green font-semibold border-b-2 border-brand-green pb-1 -mb-1">Grocery</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
+                    <a href="#" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
+                        <iconify-icon icon="solar:crown-star-bold" width="16"></iconify-icon>
+                        Quicklly Pass
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- CATEGORY BROWSE PAGE — REDESIGNED CONTENT AREA               -->
+    <!-- ============================================================ -->
+
+    <!-- COMPACT STORE INFORMATION HEADER -->
+    <section class="bg-neutral-50/80 border-b border-neutral-100">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-3.5">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white border border-neutral-200/80 p-2 flex items-center justify-center shadow-xs shrink-0">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly Store" class="logo-img h-4 w-auto">
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h1 class="text-sm md:text-base font-bold text-neutral-900 tracking-tight">Quicklly Indian Grocery Nationwide</h1>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-xs text-neutral-500 mt-0.5 flex-wrap">
+                            <span class="flex items-center gap-1 font-semibold text-neutral-800">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400" width="13"></iconify-icon> 3.6
+                            </span>
+                            <span>•</span>
+                            <span>$50 minimum order</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1 text-emerald-700 font-medium">
+                                <iconify-icon icon="solar:delivery-linear" width="13"></iconify-icon> Delivery in 3–4 days
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Store Search Input -->
+                <div class="w-full md:w-64 relative">
+                    <input type="text" placeholder="Search this store..." class="w-full pl-9 pr-4 py-2 bg-white border border-neutral-200 focus:border-brand-green rounded-xl text-xs outline-none transition-all placeholder:text-neutral-400">
+                    <iconify-icon icon="solar:magnifer-linear" width="14" class="absolute left-3 top-2.5 text-neutral-400"></iconify-icon>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY LAYOUT CONTAINER -->
+    <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-6 md:py-8">
+        
+        <!-- BREADCRUMB NAVIGATION -->
+        <nav aria-label="Breadcrumb" class="mb-3">
+            <ol id="breadcrumb-container" class="flex items-center gap-1.5 text-xs text-neutral-500 flex-wrap">
+                <li><a href="index.html" class="hover:text-brand-green transition-colors">Home</a></li>
+                <li><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
+                <li id="breadcrumb-lvl1"><a href="#" onclick="switchCategoryLevel(1); return false;" class="hover:text-brand-green transition-colors font-medium">Grocery</a></li>
+                <li id="breadcrumb-lvl2-sep" class="hidden"><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
+                <li id="breadcrumb-lvl2" class="hidden"><a href="#" onclick="switchCategoryLevel(2); return false;" class="hover:text-brand-green transition-colors font-medium"></a></li>
+                <li id="breadcrumb-lvl3-sep" class="hidden"><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
+                <li id="breadcrumb-lvl3" class="hidden text-neutral-900 font-semibold"></li>
+            </ol>
+        </nav>
+
+        <!-- CATEGORY TITLE & PRODUCT COUNT BADGE -->
+        <div class="flex items-start justify-between gap-4 mb-6">
+            <div>
+                <h2 id="category-page-title" class="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900">Grocery</h2>
+                <p id="category-page-desc" class="text-sm text-neutral-500 mt-1 max-w-2xl">Shop complete Indian pantry staples — rice, flour, spices, and cooking essentials.</p>
+            </div>
+            <span id="product-count-badge" class="px-3 py-1 bg-neutral-100 border border-neutral-200/60 text-neutral-700 text-xs font-medium rounded-full shrink-0">126 products</span>
+        </div>
+
+        <!-- TOP CATEGORY SHORTCUTS: CIRCULAR CATEGORY TILES -->
+        <section id="subcategories-section" class="mb-10">
+            <h3 id="subcategories-heading" class="text-sm font-bold text-neutral-900 mb-4">Shop Grocery</h3>
+            <div class="relative flex items-center">
+                <div id="subcategories-grid" class="flex items-center gap-5 sm:gap-7 overflow-x-auto hide-scrollbar py-2 w-full pr-12">
+                    <!-- Circular category tiles rendered dynamically -->
+                </div>
+                <!-- Carousel Scroll Right Arrow Button -->
+                <button type="button" id="scroll-categories-right" onclick="scrollCategoriesRight()" class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-neutral-200 shadow-md flex items-center justify-center text-neutral-700 hover:text-brand-green hover:border-brand-green transition-all z-10 cursor-pointer" aria-label="Next categories">
+                    <iconify-icon icon="solar:alt-arrow-right-linear" width="18"></iconify-icon>
+                </button>
+            </div>
+        </section>
+
+        <!-- MAIN TWO-COLUMN LAYOUT -->
+        <div class="flex items-start gap-8">
+            
+            <!-- DESKTOP STICKY SIDEBAR: FILTERS CARD -->
+            <aside class="hidden lg:block w-[240px] shrink-0 sticky top-28 space-y-5 max-h-[calc(100vh-140px)] overflow-y-auto hide-scrollbar">
+                
+                <!-- Unified Filters Card -->
+                <div class="border border-neutral-200/80 rounded-2xl p-5 bg-white space-y-6 shadow-xs">
+                    
+                    <!-- Filters Card Header -->
+                    <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
+                        <span class="text-xs font-bold text-neutral-900 uppercase tracking-wider flex items-center gap-1.5">
+                            <iconify-icon icon="solar:tuning-square-2-linear" width="16" class="text-brand-green"></iconify-icon>
+                            FILTERS
+                        </span>
+                        <button type="button" onclick="resetAllFilters()" class="text-xs font-semibold text-brand-green hover:text-brand-dark hover:underline cursor-pointer">Reset all</button>
+                    </div>
+
+                    <!-- Category Section -->
+                    <div class="space-y-2.5">
+                        <h4 class="text-xs font-bold text-neutral-900">Category</h4>
+                        <div class="space-y-2 text-xs text-neutral-700">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" checked class="rounded border-neutral-300 text-brand-green accent-brand-green w-4 h-4 cursor-pointer">
+                                <span class="font-semibold text-neutral-900">All Grocery</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Atta &amp; Flour (18)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Masalas &amp; Spices (34)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Dals &amp; Pulses (22)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Rice &amp; Grains (16)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Oils &amp; Ghee (14)</span>
+                            </label>
+                            <button type="button" class="text-xs font-semibold text-brand-green hover:underline cursor-pointer pt-0.5 block">+ Show more</button>
+                        </div>
+                    </div>
+
+                    <!-- Brand Section with Search Input -->
+                    <div class="space-y-2.5 pt-3 border-t border-neutral-100">
+                        <h4 class="text-xs font-bold text-neutral-900">Brand</h4>
+                        <div class="relative mb-2">
+                            <input type="text" placeholder="Search brand" class="w-full px-3 py-1.5 bg-neutral-50 border border-neutral-200 focus:bg-white focus:border-brand-green rounded-lg text-xs outline-none transition-all placeholder:text-neutral-400 text-neutral-800">
+                        </div>
+                        <div class="space-y-2 text-xs text-neutral-700">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>MDH (18)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Everest (14)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Aashirvaad (12)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Haldiram's (15)</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Brooke Bond (8)</span>
+                            </label>
+                            <button type="button" class="text-xs font-semibold text-brand-green hover:underline cursor-pointer pt-0.5 block">+ Show more</button>
+                        </div>
+                    </div>
+
+                    <!-- Price Section -->
+                    <div class="space-y-2.5 pt-3 border-t border-neutral-100">
+                        <h4 class="text-xs font-bold text-neutral-900">Price</h4>
+                        <div class="px-1 py-1">
+                            <input type="range" min="0" max="50" value="50" class="w-full cursor-pointer">
+                            <div class="flex justify-between items-center text-[11px] text-neutral-400 font-medium mt-1">
+                                <span>$0</span>
+                                <span>$50+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dietary Section -->
+                    <div class="space-y-2.5 pt-3 border-t border-neutral-100">
+                        <h4 class="text-xs font-bold text-neutral-900">Dietary</h4>
+                        <div class="space-y-2 text-xs text-neutral-700">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Vegetarian</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>Gluten Free</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Availability Section -->
+                    <div class="space-y-2.5 pt-3 border-t border-neutral-100">
+                        <h4 class="text-xs font-bold text-neutral-900">Availability</h4>
+                        <div class="space-y-2 text-xs text-neutral-700">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-neutral-900">
+                                <input type="checkbox" class="rounded border-neutral-300 accent-brand-green w-4 h-4 cursor-pointer">
+                                <span>In Stock (126)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- RIGHT CONTENT: Toolbar + Product Grid -->
+            <div class="flex-1 min-w-0">
+                
+                <!-- Product Toolbar -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-5 p-3.5 bg-neutral-50/70 rounded-xl border border-neutral-200/60">
+                    <div class="flex items-center gap-2">
+                        <!-- Mobile buttons -->
+                        <button type="button" onclick="openMobileFilterSheet()" class="lg:hidden px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-semibold text-neutral-800 flex items-center gap-1.5 cursor-pointer">
+                            <iconify-icon icon="solar:tuning-square-2-linear" width="14" class="text-brand-green"></iconify-icon> Filter
+                        </button>
+                        <span id="toolbar-count" class="text-xs font-medium text-neutral-600">Showing 8 of 126</span>
+                    </div>
+                    <div class="flex items-center gap-2 ml-auto">
+                        <label for="sort-select" class="text-xs font-medium text-neutral-500">Sort by:</label>
+                        <select id="sort-select" class="px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-semibold text-neutral-800 outline-none focus:border-brand-green cursor-pointer shadow-2xs">
+                            <option value="popular">Popular</option>
+                            <option value="price-low">Price: Low → High</option>
+                            <option value="price-high">Price: High → Low</option>
+                            <option value="newest">Newest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Grid Heading Row -->
+                <div class="flex items-center justify-between mb-4">
+                    <h3 id="products-grid-heading" class="text-base font-bold text-neutral-900">All Grocery</h3>
+                    <span class="text-xs text-neutral-400 font-medium">In stock for 60601</span>
+                </div>
+
+                <!-- PRODUCT GRID (4 columns on desktop) -->
+                <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="pt-10 pb-4 text-center">
+                    <button type="button" class="px-8 py-2.5 bg-neutral-100 hover:bg-neutral-200 border border-neutral-200/60 text-neutral-800 font-semibold text-xs rounded-full transition-colors cursor-pointer shadow-2xs">
+                        Load More Products
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 17. Global Footer (IDENTICAL TO index.html) -->
+    <footer class="bg-neutral-950 text-white pt-16 pb-8 border-t border-neutral-900">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
+                <!-- Brand Col -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="mb-4 block">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-9 w-auto invert">
+                    </a>
+                    <p class="text-neutral-400 text-sm mb-6 max-w-sm">
+                        The ultimate destination for authentic South Asian groceries, food, and culture, delivered to your door.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
+                            <iconify-icon icon="mdi:instagram" width="24"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
+                            <iconify-icon icon="mdi:facebook" width="24"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
+                            <iconify-icon icon="mdi:twitter" width="24"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Cols -->
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Press</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Track Order</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Return Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-sm text-neutral-500">
+                    © 2023 Quicklly Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-sm text-neutral-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Side Navigation Category Drawer (IDENTICAL TO index.html) -->
+    <div id="side-drawer-backdrop" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <aside id="side-drawer" class="fixed top-0 left-0 bottom-0 w-[335px] max-w-[90vw] bg-[#fbfbfb] rounded-r-3xl z-[101] shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-neutral-200/50" aria-label="Category Menu">
+        <!-- Drawer Header -->
+        <div class="bg-neutral-50 px-6 py-5 flex items-center justify-between border-b border-neutral-100/80">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-100/80 text-brand-green flex items-center justify-center shrink-0">
+                    <iconify-icon icon="solar:user-bold" width="22"></iconify-icon>
+                </div>
+                <h2 class="text-xl font-bold text-neutral-900 tracking-tight">Hello Abu</h2>
+            </div>
+            <button id="close-drawer-btn" class="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-full hover:bg-neutral-200/60 transition-colors cursor-pointer" aria-label="Close menu">
+                <iconify-icon icon="solar:close-linear" width="22" class="font-bold"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Drawer Body / Categories List -->
+        <div class="flex-1 overflow-y-auto divide-y divide-neutral-200/60 px-2">
+            <!-- Shop by Category -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <span class="w-1 h-5 bg-brand-green rounded-full"></span>
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:bag-3-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Shop by Category</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:basket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Grocery</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:gift-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Gifting</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:sticker-smile-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>aha</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:calendar-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Events</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Astrology</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:leaf-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Organic Grocery</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:chef-hat-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Roti Kit</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:box-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Meal Kit</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:cup-hot-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Chai Tea & Coffee Kit</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:cookie-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Indian Sweets & Snacks</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:dish-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Catering</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:diamond-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Only Luxury</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Shop by Stores -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:shop-2-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Shop by Stores</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:shop-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Grocery Stores</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Programs & Features -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:stars-minimalistic-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Programs & Features</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:ticket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Quicklly Pass</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Brand Ambassador</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:graduation-cap-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Student Ambassador</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:shield-star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Be a Hero</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:users-group-two-rounded-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Refer a Friend</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account & Settings -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:settings-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Account & Settings</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Your Account</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:logout-3-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Sign Out</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Address Picker Modal System (IDENTICAL TO index.html) -->
+    <div id="address-modal-backdrop" class="fixed inset-0 bg-black/60 z-[110] backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-200 flex items-center justify-center p-3 sm:p-6" aria-hidden="true">
+        
+        <!-- Modal Box -->
+        <div id="address-modal" class="w-full max-w-[640px] bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[85vh] transition-all duration-200 transform scale-95 opacity-0 my-auto" role="dialog" aria-modal="true" aria-labelledby="address-modal-title">
+            
+            <!-- Modal Header -->
+            <div class="px-5 py-4 sm:px-6 sm:py-5 border-b border-neutral-100 flex items-start justify-between bg-neutral-50/50 shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <button id="address-modal-back-btn" class="hidden p-1.5 text-neutral-600 hover:text-neutral-900 rounded-lg hover:bg-neutral-200/60 transition-colors cursor-pointer" aria-label="Go back">
+                        <iconify-icon icon="solar:alt-arrow-left-linear" width="20"></iconify-icon>
+                    </button>
+                    <div>
+                        <h2 id="address-modal-title" class="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight">Choose address</h2>
+                        <p id="address-modal-subtitle" class="text-xs text-neutral-500 mt-0.5">Enter your address to see stores and products available near you.</p>
+                    </div>
+                </div>
+                <button id="close-address-modal-btn" class="p-1.5 text-neutral-400 hover:text-neutral-900 rounded-full hover:bg-neutral-100 transition-colors cursor-pointer shrink-0 ml-2" aria-label="Close address modal">
+                    <iconify-icon icon="solar:close-linear" width="20" class="font-bold"></iconify-icon>
+                </button>
+            </div>
+
+            <!-- Scrollable Modal Content Region -->
+            <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5 hide-scrollbar">
+                
+                <!-- VIEW A: SEARCH & SAVED ADDRESSES VIEW -->
+                <div id="address-view-search" class="space-y-5">
+                    
+                    <!-- Country Selector Segmented Chips -->
+                    <div>
+                        <label class="block text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Select Country</label>
+                        <div class="flex items-center gap-2" id="country-chips-container">
+                            <button type="button" class="country-chip active bg-white border-2 border-brand-green text-neutral-900 font-semibold shadow-xs text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer" data-country="US">
+                                <span class="text-base leading-none">🇺🇸</span> USA
+                            </button>
+                            <button type="button" class="country-chip bg-neutral-100 border-2 border-transparent text-neutral-600 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer hover:bg-neutral-200/60" data-country="CA">
+                                <span class="text-base leading-none">🇨🇦</span> Canada
+                            </button>
+                            <button type="button" class="country-chip bg-neutral-100 border-2 border-transparent text-neutral-600 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer hover:bg-neutral-200/60" data-country="IN">
+                                <span class="text-base leading-none">🇮🇳</span> India
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Address Autocomplete Search Input -->
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400">
+                            <iconify-icon icon="solar:magnifer-linear" width="18"></iconify-icon>
+                        </div>
+                        <input type="text" id="address-search-input" placeholder="Enter your address" class="w-full pl-10 pr-10 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm font-medium text-neutral-900 placeholder:text-neutral-400 outline-none transition-all">
+                        <button type="button" id="address-search-clear" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-neutral-400 hover:text-neutral-700 cursor-pointer" aria-label="Clear search">
+                            <iconify-icon icon="solar:close-circle-bold" width="18"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Search Suggestions Container -->
+                    <div id="search-results-area" class="hidden space-y-2 pt-1 border-t border-neutral-100">
+                        <div id="search-skeleton" class="hidden space-y-2 py-1">
+                            <div class="animate-pulse flex items-center gap-3 p-3 bg-neutral-50 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-neutral-200 shrink-0"></div>
+                                <div class="flex-1 space-y-1.5">
+                                    <div class="h-3.5 bg-neutral-200 rounded w-2/3"></div>
+                                    <div class="h-2.5 bg-neutral-200 rounded w-1/2"></div>
+                                </div>
+                            </div>
+                            <div class="animate-pulse flex items-center gap-3 p-3 bg-neutral-50 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-neutral-200 shrink-0"></div>
+                                <div class="flex-1 space-y-1.5">
+                                    <div class="h-3.5 bg-neutral-200 rounded w-3/4"></div>
+                                    <div class="h-2.5 bg-neutral-200 rounded w-2/5"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="suggestions-list" class="space-y-1 max-h-60 overflow-y-auto hide-scrollbar"></div>
+
+                        <div id="search-no-results" class="hidden p-5 text-center bg-neutral-50 rounded-xl border border-dashed border-neutral-200">
+                            <iconify-icon icon="solar:magnifer-bug-linear" width="28" class="text-neutral-400 mb-1.5"></iconify-icon>
+                            <p class="text-xs font-semibold text-neutral-800">We couldn't find that address.</p>
+                            <p class="text-[11px] text-neutral-500 mt-0.5">Please check spelling or try entering your details manually.</p>
+                            <button type="button" id="trigger-manual-from-no-results" class="mt-3 inline-flex items-center gap-1.5 px-3.5 py-2 bg-brand-light text-brand-dark hover:bg-brand-green hover:text-white font-semibold text-xs rounded-full transition-colors cursor-pointer">
+                                <iconify-icon icon="solar:pen-new-square-linear" width="14"></iconify-icon> Enter address manually
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="initial-search-hint" class="hidden py-3 text-center">
+                        <p class="text-xs text-neutral-400">Start typing your street, city, or ZIP code.</p>
+                    </div>
+
+                    <!-- Saved Addresses Section -->
+                    <div id="saved-addresses-section" class="space-y-3 pt-1">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-neutral-900">Saved addresses</h3>
+                            <button type="button" id="add-another-address-btn" class="text-xs font-semibold text-brand-green hover:text-brand-dark transition-colors cursor-pointer">
+                                + Add another address
+                            </button>
+                        </div>
+                        <div id="saved-addresses-list" class="space-y-2.5"></div>
+                    </div>
+
+                </div>
+
+                <!-- VIEW B: MANUAL / CONFIRM / EDIT ADDRESS FORM VIEW -->
+                <div id="address-view-form" class="hidden space-y-4">
+                    <form id="address-form" class="space-y-4">
+                        <input type="hidden" id="form-address-id" value="">
+                        
+                        <div>
+                            <label for="form-street" class="block text-xs font-semibold text-neutral-700 mb-1">Street Address <span class="text-red-500">*</span></label>
+                            <input type="text" id="form-street" placeholder="e.g. 44111 Bosworth Road" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                            <p class="form-error text-[11px] text-red-500 hidden mt-1">Please enter a street address.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label for="form-city" class="block text-xs font-semibold text-neutral-700 mb-1">City <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-city" placeholder="e.g. Cleveland" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                                <p class="form-error text-[11px] text-red-500 hidden mt-1">Please enter a city.</p>
+                            </div>
+                            <div>
+                                <label for="form-state" class="block text-xs font-semibold text-neutral-700 mb-1">State / Province <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-state" placeholder="e.g. Ohio" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                                <p class="form-error text-[11px] text-red-500 hidden mt-1">State or province is required.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label for="form-zip" class="block text-xs font-semibold text-neutral-700 mb-1">ZIP / Postal Code <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-zip" placeholder="e.g. 44111" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                                <p class="form-error text-[11px] text-red-500 hidden mt-1">Please enter a valid ZIP code.</p>
+                            </div>
+                            <div>
+                                <label for="form-apt" class="block text-xs font-semibold text-neutral-700 mb-1">Apt, suite, unit (optional)</label>
+                                <input type="text" id="form-apt" placeholder="e.g. Apt 4B" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <div id="form-general-error" class="hidden p-3 bg-red-50 text-red-700 rounded-xl text-xs flex items-center gap-2">
+                            <iconify-icon icon="solar:danger-circle-bold" width="16" class="shrink-0"></iconify-icon>
+                            <span>We couldn't save this address. Please check details and try again.</span>
+                        </div>
+
+                        <div class="pt-2 space-y-2">
+                            <button type="submit" id="save-address-btn" class="w-full py-3.5 bg-brand-green hover:bg-brand-dark text-white font-semibold text-sm rounded-xl transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2">
+                                <span>Save address</span>
+                            </button>
+                            <button type="button" id="delete-address-btn" class="hidden w-full py-2 text-red-600 hover:text-red-800 hover:bg-red-50 font-semibold text-xs rounded-xl transition-colors cursor-pointer text-center">
+                                Delete address
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Filter Bottom Sheet -->
+    <div id="mobile-filter-backdrop" class="fixed inset-0 bg-black/50 z-[105] opacity-0 pointer-events-none transition-opacity duration-200"></div>
+    <div id="mobile-filter-sheet" class="fixed bottom-0 left-0 right-0 z-[106] bg-white rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[75vh] flex flex-col">
+        <div class="px-5 py-4 border-b border-neutral-100 flex items-center justify-between shrink-0">
+            <h3 class="text-base font-bold text-neutral-900">Filters</h3>
+            <button type="button" onclick="closeMobileFilterSheet()" class="p-1 text-neutral-400 hover:text-neutral-900 cursor-pointer">
+                <iconify-icon icon="solar:close-linear" width="20"></iconify-icon>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5 space-y-4">
+            <div class="space-y-2">
+                <h4 class="text-xs font-bold text-neutral-800">Brand</h4>
+                <div class="space-y-2 text-sm text-neutral-700">
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="accent-emerald-500"> MDH (18)</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="accent-emerald-500"> Everest (14)</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="accent-emerald-500"> Aashirvaad (12)</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="accent-emerald-500"> Haldiram's (15)</label>
+                </div>
+            </div>
+            <div class="space-y-2 pt-3 border-t border-neutral-100">
+                <h4 class="text-xs font-bold text-neutral-800">Dietary</h4>
+                <div class="space-y-2 text-sm text-neutral-700">
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="accent-emerald-500"> Vegetarian</label>
+                    <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="accent-emerald-500"> Gluten Free</label>
+                </div>
+            </div>
+            <button type="button" onclick="closeMobileFilterSheet()" class="w-full py-3 bg-brand-green text-white font-semibold text-sm rounded-xl mt-4 cursor-pointer">Apply Filters</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // ==========================================
+        // HEADER SCROLL SHADOW (same as index.html)
+        // ==========================================
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+
+        // ==========================================
+        // SIDE DRAWER CONTROLLER (same as index.html)
+        // ==========================================
+        const sideDrawer = document.getElementById('side-drawer');
+        const sideDrawerBackdrop = document.getElementById('side-drawer-backdrop');
+        const closeDrawerBtn = document.getElementById('close-drawer-btn');
+        const openDrawerBtns = [
+            document.getElementById('mobile-menu-btn'),
+            document.getElementById('all-categories-btn')
+        ].filter(Boolean);
+
+        function openDrawer() {
+            if (!sideDrawer || !sideDrawerBackdrop) return;
+            sideDrawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            sideDrawer.classList.remove('-translate-x-full');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeDrawer() {
+            if (!sideDrawer || !sideDrawerBackdrop) return;
+            sideDrawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            sideDrawer.classList.add('-translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        openDrawerBtns.forEach(btn => btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openDrawer();
+        }));
+
+        if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+        if (sideDrawerBackdrop) sideDrawerBackdrop.addEventListener('click', closeDrawer);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+
+        // ==========================================
+        // CATEGORY BROWSE DATA & LOGIC
+        // ==========================================
+        const categoryData = {
+            1: {
+                title: 'Grocery',
+                desc: 'Shop complete Indian pantry staples — rice, flour, spices, and cooking essentials.',
+                count: 126,
+                subcatHeading: 'Shop Grocery',
+                gridHeading: 'All Grocery',
+                subcategories: [
+                    { name: 'Atta & Flour', img: 'imgs/aashirvaad_atta.png', count: '18 items' },
+                    { name: 'Masalas & Spices', img: 'imgs/mdh_garam_masala.png', count: '34 items' },
+                    { name: 'Dals & Pulses', img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=200', count: '22 items' },
+                    { name: 'Rice & Grains', img: 'imgs/royal_basmati_rice.png', count: '16 items' },
+                    { name: 'Oils & Ghee', img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=200', count: '14 items' },
+                    { name: 'Snacks & Namkeen', img: 'imgs/haldiram_aloo_bhujia.png', count: '22 items' },
+                ]
+            },
+            2: {
+                title: 'Masalas & Spices',
+                desc: 'Authentic Indian spices, pre-mixed masalas, and curry pastes from top brands.',
+                count: 84,
+                subcatHeading: 'Shop by type',
+                gridHeading: 'All Masalas & Spices',
+                subcategories: [
+                    { name: 'Chaat Masala', img: 'imgs/mdh_garam_masala.png', count: '12 items' },
+                    { name: 'Biryani Masala', img: 'imgs/mdh_garam_masala.png', count: '16 items' },
+                    { name: 'Garam Masala', img: 'imgs/mdh_garam_masala.png', count: '24 items' },
+                    { name: 'Whole Spices', img: 'https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&q=80&w=200', count: '20 items' },
+                ]
+            },
+            3: {
+                title: 'Chaat Masala',
+                desc: 'Tangy and flavorful spice blends for chaats, fruits, and street food snacks.',
+                count: 32,
+                subcatHeading: '',
+                gridHeading: 'Chaat Masala',
+                subcategories: []
+            }
+        };
+
+        const products = [
+            { id: 1, name: 'MDH Garam Masala', brand: 'MDH', size: '100 g', price: 2.99, img: 'imgs/mdh_garam_masala.png', badge: 'In Stock' },
+            { id: 2, name: 'Aashirvaad Whole Wheat Atta', brand: 'AASHIRVAAD', size: '10 lbs', price: 12.99, img: 'imgs/aashirvaad_atta.png', badge: 'Best Seller' },
+            { id: 3, name: 'Brooke Bond Taj Mahal Tea', brand: 'BROOKE BOND', size: '900 g', price: 13.59, oldPrice: 15.99, discount: '15% OFF', img: 'imgs/taj_mahal_tea.png' },
+            { id: 4, name: "Haldiram's Aloo Bhujia", brand: "HALDIRAM'S", size: '400 g', price: 4.49, img: 'imgs/haldiram_aloo_bhujia.png' },
+            { id: 5, name: 'Royal Basmati Rice', brand: 'ROYAL', size: '10 lbs', price: 18.99, img: 'imgs/royal_basmati_rice.png' },
+            { id: 6, name: 'Fresh Kaju Katli Box', brand: 'KAMDAR PLAZA', size: '1 lb', price: 14.99, img: 'imgs/kaju_katli_sweets.png' },
+            { id: 7, name: 'Maggi Masala Noodles', brand: 'MAGGI', size: '8 pack', price: 6.49, img: 'imgs/mdh_garam_masala.png', badge: 'Popular' },
+            { id: 8, name: 'Everest Kitchen King', brand: 'EVEREST', size: '100 g', price: 3.29, img: 'imgs/mdh_garam_masala.png' },
+        ];
+
+        let currentLevel = 1;
+
+        // Render Circular Subcategory Cards
+        function renderSubcategories(level) {
+            const data = categoryData[level];
+            const section = document.getElementById('subcategories-section');
+            const grid = document.getElementById('subcategories-grid');
+            const heading = document.getElementById('subcategories-heading');
+
+            if (!data.subcategories || data.subcategories.length === 0) {
+                section.classList.add('hidden');
+                return;
+            }
+            section.classList.remove('hidden');
+            heading.textContent = data.subcatHeading || 'Shop Category';
+
+            grid.innerHTML = data.subcategories.map(sub => `
+                <div onclick="handleSubcatClick('${sub.name}', ${level})" class="group flex flex-col items-center cursor-pointer shrink-0">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-26 md:h-26 rounded-full bg-white border border-neutral-200/80 shadow-xs flex items-center justify-center p-3.5 group-hover:border-brand-green/60 group-hover:shadow-md transition-all duration-200 relative">
+                        <img src="${sub.img}" alt="${sub.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform" style="mix-blend-mode:multiply">
+                    </div>
+                    <span class="text-xs sm:text-xs font-bold text-neutral-900 group-hover:text-brand-green text-center mt-2.5 max-w-[100px] leading-tight line-clamp-2">${sub.name}</span>
+                    <span class="text-[10px] text-neutral-400 text-center mt-0.5">${sub.count}</span>
+                </div>
+            `).join('');
+        }
+
+        function scrollCategoriesRight() {
+            const container = document.getElementById('subcategories-grid');
+            if (container) {
+                container.scrollBy({ left: 240, behavior: 'smooth' });
+            }
+        }
+
+        function handleSubcatClick(name, currentLvl) {
+            if (currentLvl === 1) switchCategoryLevel(2, name);
+            else if (currentLvl === 2) switchCategoryLevel(3, name);
+        }
+
+        // Render Product Cards with PLUS BUTTON
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="group flex flex-col bg-white border border-neutral-200/80 rounded-2xl p-4 hover:border-neutral-300 hover:shadow-md transition-all duration-200">
+                    
+                    <!-- Image Container -->
+                    <div class="aspect-square bg-neutral-50/60 rounded-xl mb-3 relative flex items-center justify-center p-4 overflow-hidden">
+                        ${p.discount ? `<span class="absolute top-2.5 left-2.5 bg-brand-light text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded-full z-10">${p.discount}</span>` : ''}
+                        
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" style="mix-blend-mode:multiply">
+                        
+                        <!-- PLUS ADD TO CART BUTTON (Req #10) -->
+                        <button type="button" onclick="quickAdd(this)" class="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-full bg-brand-green hover:bg-brand-dark text-white flex items-center justify-center shadow-sm active:scale-90 transition-all cursor-pointer z-10" aria-label="Add to cart">
+                            <iconify-icon icon="solar:add-linear" width="18" class="font-bold text-white"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Metadata & Brand -->
+                    <span class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-0.5">${p.brand}</span>
+                    
+                    <!-- Title -->
+                    <h4 class="text-xs sm:text-sm font-bold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors cursor-pointer">${p.name}</h4>
+                    
+                    <!-- Size -->
+                    <p class="text-[11px] text-neutral-500 mb-2">${p.size}</p>
+                    
+                    <!-- Price & Badges Row -->
+                    <div class="mt-auto flex items-center gap-1.5 flex-wrap">
+                        <span class="text-sm font-bold text-neutral-900">$${p.price.toFixed(2)}</span>
+                        ${p.oldPrice ? `<span class="text-xs text-neutral-400 line-through">$${p.oldPrice.toFixed(2)}</span>` : ''}
+                        ${p.badge ? `<span class="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full ml-auto">${p.badge}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Switch category level
+        function switchCategoryLevel(level, nameOverride) {
+            currentLevel = level;
+            const data = categoryData[level] || categoryData[1];
+            if (nameOverride && level === 2) {
+                categoryData[2].title = nameOverride;
+                categoryData[2].gridHeading = 'All ' + nameOverride;
+            } else if (nameOverride && level === 3) {
+                categoryData[3].title = nameOverride;
+                categoryData[3].gridHeading = nameOverride;
+            }
+
+            document.getElementById('category-page-title').textContent = data.title;
+            document.getElementById('category-page-desc').textContent = data.desc;
+            document.getElementById('product-count-badge').textContent = data.count + ' products';
+            document.getElementById('products-grid-heading').textContent = data.gridHeading;
+            document.getElementById('toolbar-count').textContent = 'Showing ' + products.length + ' of ' + data.count;
+
+            // Breadcrumb
+            const lvl2Sep = document.getElementById('breadcrumb-lvl2-sep');
+            const lvl2 = document.getElementById('breadcrumb-lvl2');
+            const lvl3Sep = document.getElementById('breadcrumb-lvl3-sep');
+            const lvl3 = document.getElementById('breadcrumb-lvl3');
+
+            if (level === 1) {
+                lvl2Sep.classList.add('hidden'); lvl2.classList.add('hidden');
+                lvl3Sep.classList.add('hidden'); lvl3.classList.add('hidden');
+            } else if (level === 2) {
+                lvl2Sep.classList.remove('hidden'); lvl2.classList.remove('hidden');
+                lvl2.querySelector('a').textContent = data.title;
+                lvl3Sep.classList.add('hidden'); lvl3.classList.add('hidden');
+            } else if (level === 3) {
+                lvl2Sep.classList.remove('hidden'); lvl2.classList.remove('hidden');
+                lvl2.querySelector('a').textContent = categoryData[2].title;
+                lvl3Sep.classList.remove('hidden'); lvl3.classList.remove('hidden');
+                lvl3.textContent = data.title;
+            }
+
+            renderSubcategories(level);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Quick Add Interaction
+        function quickAdd(btn) {
+            const cartEl = document.getElementById('cart-count');
+            let c = parseInt(cartEl.textContent) || 2;
+            c++;
+            cartEl.textContent = c;
+
+            // Feedback animation
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<iconify-icon icon="solar:check-circle-bold" width="18" class="text-white"></iconify-icon>';
+            btn.classList.replace('bg-brand-green', 'bg-neutral-900');
+            setTimeout(() => {
+                btn.innerHTML = orig;
+                btn.classList.replace('bg-neutral-900', 'bg-brand-green');
+            }, 700);
+        }
+
+        function resetAllFilters() {
+            document.querySelectorAll('aside input[type=checkbox]').forEach(cb => cb.checked = false);
+            const firstCb = document.querySelector('aside input[type=checkbox]');
+            if (firstCb) firstCb.checked = true;
+        }
+
+        // ==========================================
+        // MOBILE FILTER SHEET
+        // ==========================================
+        function openMobileFilterSheet() {
+            document.getElementById('mobile-filter-backdrop').classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('mobile-filter-sheet').classList.remove('translate-y-full');
+            document.body.classList.add('overflow-hidden');
+        }
+        function closeMobileFilterSheet() {
+            document.getElementById('mobile-filter-backdrop').classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('mobile-filter-sheet').classList.add('translate-y-full');
+            document.body.classList.remove('overflow-hidden');
+        }
+        document.getElementById('mobile-filter-backdrop').addEventListener('click', closeMobileFilterSheet);
+
+        // ==========================================
+        // ADDRESS PICKER MODAL CONTROLLER (IDENTICAL TO index.html)
+        // ==========================================
+        const addressModalBackdrop = document.getElementById('address-modal-backdrop');
+        const addressModal = document.getElementById('address-modal');
+        const locationSelectorBtn = document.getElementById('location-selector-btn');
+        const closeAddressModalBtn = document.getElementById('close-address-modal-btn');
+        const addressModalBackBtn = document.getElementById('address-modal-back-btn');
+        const addressModalTitle = document.getElementById('address-modal-title');
+        const addressModalSubtitle = document.getElementById('address-modal-subtitle');
+
+        const addressViewSearch = document.getElementById('address-view-search');
+        const addressViewForm = document.getElementById('address-view-form');
+        
+        const countryChips = document.querySelectorAll('.country-chip');
+        const addressSearchInput = document.getElementById('address-search-input');
+        const addressSearchClear = document.getElementById('address-search-clear');
+        const searchResultsArea = document.getElementById('search-results-area');
+        const searchSkeleton = document.getElementById('search-skeleton');
+        const suggestionsList = document.getElementById('suggestions-list');
+        const searchNoResults = document.getElementById('search-no-results');
+        const initialSearchHint = document.getElementById('initial-search-hint');
+        const savedAddressesSection = document.getElementById('saved-addresses-section');
+        const savedAddressesList = document.getElementById('saved-addresses-list');
+        const addAnotherAddressBtn = document.getElementById('add-another-address-btn');
+        const triggerManualFromNoResults = document.getElementById('trigger-manual-from-no-results');
+
+        const addressForm = document.getElementById('address-form');
+        const formAddressId = document.getElementById('form-address-id');
+        const formStreet = document.getElementById('form-street');
+        const formCity = document.getElementById('form-city');
+        const formState = document.getElementById('form-state');
+        const formZip = document.getElementById('form-zip');
+        const formApt = document.getElementById('form-apt');
+        const saveAddressBtn = document.getElementById('save-address-btn');
+        const deleteAddressBtn = document.getElementById('delete-address-btn');
+        const formGeneralError = document.getElementById('form-general-error');
+        const headerLocationText = document.getElementById('header-location-text');
+
+        let currentCountry = 'US';
+        let searchDebounceTimer = null;
+        let currentFormMode = 'add';
+
+        let savedAddresses = [
+            { id: 1, street: 'Bosworth Road', city: 'Cleveland', state: 'Ohio', zip: '44111', country: 'US', apt: '', selected: true },
+            { id: 2, street: '100 Michigan Ave', city: 'Chicago', state: 'Illinois', zip: '60601', country: 'US', apt: 'Suite 400', selected: false }
+        ];
+
+        const sampleSuggestions = {
+            US: [
+                { primary: 'Bosworth Road', secondary: 'Cleveland, OH 44111, USA', street: 'Bosworth Road', city: 'Cleveland', state: 'Ohio', zip: '44111' },
+                { primary: 'Boston Fish Pier', secondary: 'Boston, MA 02210, USA', street: 'Boston Fish Pier', city: 'Boston', state: 'Massachusetts', zip: '02210' },
+                { primary: '742 Evergreen Terrace', secondary: 'Springfield, OR 97477, USA', street: '742 Evergreen Terrace', city: 'Springfield', state: 'Oregon', zip: '97477' },
+                { primary: '500 N Michigan Ave', secondary: 'Chicago, IL 60611, USA', street: '500 N Michigan Ave', city: 'Chicago', state: 'Illinois', zip: '60611' },
+                { primary: '1600 Amphitheatre Pkwy', secondary: 'Mountain View, CA 94043, USA', street: '1600 Amphitheatre Pkwy', city: 'Mountain View', state: 'California', zip: '94043' }
+            ],
+            CA: [
+                { primary: '100 Queen St W', secondary: 'Toronto, ON M5H 2N2, Canada', street: '100 Queen St W', city: 'Toronto', state: 'Ontario', zip: 'M5H 2N2' },
+                { primary: '700 W Georgia St', secondary: 'Vancouver, BC V7Y 1A1, Canada', street: '700 W Georgia St', city: 'Vancouver', state: 'British Columbia', zip: 'V7Y 1A1' },
+            ],
+            IN: [
+                { primary: 'Connaught Place', secondary: 'New Delhi, Delhi 110001, India', street: 'Connaught Place', city: 'New Delhi', state: 'Delhi', zip: '110001' },
+                { primary: 'Bandra Kurla Complex', secondary: 'Mumbai, Maharashtra 400051, India', street: 'Bandra Kurla Complex', city: 'Mumbai', state: 'Maharashtra', zip: '400051' },
+            ]
+        };
+
+        function openAddressModal() {
+            if (!addressModalBackdrop || !addressModal) return;
+            renderSavedAddresses();
+            switchView('search');
+            addressModalBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            addressModal.classList.remove('scale-95', 'opacity-0');
+            addressModal.classList.add('scale-100', 'opacity-100');
+            document.body.classList.add('overflow-hidden');
+        }
+        window.openAddressModal = openAddressModal;
+
+        function closeAddressModal() {
+            if (!addressModalBackdrop || !addressModal) return;
+            addressModalBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            addressModal.classList.remove('scale-100', 'opacity-100');
+            addressModal.classList.add('scale-95', 'opacity-0');
+            document.body.classList.remove('overflow-hidden');
+            resetSearchInput();
+        }
+        window.closeAddressModal = closeAddressModal;
+
+        function switchView(viewName, title = 'Choose address', subtitle = 'Enter your address to see stores and products available near you.') {
+            if (viewName === 'search') {
+                addressViewSearch.classList.remove('hidden');
+                addressViewForm.classList.add('hidden');
+                addressModalBackBtn.classList.add('hidden');
+                addressModalTitle.innerText = title;
+                addressModalSubtitle.innerText = subtitle;
+                addressModalSubtitle.classList.remove('hidden');
+            } else if (viewName === 'form') {
+                addressViewSearch.classList.add('hidden');
+                addressViewForm.classList.remove('hidden');
+                addressModalBackBtn.classList.remove('hidden');
+                addressModalTitle.innerText = title;
+                addressModalSubtitle.innerText = subtitle;
+                if (!subtitle) addressModalSubtitle.classList.add('hidden');
+                else addressModalSubtitle.classList.remove('hidden');
+            }
+        }
+
+        countryChips.forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                const selectedCountry = e.currentTarget.getAttribute('data-country');
+                countryChips.forEach(c => {
+                    c.className = 'country-chip bg-neutral-100 border-2 border-transparent text-neutral-600 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer hover:bg-neutral-200/60';
+                });
+                e.currentTarget.className = 'country-chip active bg-white border-2 border-brand-green text-neutral-900 font-semibold shadow-xs text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer';
+                currentCountry = selectedCountry;
+                if (addressSearchInput.value.trim().length > 0) handleSearch(addressSearchInput.value.trim());
+            });
+        });
+
+        if (addressSearchInput) {
+            addressSearchInput.addEventListener('input', (e) => {
+                const query = e.target.value;
+                addressSearchClear.classList.toggle('hidden', query.length === 0);
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(() => handleSearch(query), 250);
+            });
+        }
+
+        if (addressSearchClear) addressSearchClear.addEventListener('click', () => resetSearchInput());
+
+        function resetSearchInput() {
+            if (!addressSearchInput) return;
+            addressSearchInput.value = '';
+            addressSearchClear.classList.add('hidden');
+            searchResultsArea.classList.add('hidden');
+            initialSearchHint.classList.add('hidden');
+            savedAddressesSection.classList.remove('hidden');
+        }
+
+        function handleSearch(query) {
+            if (!query || query.trim().length === 0) {
+                searchResultsArea.classList.add('hidden');
+                savedAddressesSection.classList.remove('hidden');
+                return;
+            }
+            savedAddressesSection.classList.add('hidden');
+            searchResultsArea.classList.remove('hidden');
+            searchSkeleton.classList.remove('hidden');
+            suggestionsList.classList.add('hidden');
+            searchNoResults.classList.add('hidden');
+
+            setTimeout(() => {
+                searchSkeleton.classList.add('hidden');
+                const list = sampleSuggestions[currentCountry] || [];
+                const filtered = list.filter(item => 
+                    item.primary.toLowerCase().includes(query.toLowerCase()) || 
+                    item.secondary.toLowerCase().includes(query.toLowerCase())
+                );
+                if (filtered.length > 0) {
+                    suggestionsList.innerHTML = filtered.map(item => `
+                        <div class="suggestion-item p-3 hover:bg-neutral-100/80 rounded-xl flex items-center gap-3 cursor-pointer transition-colors" data-street="${item.street}" data-city="${item.city}" data-state="${item.state}" data-zip="${item.zip}">
+                            <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                                <iconify-icon icon="solar:map-point-bold" width="16"></iconify-icon>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs sm:text-sm font-semibold text-neutral-900 truncate">${item.primary}</p>
+                                <p class="text-[11px] text-neutral-500 truncate">${item.secondary}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    suggestionsList.classList.remove('hidden');
+                    document.querySelectorAll('.suggestion-item').forEach(el => {
+                        el.addEventListener('click', () => {
+                            openFormView('confirm', { street: el.dataset.street, city: el.dataset.city, state: el.dataset.state, zip: el.dataset.zip });
+                        });
+                    });
+                } else {
+                    searchNoResults.classList.remove('hidden');
+                }
+            }, 300);
+        }
+
+        function renderSavedAddresses() {
+            if (!savedAddressesList) return;
+            if (savedAddresses.length === 0) { savedAddressesSection.classList.add('hidden'); initialSearchHint.classList.remove('hidden'); return; }
+            initialSearchHint.classList.add('hidden');
+            savedAddressesSection.classList.remove('hidden');
+            savedAddressesList.innerHTML = savedAddresses.map(addr => `
+                <div class="saved-address-card p-3.5 ${addr.selected ? 'border-2 border-brand-green/40 bg-emerald-50/30' : 'border border-neutral-200/80 hover:border-neutral-300 bg-white'} rounded-2xl flex items-start justify-between gap-3 cursor-pointer transition-all hover:shadow-xs" data-id="${addr.id}">
+                    <div class="flex items-start gap-3 flex-1 min-w-0">
+                        <div class="w-8 h-8 rounded-full ${addr.selected ? 'bg-brand-green text-white' : 'bg-neutral-100 text-neutral-600'} flex items-center justify-center shrink-0 mt-0.5">
+                            <iconify-icon icon="${addr.selected ? 'solar:map-point-bold' : 'solar:map-point-linear'}" width="16"></iconify-icon>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h4 class="text-xs sm:text-sm font-bold text-neutral-900 truncate">${addr.street} ${addr.apt ? '(' + addr.apt + ')' : ''}</h4>
+                                ${addr.selected ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-brand-green text-white text-[10px] font-bold rounded-full"><iconify-icon icon="solar:check-circle-bold" width="12"></iconify-icon> Selected</span>' : ''}
+                            </div>
+                            <p class="text-xs text-neutral-500 mt-0.5 truncate">${addr.zip}, ${addr.city}, ${addr.state}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        ${!addr.selected ? '<button type="button" class="select-address-btn text-xs font-semibold text-neutral-700 hover:text-brand-green py-1 px-2.5 rounded-lg hover:bg-neutral-100" data-id="' + addr.id + '">Select</button>' : ''}
+                        <button type="button" class="edit-address-btn text-xs font-semibold text-neutral-400 hover:text-neutral-800 p-1" data-id="${addr.id}" aria-label="Edit address">
+                            <iconify-icon icon="solar:pen-linear" width="16"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.saved-address-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.edit-address-btn')) return;
+                    selectSavedAddress(parseInt(card.dataset.id));
+                });
+            });
+            document.querySelectorAll('.edit-address-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const addr = savedAddresses.find(a => a.id === parseInt(btn.dataset.id));
+                    if (addr) openFormView('edit', addr);
+                });
+            });
+        }
+
+        function selectSavedAddress(id) {
+            savedAddresses.forEach(a => a.selected = (a.id === id));
+            const selected = savedAddresses.find(a => a.id === id);
+            if (selected && headerLocationText) headerLocationText.innerText = selected.zip || selected.street;
+            renderSavedAddresses();
+            setTimeout(closeAddressModal, 200);
+        }
+
+        function openFormView(mode, data = {}) {
+            currentFormMode = mode;
+            formAddressId.value = data.id || '';
+            formStreet.value = data.street || '';
+            formCity.value = data.city || '';
+            formState.value = data.state || '';
+            formZip.value = data.zip || '';
+            formApt.value = data.apt || '';
+            document.querySelectorAll('.form-error').forEach(e => e.classList.add('hidden'));
+            formGeneralError.classList.add('hidden');
+
+            if (mode === 'add') {
+                switchView('form', 'Add address', 'Enter your full street address details below.');
+                saveAddressBtn.querySelector('span').innerText = 'Save address';
+                deleteAddressBtn.classList.add('hidden');
+            } else if (mode === 'confirm') {
+                switchView('form', 'Confirm address', 'Verify or adjust apartment details before saving.');
+                saveAddressBtn.querySelector('span').innerText = 'Confirm & Save address';
+                deleteAddressBtn.classList.add('hidden');
+            } else if (mode === 'edit') {
+                switchView('form', 'Edit address', 'Update your saved delivery address details.');
+                saveAddressBtn.querySelector('span').innerText = 'Save changes';
+                deleteAddressBtn.classList.remove('hidden');
+            }
+        }
+
+        if (addressModalBackBtn) addressModalBackBtn.addEventListener('click', () => switchView('search'));
+        if (addAnotherAddressBtn) addAnotherAddressBtn.addEventListener('click', () => openFormView('add'));
+        if (triggerManualFromNoResults) triggerManualFromNoResults.addEventListener('click', () => openFormView('add', { street: addressSearchInput.value }));
+
+        if (addressForm) {
+            addressForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+                [formStreet, formCity, formState, formZip].forEach(f => {
+                    if (!f.value.trim()) { f.nextElementSibling.classList.remove('hidden'); isValid = false; }
+                    else { f.nextElementSibling.classList.add('hidden'); }
+                });
+                if (!isValid) return;
+
+                saveAddressBtn.disabled = true;
+                saveAddressBtn.querySelector('span').innerText = 'Saving address...';
+
+                setTimeout(() => {
+                    saveAddressBtn.disabled = false;
+                    if (currentFormMode === 'edit') {
+                        const idx = savedAddresses.findIndex(a => a.id === parseInt(formAddressId.value));
+                        if (idx !== -1) savedAddresses[idx] = { ...savedAddresses[idx], street: formStreet.value.trim(), city: formCity.value.trim(), state: formState.value.trim(), zip: formZip.value.trim(), apt: formApt.value.trim() };
+                    } else {
+                        savedAddresses.forEach(a => a.selected = false);
+                        const na = { id: Date.now(), street: formStreet.value.trim(), city: formCity.value.trim(), state: formState.value.trim(), zip: formZip.value.trim(), apt: formApt.value.trim(), country: currentCountry, selected: true };
+                        savedAddresses.unshift(na);
+                        if (headerLocationText) headerLocationText.innerText = na.zip || na.street;
+                    }
+                    renderSavedAddresses();
+                    switchView('search');
+                    closeAddressModal();
+                }, 400);
+            });
+        }
+
+        if (deleteAddressBtn) {
+            deleteAddressBtn.addEventListener('click', () => {
+                savedAddresses = savedAddresses.filter(a => a.id !== parseInt(formAddressId.value));
+                if (savedAddresses.length > 0 && !savedAddresses.some(a => a.selected)) {
+                    savedAddresses[0].selected = true;
+                    if (headerLocationText) headerLocationText.innerText = savedAddresses[0].zip || savedAddresses[0].street;
+                }
+                renderSavedAddresses();
+                switchView('search');
+            });
+        }
+
+        if (closeAddressModalBtn) closeAddressModalBtn.addEventListener('click', closeAddressModal);
+        if (addressModalBackdrop) {
+            addressModalBackdrop.addEventListener('click', (e) => {
+                if (e.target === addressModalBackdrop) closeAddressModal();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !addressModalBackdrop.classList.contains('opacity-0')) closeAddressModal();
+        });
+
+        // ==========================================
+        // INITIALIZE
+        // ==========================================
+        switchCategoryLevel(1);
+        renderProducts();
+    </script>
+
+</body></html>
