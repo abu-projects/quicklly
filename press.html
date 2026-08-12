@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quicklly newsroom on Quicklly.">
+    <title>Quicklly newsroom | Quicklly</title>
+    <link rel="icon" href="imgs/quicly-logo-black.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{'brand-green':'#10b981','brand-dark':'#059669','brand-light':'#ecfdf5'}}}}</script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="public-pages.css">
+</head>
+<body data-page="press" class="font-sans antialiased text-neutral-900 bg-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:ring-2 focus:ring-brand-green">Skip to content</a>
+
+    <!-- 1. Promotional Strip -->
+    <div class="bg-neutral-900 text-white text-xs font-medium py-2 px-4 text-center flex justify-center items-center gap-2">
+        <span>Get $10 off your first order over $50 with code:</span>
+        <span class="text-brand-green font-bold tracking-wide">WELCOME10</span>
+        <button class="ml-4 opacity-70 hover:opacity-100 hidden sm:block" aria-label="Dismiss">
+            <iconify-icon icon="solar:close-circle-linear" width="16"></iconify-icon>
+        </button>
+    </div>
+
+    <!-- 2. Global Header -->
+    <header id="main-header" class="bg-white border-b border-neutral-200 sticky top-0 z-50 transition-shadow duration-200">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-3 md:py-3.5">
+            <!-- Mobile Layout (Top row) -->
+            <div class="flex items-center justify-between md:hidden mb-3">
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-btn" class="text-neutral-900 p-1 rounded-lg hover:bg-neutral-100 cursor-pointer" aria-label="Open menu">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="24"></iconify-icon>
+                    </button>
+                    <a href="#" class="flex items-center py-0.5">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-8 w-auto">
+                    </a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="relative p-2 rounded-full hover:bg-neutral-100 transition-colors">
+                        <iconify-icon icon="solar:cart-large-2-linear" width="24"></iconify-icon>
+                        <span class="absolute top-0 right-0 bg-brand-green text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desktop & Mobile Search Layout -->
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
+                
+                <!-- Desktop Logo (Enlarged ~20%) -->
+                <a href="#" class="hidden md:flex items-center shrink-0 py-0.5">
+                    <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-10 lg:h-11 w-auto">
+                </a>
+
+                <!-- Location Selector (Rounded pill trigger for Address Picker Modal) -->
+                <button id="location-selector-btn" onclick="openAddressModal()" class="w-full md:w-auto flex items-center justify-between md:justify-start gap-2.5 px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 rounded-full text-sm font-medium transition-colors shrink-0 group cursor-pointer" aria-label="Choose delivery address">
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:map-point-bold" width="18" class="text-brand-green"></iconify-icon>
+                        <span class="truncate max-w-[140px] md:max-w-[220px] text-left text-neutral-800 group-hover:text-neutral-900">Delivery to <strong id="header-location-text" class="font-semibold">60601</strong></span>
+                    </div>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" width="16" class="text-neutral-500 group-hover:text-neutral-800"></iconify-icon>
+                </button>
+
+                <!-- Search (Prominent, Rounded, Green focus accent) -->
+                <div class="w-full relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <iconify-icon icon="solar:magnifer-linear" width="20" class="text-neutral-500"></iconify-icon>
+                    </div>
+                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500">
+                    <button class="absolute inset-y-1.5 right-1.5 px-4 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors">
+                        Search
+                    </button>
+                </div>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center gap-1.5 shrink-0">
+                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                        <iconify-icon icon="solar:user-circle-linear" width="20"></iconify-icon>
+                        Sign In
+                    </button>
+                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                        <iconify-icon icon="solar:box-linear" width="20"></iconify-icon>
+                        Orders
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2 ml-1 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors group">
+                        <iconify-icon icon="solar:cart-large-2-linear" width="20"></iconify-icon>
+                        Cart • <span id="cart-count" class="bg-brand-green text-white text-xs font-bold px-2 py-0.5 rounded-full ml-0.5">2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Global Navigation / Category Menu -->
+        <div class="border-t border-neutral-100">
+            <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+                <nav class="flex items-center gap-6 overflow-x-auto hide-scrollbar py-3 text-sm font-medium text-neutral-600">
+                    <button id="all-categories-btn" class="flex items-center gap-1.5 shrink-0 text-neutral-900 font-semibold hover:text-brand-green transition-colors cursor-pointer" aria-label="All Categories">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="18" class="text-brand-green"></iconify-icon>
+                        All Categories
+                    </button>
+                    <span class="w-px h-4 bg-neutral-200 shrink-0"></span>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Grocery</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
+                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
+                    <a href="#" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
+                        <iconify-icon icon="solar:crown-star-bold" width="16"></iconify-icon>
+                        Quicklly Pass
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+<nav aria-label="Breadcrumb" class="max-w-[1360px] mx-auto px-4 md:px-8 pt-5"><ol class="flex items-center gap-2 text-xs text-neutral-500"><li><a href="index.html" class="hover:text-brand-green transition-colors">Home</a></li><li aria-hidden="true"><iconify-icon icon="solar:alt-arrow-right-linear" width="12"></iconify-icon></li><li class="font-medium text-neutral-900">Newsroom</li></ol></nav><div class="max-w-[1100px] mx-auto px-4 md:px-8 py-12 md:py-16"><div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10 mb-14"><div><span class="text-xs font-semibold text-brand-dark">NEWSROOM</span><h1 class="text-4xl md:text-5xl font-semibold mt-3 text-balance">Quicklly news and company updates</h1></div><p class="text-neutral-600 leading-7 lg:pt-8 text-pretty">Follow product launches, retail partnerships, community programs, and coverage of Quicklly’s work across multicultural commerce.</p></div><div class="border-t border-neutral-300"><article class="grid md:grid-cols-[1.5fr_.6fr_.4fr_auto] gap-3 md:gap-6 py-7 border-b border-neutral-200 items-center"><h2 class="text-lg font-semibold text-pretty">Quicklly expands access to multicultural grocery nationwide</h2><span class="text-sm text-neutral-500">Company update</span><time class="text-sm text-neutral-500 tabular-nums">Aug 5, 2026</time><a href="contact.html" aria-label="Read Quicklly expands access to multicultural grocery nationwide" class="size-10 rounded-full border border-neutral-300 grid place-items-center hover:border-brand-green hover:text-brand-dark transition-colors"><iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon></a></article><article class="grid md:grid-cols-[1.5fr_.6fr_.4fr_auto] gap-3 md:gap-6 py-7 border-b border-neutral-200 items-center"><h2 class="text-lg font-semibold text-pretty">Just By Quicklly adds new retail partners across the Midwest</h2><span class="text-sm text-neutral-500">Retail partnership</span><time class="text-sm text-neutral-500 tabular-nums">Jul 22, 2026</time><a href="contact.html" aria-label="Read Just By Quicklly adds new retail partners across the Midwest" class="size-10 rounded-full border border-neutral-300 grid place-items-center hover:border-brand-green hover:text-brand-dark transition-colors"><iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon></a></article><article class="grid md:grid-cols-[1.5fr_.6fr_.4fr_auto] gap-3 md:gap-6 py-7 border-b border-neutral-200 items-center"><h2 class="text-lg font-semibold text-pretty">Quicklly recognized for local-store marketplace innovation</h2><span class="text-sm text-neutral-500">In the news</span><time class="text-sm text-neutral-500 tabular-nums">Jun 12, 2026</time><a href="contact.html" aria-label="Read Quicklly recognized for local-store marketplace innovation" class="size-10 rounded-full border border-neutral-300 grid place-items-center hover:border-brand-green hover:text-brand-dark transition-colors"><iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon></a></article><article class="grid md:grid-cols-[1.5fr_.6fr_.4fr_auto] gap-3 md:gap-6 py-7 border-b border-neutral-200 items-center"><h2 class="text-lg font-semibold text-pretty">New campus meal program brings regional Indian food to students</h2><span class="text-sm text-neutral-500">Program launch</span><time class="text-sm text-neutral-500 tabular-nums">May 28, 2026</time><a href="contact.html" aria-label="Read New campus meal program brings regional Indian food to students" class="size-10 rounded-full border border-neutral-300 grid place-items-center hover:border-brand-green hover:text-brand-dark transition-colors"><iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon></a></article></div><section class="mt-16 bg-neutral-950 text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6"><div><h2 class="text-2xl font-semibold">Media inquiries</h2><p class="text-neutral-400 text-sm mt-2">For interviews, company background, or brand assets.</p></div><a href="contact.html" class="rounded-full bg-brand-green px-6 py-3 text-sm font-semibold text-center hover:bg-brand-dark transition-colors">Contact the press team</a></section></div>
+    </main>
+
+    <footer class="bg-neutral-950 text-white pt-16 pb-8 border-t border-neutral-900">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
+                <!-- Brand Col -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="mb-4 block">
+                        <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-9 w-auto invert">
+                    </a>
+                    <p class="text-neutral-400 text-sm mb-6 max-w-sm">
+                        The ultimate destination for authentic South Asian groceries, food, and culture, delivered to your door.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
+                            <iconify-icon icon="mdi:instagram" width="24"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
+                            <iconify-icon icon="mdi:facebook" width="24"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
+                            <iconify-icon icon="mdi:twitter" width="24"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Cols -->
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Press</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Track Order</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Return Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h4>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
+                        <li><a href="#" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-sm text-neutral-500">
+                    © 2023 Quicklly Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-sm text-neutral-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Side Navigation Category Drawer -->
+    <div id="side-drawer-backdrop" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <aside id="side-drawer" class="fixed top-0 left-0 bottom-0 w-[335px] max-w-[90vw] bg-[#fbfbfb] rounded-r-3xl z-[101] shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-neutral-200/50" aria-label="Category Menu">
+        <!-- Drawer Header -->
+        <div class="bg-neutral-50 px-6 py-5 flex items-center justify-between border-b border-neutral-100/80">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-100/80 text-brand-green flex items-center justify-center shrink-0">
+                    <iconify-icon icon="solar:user-bold" width="22"></iconify-icon>
+                </div>
+                <h2 class="text-xl font-bold text-neutral-900 tracking-tight">Hello Abu</h2>
+            </div>
+            <button id="close-drawer-btn" class="p-1.5 text-neutral-500 hover:text-neutral-900 rounded-full hover:bg-neutral-200/60 transition-colors cursor-pointer" aria-label="Close menu">
+                <iconify-icon icon="solar:close-linear" width="22" class="font-bold"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Drawer Body / Categories List -->
+        <div class="flex-1 overflow-y-auto divide-y divide-neutral-200/60 px-2">
+            <!-- Shop by Category -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <span class="w-1 h-5 bg-brand-green rounded-full"></span>
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:bag-3-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Shop by Category</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:basket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Grocery</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:gift-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Gifting</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:sticker-smile-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>aha</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:calendar-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Events</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Astrology</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:leaf-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Organic Grocery</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:chef-hat-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Roti Kit</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:box-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Meal Kit</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:cup-hot-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Chai Tea & Coffee Kit</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:cookie-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Indian Sweets & Snacks</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:dish-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Catering</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:diamond-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Only Luxury</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Shop by Stores -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:shop-2-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Shop by Stores</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:shop-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Grocery Stores</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Programs & Features -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:stars-minimalistic-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Programs & Features</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:ticket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Quicklly Pass</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Brand Ambassador</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:graduation-cap-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Student Ambassador</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:shield-star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Be a Hero</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:users-group-two-rounded-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Refer a Friend</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account & Settings -->
+            <div class="py-4 px-3">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 text-brand-green flex items-center justify-center shrink-0">
+                        <iconify-icon icon="solar:settings-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-bold text-neutral-900">Account & Settings</h3>
+                </div>
+                <ul class="space-y-1 text-sm font-medium text-neutral-800">
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Your Account</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="solar:logout-3-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
+                                <span>Sign Out</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-linear" width="16" class="text-neutral-400 group-hover:text-neutral-600 transition-colors"></iconify-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Address Picker Modal System (Redesigned Single Cohesive Flow) -->
+    <div id="address-modal-backdrop" class="fixed inset-0 bg-black/60 z-[110] backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-200 flex items-center justify-center p-3 sm:p-6" aria-hidden="true">
+        
+        <!-- Modal Box: Content-driven height, max-h-[85vh], desktop width 640px -->
+        <div id="address-modal" class="w-full max-w-[640px] bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[85vh] transition-all duration-200 transform scale-95 opacity-0 my-auto" role="dialog" aria-modal="true" aria-labelledby="address-modal-title">
+            
+            <!-- Modal Header -->
+            <div class="px-5 py-4 sm:px-6 sm:py-5 border-b border-neutral-100 flex items-start justify-between bg-neutral-50/50 shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <button id="address-modal-back-btn" class="hidden p-1.5 text-neutral-600 hover:text-neutral-900 rounded-lg hover:bg-neutral-200/60 transition-colors cursor-pointer" aria-label="Go back">
+                        <iconify-icon icon="solar:alt-arrow-left-linear" width="20"></iconify-icon>
+                    </button>
+                    <div>
+                        <h2 id="address-modal-title" class="text-lg sm:text-xl font-bold text-neutral-900 tracking-tight">Choose address</h2>
+                        <p id="address-modal-subtitle" class="text-xs text-neutral-500 mt-0.5">Enter your address to see stores and products available near you.</p>
+                    </div>
+                </div>
+                <button id="close-address-modal-btn" class="p-1.5 text-neutral-400 hover:text-neutral-900 rounded-full hover:bg-neutral-100 transition-colors cursor-pointer shrink-0 ml-2" aria-label="Close address modal">
+                    <iconify-icon icon="solar:close-linear" width="20" class="font-bold"></iconify-icon>
+                </button>
+            </div>
+
+            <!-- Scrollable Modal Content Region (Adapts to content height naturally) -->
+            <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5 hide-scrollbar">
+                
+                <!-- VIEW A: SEARCH & SAVED ADDRESSES VIEW -->
+                <div id="address-view-search" class="space-y-5">
+                    
+                    <!-- Country Selector Segmented Chips -->
+                    <div>
+                        <label class="block text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-2">Select Country</label>
+                        <div class="flex items-center gap-2" id="country-chips-container">
+                            <button type="button" class="country-chip active bg-white border-2 border-brand-green text-neutral-900 font-semibold shadow-xs text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer" data-country="US">
+                                <span class="text-base leading-none">🇺🇸</span> USA
+                            </button>
+                            <button type="button" class="country-chip bg-neutral-100 border-2 border-transparent text-neutral-600 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer hover:bg-neutral-200/60" data-country="CA">
+                                <span class="text-base leading-none">🇨🇦</span> Canada
+                            </button>
+                            <button type="button" class="country-chip bg-neutral-100 border-2 border-transparent text-neutral-600 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 transition-all cursor-pointer hover:bg-neutral-200/60" data-country="IN">
+                                <span class="text-base leading-none">🇮🇳</span> India
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Address Autocomplete Search Input -->
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400">
+                            <iconify-icon icon="solar:magnifer-linear" width="18"></iconify-icon>
+                        </div>
+                        <input type="text" id="address-search-input" placeholder="Enter your address" class="w-full pl-10 pr-10 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm font-medium text-neutral-900 placeholder:text-neutral-400 outline-none transition-all">
+                        <button type="button" id="address-search-clear" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-neutral-400 hover:text-neutral-700 cursor-pointer" aria-label="Clear search">
+                            <iconify-icon icon="solar:close-circle-bold" width="18"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Search Suggestions Container (Dynamic Autocomplete Area) -->
+                    <div id="search-results-area" class="hidden space-y-2 pt-1 border-t border-neutral-100">
+                        <!-- Skeleton Loading State (Shown during search) -->
+                        <div id="search-skeleton" class="hidden space-y-2 py-1">
+                            <div class="animate-pulse flex items-center gap-3 p-3 bg-neutral-50 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-neutral-200 shrink-0"></div>
+                                <div class="flex-1 space-y-1.5">
+                                    <div class="h-3.5 bg-neutral-200 rounded w-2/3"></div>
+                                    <div class="h-2.5 bg-neutral-200 rounded w-1/2"></div>
+                                </div>
+                            </div>
+                            <div class="animate-pulse flex items-center gap-3 p-3 bg-neutral-50 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-neutral-200 shrink-0"></div>
+                                <div class="flex-1 space-y-1.5">
+                                    <div class="h-3.5 bg-neutral-200 rounded w-3/4"></div>
+                                    <div class="h-2.5 bg-neutral-200 rounded w-2/5"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Suggestions List -->
+                        <div id="suggestions-list" class="space-y-1 max-h-60 overflow-y-auto hide-scrollbar"></div>
+
+                        <!-- No Results State -->
+                        <div id="search-no-results" class="hidden p-5 text-center bg-neutral-50 rounded-xl border border-dashed border-neutral-200">
+                            <iconify-icon icon="solar:magnifer-bug-linear" width="28" class="text-neutral-400 mb-1.5"></iconify-icon>
+                            <p class="text-xs font-semibold text-neutral-800">We couldn't find that address.</p>
+                            <p class="text-[11px] text-neutral-500 mt-0.5">Please check spelling or try entering your details manually.</p>
+                            <button type="button" id="trigger-manual-from-no-results" class="mt-3 inline-flex items-center gap-1.5 px-3.5 py-2 bg-brand-light text-brand-dark hover:bg-brand-green hover:text-white font-semibold text-xs rounded-full transition-colors cursor-pointer">
+                                <iconify-icon icon="solar:pen-new-square-linear" width="14"></iconify-icon> Enter address manually
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Initial Empty Contextual Hint (When no search & no saved address) -->
+                    <div id="initial-search-hint" class="hidden py-3 text-center">
+                        <p class="text-xs text-neutral-400">Start typing your street, city, or ZIP code.</p>
+                    </div>
+
+                    <!-- Saved Addresses Section (Shown when user has saved addresses & search is empty) -->
+                    <div id="saved-addresses-section" class="space-y-3 pt-1">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-neutral-900">Saved addresses</h3>
+                            <button type="button" id="add-another-address-btn" class="text-xs font-semibold text-brand-green hover:text-brand-dark transition-colors cursor-pointer">
+                                + Add another address
+                            </button>
+                        </div>
+                        <div id="saved-addresses-list" class="space-y-2.5">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- VIEW B: MANUAL / CONFIRM / EDIT ADDRESS FORM VIEW -->
+                <div id="address-view-form" class="hidden space-y-4">
+                    <form id="address-form" class="space-y-4">
+                        <input type="hidden" id="form-address-id" value="">
+                        
+                        <!-- Street Address -->
+                        <div>
+                            <label for="form-street" class="block text-xs font-semibold text-neutral-700 mb-1">Street Address <span class="text-red-500">*</span></label>
+                            <input type="text" id="form-street" placeholder="e.g. 44111 Bosworth Road" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                            <p class="form-error text-[11px] text-red-500 hidden mt-1">Please enter a street address.</p>
+                        </div>
+
+                        <!-- City & State Row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label for="form-city" class="block text-xs font-semibold text-neutral-700 mb-1">City <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-city" placeholder="e.g. Cleveland" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                                <p class="form-error text-[11px] text-red-500 hidden mt-1">Please enter a city.</p>
+                            </div>
+                            <div>
+                                <label for="form-state" class="block text-xs font-semibold text-neutral-700 mb-1">State / Province <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-state" placeholder="e.g. Ohio" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                                <p class="form-error text-[11px] text-red-500 hidden mt-1">State or province is required.</p>
+                            </div>
+                        </div>
+
+                        <!-- ZIP Code & Apt Row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label for="form-zip" class="block text-xs font-semibold text-neutral-700 mb-1">ZIP / Postal Code <span class="text-red-500">*</span></label>
+                                <input type="text" id="form-zip" placeholder="e.g. 44111" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                                <p class="form-error text-[11px] text-red-500 hidden mt-1">Please enter a valid ZIP code.</p>
+                            </div>
+                            <div>
+                                <label for="form-apt" class="block text-xs font-semibold text-neutral-700 mb-1">Apt, suite, unit (optional)</label>
+                                <input type="text" id="form-apt" placeholder="e.g. Apt 4B" class="w-full px-3.5 py-3 bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Form Error Message Bar -->
+                        <div id="form-general-error" class="hidden p-3 bg-red-50 text-red-700 rounded-xl text-xs flex items-center gap-2">
+                            <iconify-icon icon="solar:danger-circle-bold" width="16" class="shrink-0"></iconify-icon>
+                            <span>We couldn't save this address. Please check details and try again.</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-2 space-y-2">
+                            <button type="submit" id="save-address-btn" class="w-full py-3.5 bg-brand-green hover:bg-brand-dark text-white font-semibold text-sm rounded-xl transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2">
+                                <span>Save address</span>
+                            </button>
+                            <button type="button" id="delete-address-btn" class="hidden w-full py-2 text-red-600 hover:text-red-800 hover:bg-red-50 font-semibold text-xs rounded-xl transition-colors cursor-pointer text-center">
+                                Delete address
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="auth-modal.js?v=20260812"></script>
+    <script src="site-links.js?v=20260812"></script>
+    <script src="standalone-page.js?v=20260812"></script>
+</body>
+</html>

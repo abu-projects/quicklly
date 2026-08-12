@@ -1,0 +1,33 @@
+:root {
+    --quicklly-green: #10b981;
+    --quicklly-green-dark: #059669;
+    --quicklly-text: #171717;
+    --quicklly-muted: #737373;
+    --quicklly-border: #e5e5e5;
+}
+
+html { scroll-behavior: smooth; }
+body { min-height: 100dvh; }
+img { border-radius: 0 !important; object-fit: cover; }
+.logo-img { object-fit: contain !important; }
+img[src$="kaju_katli_sweets.png"], img[src*="organic-grocery-box.png"] { object-fit: contain !important; padding: 2rem; background: #fafafa; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { scrollbar-width: none; }
+.page-shell-loading { min-height: 100dvh; display: grid; place-items: center; color: #525252; }
+.page-shell-loading::before { content: ''; width: 2rem; height: 2rem; border: 2px solid #e5e5e5; border-top-color: #10b981; border-radius: 9999px; animation: quicklly-spin .8s linear infinite; }
+.legal-copy h2 { color: #171717; font-size: 1.25rem; line-height: 1.5; font-weight: 600; margin-top: 2rem; margin-bottom: .75rem; }
+.legal-copy p, .legal-copy li { color: #525252; font-size: .9375rem; line-height: 1.8; }
+.legal-copy ul { margin: .75rem 0 1rem 1.25rem; list-style: disc; }
+details summary::-webkit-details-marker { display: none; }
+.quicklly-control { transition-duration: 150ms; }
+.quicklly-control:active:not(:disabled) { transform: translateY(1px); }
+.quicklly-control:focus-visible { outline: 2px solid var(--quicklly-green); outline-offset: 3px; }
+button:disabled { cursor: not-allowed; }
+@media (hover: hover) {
+    article:hover h3 { color: var(--quicklly-green-dark); }
+}
+@keyframes quicklly-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .page-shell-loading::before { animation: none; }
+}

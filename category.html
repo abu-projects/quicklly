@@ -2,6 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery - Quicklly Indian Grocery &amp; Food Delivery</title>
+    <link rel="icon" href="imgs/quicly-logo-black.png" type="image/png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -930,7 +931,7 @@
     <div id="mobile-filter-sheet" class="fixed bottom-0 left-0 right-0 z-[106] bg-white rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[75vh] flex flex-col">
         <div class="px-5 py-4 border-b border-neutral-100 flex items-center justify-between shrink-0">
             <h3 class="text-base font-bold text-neutral-900">Filters</h3>
-            <button type="button" onclick="closeMobileFilterSheet()" class="p-1 text-neutral-400 hover:text-neutral-900 cursor-pointer">
+            <button type="button" onclick="closeMobileFilterSheet()" class="p-1 text-neutral-400 hover:text-neutral-900 cursor-pointer" aria-label="Close filters">
                 <iconify-icon icon="solar:close-linear" width="20"></iconify-icon>
             </button>
         </div>
@@ -1540,4 +1541,6 @@
         renderProducts();
     </script>
 
+    <script src="auth-modal.js"></script>
+    <script src="site-links.js"></script>
 </body></html>
