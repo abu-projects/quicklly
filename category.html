@@ -1114,8 +1114,8 @@
                         <img src="${p.img}" alt="${p.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" style="mix-blend-mode:multiply">
                         
                         <!-- PLUS ADD TO CART BUTTON (Req #10) -->
-                        <button type="button" onclick="quickAdd(this)" class="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-full bg-brand-green hover:bg-brand-dark text-white flex items-center justify-center shadow-sm active:scale-90 transition-all cursor-pointer z-10" aria-label="Add to cart">
-                            <iconify-icon icon="solar:add-linear" width="18" class="font-bold text-white"></iconify-icon>
+                        <button type="button" onclick="quickAdd(this)" class="absolute right-3 bottom-3 z-10 grid size-10 place-items-center rounded-full border border-neutral-200 bg-white text-neutral-950 shadow-sm transition-colors duration-150 hover:border-brand-green hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Add ${p.name} to cart">
+                            <iconify-icon icon="solar:add-circle-linear" width="21"></iconify-icon>
                         </button>
                     </div>
 
@@ -1189,11 +1189,13 @@
 
             // Feedback animation
             const orig = btn.innerHTML;
-            btn.innerHTML = '<iconify-icon icon="solar:check-circle-bold" width="18" class="text-white"></iconify-icon>';
-            btn.classList.replace('bg-brand-green', 'bg-neutral-900');
+            btn.innerHTML = '<iconify-icon icon="solar:check-circle-bold" width="21"></iconify-icon>';
+            btn.classList.remove('bg-white', 'text-neutral-950', 'border-neutral-200');
+            btn.classList.add('bg-neutral-900', 'text-white', 'border-neutral-900');
             setTimeout(() => {
                 btn.innerHTML = orig;
-                btn.classList.replace('bg-neutral-900', 'bg-brand-green');
+                btn.classList.remove('bg-neutral-900', 'text-white', 'border-neutral-900');
+                btn.classList.add('bg-white', 'text-neutral-950', 'border-neutral-200');
             }, 700);
         }
 

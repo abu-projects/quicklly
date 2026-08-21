@@ -84,6 +84,33 @@
         });
     });
 
+    document.querySelector('[data-copy-account-referral]')?.addEventListener('click', async (event) => {
+        const link = document.querySelector('[data-referral-link]')?.value || '';
+        const status = document.querySelector('[data-referral-status]');
+        try {
+            await navigator.clipboard.writeText(link);
+            event.currentTarget.textContent = 'Copied';
+            if (status) status.textContent = 'Referral link copied. Share it with a friend when you are ready.';
+        } catch (_) {
+            if (status) status.textContent = `Copy this link: ${link}`;
+        }
+    });
+
+    document.querySelectorAll('[data-hero-interest]').forEach((button) => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('[data-hero-interest]').forEach((option) => {
+                const selected = option === button;
+                option.setAttribute('aria-pressed', String(selected));
+                option.classList.toggle('bg-neutral-950', selected);
+                option.classList.toggle('border-neutral-950', selected);
+                option.classList.toggle('text-white', selected);
+                option.textContent = selected ? 'Selected' : 'Select';
+            });
+            const status = document.querySelector('[data-hero-status]');
+            if (status) status.textContent = 'Interest saved in this prototype. Connect it to the community program API before launch.';
+        });
+    });
+
     document.getElementById('gift-card-redeem')?.addEventListener('submit', (event) => {
         event.preventDefault();
         const code = new FormData(event.currentTarget).get('giftCardCode')?.trim();

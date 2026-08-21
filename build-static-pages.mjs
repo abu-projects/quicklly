@@ -6,8 +6,8 @@ import { fileURLToPath } from 'node:url';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const pageFiles = [
     'shop-by-stores.html', 'deals.html', 'search-results.html',
-    'quicklly-pass.html', 'refer-a-friend.html', 'brand-ambassador.html',
-    'student-ambassador.html', 'be-a-hero.html', 'about.html', 'contact.html',
+    'quicklly-pass.html', 'brand-ambassador.html',
+    'student-ambassador.html', 'about.html', 'contact.html',
     'faq.html', 'careers.html', 'blog.html', 'press.html', 'reviews.html',
     'privacy.html', 'terms.html', 'meal-kits.html', 'indian-sweets.html',
     'roti-kit.html', 'organic.html', 'gifting.html', 'aha.html', 'catering.html',
