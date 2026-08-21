@@ -13,7 +13,11 @@
             organic: 'Organic',
             gifting: 'Gifting',
             aha: 'Aha',
-            catering: 'Catering'
+            catering: 'Catering',
+            events: 'Events',
+            astrology: 'Astrology',
+            'chai-tea-coffee': 'Chai Tea & Coffee Kit',
+            'only-luxury': 'Only Luxury'
         };
         const activeLabel = activeLabels[document.body.dataset.page];
         if (activeLabel) {

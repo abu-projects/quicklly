@@ -42,7 +42,7 @@
                             </div>
 
                             <p id="auth-error" class="hidden mt-2 text-sm text-red-700" role="alert"></p>
-                            <button type="submit" class="w-full mt-5 bg-brand-green hover:bg-brand-dark active:scale-[0.98] text-white rounded-full py-3.5 text-sm font-semibold transition-[transform,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2">Continue</button>
+                            <button type="submit" class="w-full mt-5 bg-brand-green hover:bg-brand-dark active:scale-[0.98] text-white rounded-full py-3.5 text-sm font-semibold transition-[transform,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2">Log in</button>
                         </form>
 
                         <div class="flex items-center gap-4 my-6" aria-hidden="true"><span class="h-px bg-neutral-200 flex-1"></span><span class="text-xs text-neutral-500">or continue with</span><span class="h-px bg-neutral-200 flex-1"></span></div>
@@ -78,7 +78,7 @@
                             <label for="auth-otp" class="sr-only">Verification code</label>
                             <input id="auth-otp" inputmode="numeric" autocomplete="one-time-code" maxlength="5" class="w-full text-center text-2xl font-semibold tabular-nums px-4 py-4 rounded-xl border border-neutral-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none" placeholder="00000" aria-describedby="otp-error">
                             <p id="otp-error" class="hidden mt-2 text-sm text-red-700" role="alert"></p>
-                            <button type="submit" class="w-full mt-5 bg-brand-green hover:bg-brand-dark active:scale-[0.98] text-white rounded-full py-3.5 text-sm font-semibold transition-[transform,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2">Verify</button>
+                            <button type="submit" class="w-full mt-5 bg-brand-green hover:bg-brand-dark active:scale-[0.98] text-white rounded-full py-3.5 text-sm font-semibold transition-[transform,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2">Verify & Log in</button>
                         </form>
                         <button type="button" data-auth-view="login" class="mt-5 text-sm font-semibold text-brand-dark hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded">Use a different number</button>
                     </div>
@@ -160,6 +160,39 @@
         error.classList.toggle('hidden', !message);
     }
 
+    function completeAuthentication() {
+        try {
+            localStorage.setItem('quicklly-authenticated', 'true');
+            localStorage.setItem('quicklly-user-name', 'Abu');
+        } catch (_) {
+            // The redirect still completes when browser storage is unavailable.
+        }
+        window.location.href = 'index.html';
+    }
+
+    function isAuthenticated() {
+        try {
+            return localStorage.getItem('quicklly-authenticated') === 'true';
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function syncHeaderAuthState() {
+        if (isAuthenticated()) return;
+        const accountLink = document.querySelector('#main-header a[aria-label="Open Abu\'s account"]');
+        if (accountLink) {
+            accountLink.href = '#';
+            accountLink.setAttribute('aria-label', 'Log in to Quicklly');
+            accountLink.innerHTML = '<iconify-icon icon="solar:user-circle-linear" width="20"></iconify-icon><span>Login</span>';
+        }
+        document.querySelector('#main-header a[href="my-orders.html"]')?.classList.add('hidden');
+        const mobileActions = document.querySelector('#main-header .md\\:hidden .flex.items-center.gap-2');
+        if (mobileActions && !document.getElementById('mobile-login-button')) {
+            mobileActions.insertAdjacentHTML('afterbegin', '<button id="mobile-login-button" type="button" class="rounded-full px-3 py-2 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green">Login</button>');
+        }
+    }
+
     function bindModalEvents() {
         const backdrop = document.getElementById('auth-modal-backdrop');
         document.getElementById('auth-modal-close').addEventListener('click', closeAuthModal);
@@ -209,7 +242,11 @@
                 showError('otp-error', 'Enter the complete 5-digit code.');
                 return;
             }
-            showError('otp-error', 'Prototype only — connect your authentication service to verify this code.');
+            showError('otp-error', '');
+            const submit = event.currentTarget.querySelector('button[type="submit"]');
+            submit.disabled = true;
+            submit.textContent = 'Logging in…';
+            completeAuthentication();
         });
 
         document.addEventListener('keydown', (event) => {
@@ -228,6 +265,7 @@
 
     function bindLoginTriggers() {
         ensureModal();
+        syncHeaderAuthState();
         document.querySelectorAll('button, a').forEach((element) => {
             const label = element.textContent.trim().replace(/\s+/g, ' ').toLowerCase();
             if (label === 'sign in' || label === 'login' || label === 'log in' || label === 'your account') {

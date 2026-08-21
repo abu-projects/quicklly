@@ -14,10 +14,10 @@
         'Aha': 'aha.html',
         'aha': 'aha.html',
         'Catering': 'catering.html',
-        'Astrology': 'category.html',
-        'Events': 'category.html',
-        'Chai Tea & Coffee Kit': 'category.html',
-        'Only Luxury': 'category.html',
+        'Astrology': 'astrology.html',
+        'Events': 'events.html',
+        'Chai Tea & Coffee Kit': 'chai-tea-coffee.html',
+        'Only Luxury': 'only-luxury.html',
         'Quicklly Pass': 'quicklly-pass.html',
         'View all plans': 'quicklly-pass.html',
         'Grocery Stores': 'shop-by-stores.html',
@@ -29,8 +29,8 @@
         'Grocery Delivery': 'category.html',
         'Nationwide Shipping': 'shop-by-stores.html',
         'Corporate Gifting': 'category.html',
-        'Track Order': 'search-results.html',
-        'Return Policy': 'faq.html',
+        'Track Order': 'order-tracking.html',
+        'Return Policy': 'order-help.html',
         'Sell on Quicklly': 'contact.html',
         'Become a Driver': 'contact.html',
         'Affiliate Program': 'contact.html',
@@ -41,7 +41,22 @@
         'Brand Ambassador': 'brand-ambassador.html',
         'Student Ambassador': 'student-ambassador.html',
         'Be a Hero': 'be-a-hero.html',
-        'Refer a Friend': 'refer-a-friend.html'
+        'Refer a Friend': 'refer-a-friend.html',
+        'Your Account': 'my-account.html',
+        'My Account': 'my-account.html',
+        'Orders': 'my-orders.html',
+        'My Orders': 'my-orders.html',
+        'My Upcoming Orders': 'my-upcoming-orders.html',
+        'My Wishlist': 'my-wishlist.html',
+        'Circle Rewards': 'circle-rewards.html',
+        'Gift Cards': 'gift-cards.html',
+        'Change Password': 'change-password.html',
+        'Buy It Again': 'past-products.html',
+        'Past Products': 'past-products.html',
+        'Keep Shopping': 'keep-shopping.html',
+        'Direct From India': 'direct-from-india.html',
+        'Ready-to-Eat': 'ready-to-eat.html',
+        'Sign Out': 'index.html'
     };
 
     function connectPages() {
@@ -54,6 +69,7 @@
         window.addEventListener('scroll', updateHeaderShadow, { passive: true });
 
         document.querySelectorAll('a').forEach((anchor) => {
+            if (anchor.hasAttribute('data-preserve-href')) return;
             const label = anchor.textContent.trim().replace(/\s+/g, ' ');
             if (destinations[label]) anchor.href = destinations[label];
             if (anchor.querySelector('img[alt="Quicklly"]')) anchor.href = 'index.html';

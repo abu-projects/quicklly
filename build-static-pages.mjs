@@ -10,7 +10,8 @@ const pageFiles = [
     'student-ambassador.html', 'be-a-hero.html', 'about.html', 'contact.html',
     'faq.html', 'careers.html', 'blog.html', 'press.html', 'reviews.html',
     'privacy.html', 'terms.html', 'meal-kits.html', 'indian-sweets.html',
-    'roti-kit.html', 'organic.html', 'gifting.html', 'aha.html', 'catering.html'
+    'roti-kit.html', 'organic.html', 'gifting.html', 'aha.html', 'catering.html',
+    'events.html', 'astrology.html', 'chai-tea-coffee.html', 'only-luxury.html'
 ];
 
 const newPageMeta = {
@@ -20,7 +21,11 @@ const newPageMeta = {
     organic: ['Organic Groceries', 'Certified organic pantry staples and fresh Indian grocery essentials.'],
     gifting: ['Gifting', 'Thoughtful gifts for birthdays, festivals, milestones, and everyday moments.'],
     aha: ['Aha Subscription', 'Stream Telugu and Tamil entertainment with a digital Aha subscription.'],
-    catering: ['Indian Food Catering', 'Crowd-ready Indian favorites for gatherings, teams, and celebrations.']
+    catering: ['Indian Food Catering', 'Crowd-ready Indian favorites for gatherings, teams, and celebrations.'],
+    events: ['Events & Experiences', 'Concerts, festivals, workshops, and South Asian community experiences.'],
+    astrology: ['Astrology & Puja', 'Online astrology guidance and guided puja services from trusted practitioners.'],
+    'chai-tea-coffee': ['Chai, Tea & Coffee Kits', 'Build a flexible beverage box from trusted Indian and specialty makers.'],
+    'only-luxury': ['Only Luxury', 'Premium fashion, gifting, home, and celebration pieces from curated makers.']
 };
 
 function between(source, startMarker, endMarker, label) {
@@ -111,9 +116,10 @@ ${content}
 
     ${addressModal}
 
-    <script src="auth-modal.js?v=20260812"></script>
+    <script src="auth-modal.js?v=2026082102"></script>
     <script src="site-links.js?v=20260812"></script>
     <script src="standalone-page.js?v=20260812"></script>
+    <script src="commerce-pages.js?v=20260823"></script>
 </body>
 </html>
 `;

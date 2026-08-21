@@ -130,14 +130,15 @@
 
                 <!-- Desktop Actions -->
                 <div class="hidden md:flex items-center gap-1.5 shrink-0">
-                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
-                        <iconify-icon icon="solar:user-circle-linear" width="20"></iconify-icon>
-                        Sign In
-                    </button>
-                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                    <a href="my-account.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors" aria-label="Open Abu's account">
+                        <span class="size-8 rounded-full bg-brand-light text-brand-dark grid place-items-center font-semibold" aria-hidden="true">A</span>
+                        <span class="max-w-24 truncate">Hi, Abu</span>
+                        <iconify-icon icon="solar:alt-arrow-down-linear" width="14" class="text-neutral-400"></iconify-icon>
+                    </a>
+                    <a href="my-orders.html" class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
                         <iconify-icon icon="solar:box-linear" width="20"></iconify-icon>
                         Orders
-                    </button>
+                    </a>
                     <button class="flex items-center gap-2 px-4 py-2 ml-1 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors group">
                         <iconify-icon icon="solar:cart-large-2-linear" width="20"></iconify-icon>
                         Cart • <span id="cart-count" class="bg-brand-green text-white text-xs font-bold px-2 py-0.5 rounded-full ml-0.5">2</span>
@@ -2058,6 +2059,7 @@
         });
     </script>
 
-    <script src="auth-modal.js"></script>
+    <script src="auth-modal.js?v=2026082102"></script>
     <script src="site-links.js"></script>
+    <script src="commerce-pages.js?v=20260823"></script>
 </body></html>

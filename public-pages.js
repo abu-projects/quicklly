@@ -27,6 +27,10 @@
         gifting: ['Quicklly gifting', 'Thoughtful gifts for birthdays, festivals, milestones, and everyday moments.'],
         aha: ['Aha subscription', 'Stream Telugu and Tamil entertainment with a digital Aha subscription.'],
         catering: ['Indian food catering', 'Crowd-ready Indian favorites for gatherings, teams, and celebrations.'],
+        events: ['Events & experiences', 'Celebrate South Asian culture through concerts, festivals, workshops, and community gatherings.'],
+        astrology: ['Astrology & puja', 'Book trusted astrologers and guided puja services online.'],
+        'chai-tea-coffee': ['Chai, tea & coffee kits', 'Build a flexible beverage box from trusted Indian and specialty makers.'],
+        'only-luxury': ['Only Luxury', 'Premium fashion, gifting, home, and celebration pieces from curated makers.'],
         privacy: ['Privacy policy', 'How Quicklly handles and protects your information.'],
         terms: ['Terms of service', 'The rules that apply when you use Quicklly.']
     };
@@ -222,6 +226,51 @@
         return `${categoryHero('Catering','Bring everyone to the table.','Build a generous Indian menu for office lunches, family gatherings, and celebrations with crowd-ready entrees, rice, breads, and starters.',image('photo-1512152272829-e3139592d56f',1400),'Shop catering')}<main>${featureStrip([['solar:users-group-two-rounded-linear','Sized for groups','Clear serving guidance for every tray.'],['solar:shield-check-linear','Dietary details','Halal, vegetarian, and gluten-free choices.'],['solar:calendar-linear','Plan ahead','Schedule orders for your event date.']])}${commerceGrid(items,'Catering favorites','Mix mains, sides, and starters into a menu your whole group will enjoy.')}<section class="bg-neutral-50"><div class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-16 grid lg:grid-cols-[1fr_auto] items-center gap-8"><div><span class="text-xs font-semibold text-brand-dark">NEED A HAND?</span><h2 class="text-3xl md:text-4xl font-semibold mt-3 text-balance">Tell us your headcount. We’ll help shape the menu.</h2><p class="text-neutral-600 mt-3">Ideal for larger orders, dietary questions, or delivery coordination.</p></div><a href="contact.html" class="rounded-full bg-neutral-950 text-white px-7 py-3.5 text-sm font-semibold text-center hover:bg-neutral-800 transition-colors duration-150">Plan an event</a></div></section></main>`;
     }
 
+    function renderEvents() {
+        const events = [
+            ['SEP 06','Bollywood Night Live','Chicago, IL','Music & nightlife'],
+            ['SEP 14','South Asian Food Festival','Edison, NJ','Food & community'],
+            ['OCT 03','Garba Under the Stars','Dallas, TX','Festival'],
+            ['OCT 18','Diwali Makers Market','Seattle, WA','Shopping & culture']
+        ];
+        return `${editorialHero('EVENTS & EXPERIENCES','Culture feels better in person.','Discover concerts, festive gatherings, food events, workshops, and community experiences curated for South Asian audiences across the United States.',image('photo-1501386761578-eac5c94b800a',1400),'<a href="#events" class="inline-flex rounded-full bg-neutral-950 text-white px-7 py-3.5 text-sm font-semibold hover:bg-neutral-800 transition-colors duration-150">Browse events</a>')}<main>${featureStrip([['solar:ticket-sale-linear','Curated access','Events selected for relevance and community value.'],['solar:map-point-linear','Discover nearby','Availability follows your selected location.'],['solar:calendar-mark-linear','Plan ahead','Clear dates, venues, and ticket details before checkout.']])}<section id="events" class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-16"><div class="flex items-end justify-between gap-6 mb-8"><div><span class="text-xs font-semibold text-brand-dark">UPCOMING</span><h2 class="text-3xl md:text-4xl font-semibold mt-3 text-balance">Find your next gathering</h2></div><a href="contact.html" class="hidden sm:inline-flex text-sm font-semibold hover:text-brand-dark">List an event</a></div><div class="grid md:grid-cols-2 gap-px bg-neutral-200 border border-neutral-200">${events.map((event,index)=>`<article class="bg-white p-7 md:p-9 flex gap-6"><div class="size-20 shrink-0 bg-neutral-950 text-white grid place-items-center text-center"><span class="text-sm font-semibold tabular-nums">${event[0]}</span></div><div><span class="text-xs font-semibold text-brand-dark">${event[3]}</span><h3 class="text-xl font-semibold mt-2 text-balance">${event[1]}</h3><p class="text-sm text-neutral-500 mt-2">${event[2]}</p><button data-quick-add class="mt-5 text-sm font-semibold inline-flex items-center gap-2">Save event <iconify-icon icon="solar:bookmark-linear" width="18"></iconify-icon></button></div></article>`).join('')}</div></section></main>`;
+    }
+
+    function renderAstrology() {
+        const services = [
+            ['solar:stars-line-linear','Live astrology consultation','One-to-one guidance with a practitioner selected for your language and question.','From $29'],
+            ['solar:calendar-search-linear','Muhurat & date selection','Find an auspicious date for a wedding, home, business, or important milestone.','From $19'],
+            ['solar:document-text-linear','Personalized birth chart','Receive a prepared report covering key placements, periods, and practical themes.','From $39'],
+            ['solar:fire-square-linear','Guided online puja','Book a priest, share the sankalp details, and join the ritual remotely.','From $79']
+        ];
+        return `${editorialHero('ASTROLOGY & PUJA','Guidance grounded in tradition.','Connect with trusted astrologers and priests for personal consultations, reports, auspicious planning, and guided puja services from home.',image('photo-1533130061792-64b345e4a833',1400),'<a href="#services" class="inline-flex rounded-full bg-neutral-950 text-white px-7 py-3.5 text-sm font-semibold hover:bg-neutral-800 transition-colors duration-150">Explore services</a>')}<main>${featureStrip([['solar:verified-check-linear','Verified practitioners','Profiles include language, specialty, and service details.'],['solar:videocamera-record-linear','Join from home','Online sessions and pujas are designed for remote participation.'],['solar:shield-check-linear','Private by design','Personal details are requested only when a service requires them.']])}<section id="services" class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-16"><div class="grid sm:grid-cols-2 gap-px bg-neutral-200 border border-neutral-200">${services.map(service=>`<article class="bg-white p-7 md:p-9"><iconify-icon icon="${service[0]}" width="30" class="text-brand-green"></iconify-icon><h2 class="text-xl font-semibold mt-7 text-balance">${service[1]}</h2><p class="text-sm leading-6 text-neutral-600 mt-3 text-pretty">${service[2]}</p><div class="mt-7 flex items-center justify-between gap-4"><span class="text-sm font-semibold tabular-nums">${service[3]}</span><button data-auth-open class="rounded-full bg-neutral-950 text-white px-5 py-2.5 text-sm font-semibold hover:bg-neutral-800 transition-colors duration-150">Book service</button></div></article>`).join('')}</div></section></main>`;
+    }
+
+    function renderChaiTeaCoffee() {
+        const config = {
+            label: 'Chai, Tea & Coffee Kits',
+            title: 'Build a better daily ritual.',
+            copy: 'Choose masala chai, single-origin tea, filter coffee, and thoughtful accompaniments, then set the delivery frequency that works for your home.',
+            image: image('photo-1571934811356-5cc061b6821f',1400),
+            categories: [['Masala chai','Spiced blends and easy brew kits.'],['Loose-leaf tea','Black, green, and herbal selections.'],['Indian coffee','Filter coffee and roasted blends.'],['Sweeteners','Jaggery, sugar, and honey pairings.'],['Serveware','Strainers, cups, and brewing tools.'],['Snack pairings','Biscuits and savory tea-time picks.']]
+        };
+        return buildBoxPageFromConfig(config);
+    }
+
+    function buildBoxPageFromConfig(config) {
+        return `${categoryHero(config.label,config.title,config.copy,config.image,'Build a box')}<main>${featureStrip([['solar:calendar-linear','Flexible frequency','One-time, weekly, bi-weekly, or monthly.'],['solar:box-linear','Mix across makers','A single box can include products from the same subscription store.'],['solar:delivery-linear','Clear delivery dates','Choose the first delivery date before adding the box to cart.']])}<section id="shop" class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-16"><div class="grid lg:grid-cols-[.72fr_1.28fr] gap-10"><div><span class="text-xs font-semibold text-brand-dark">BUILD YOUR BOX</span><h2 class="text-3xl md:text-4xl font-semibold mt-3 text-balance">Your shelf, on your schedule.</h2><p class="text-neutral-600 leading-7 mt-4 text-pretty">Pick products first, then choose one-time, weekly, bi-weekly, or monthly delivery. Subscription pricing and future orders stay visible in your account.</p><a href="#box-options" class="inline-flex mt-7 rounded-full bg-neutral-950 text-white px-6 py-3 text-sm font-semibold hover:bg-neutral-800 transition-colors duration-150">Choose products</a></div><div id="box-options" class="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">${config.categories.map((item,index)=>`<article class="bg-white p-6"><span class="text-xs font-semibold text-brand-green tabular-nums">0${index+1}</span><h3 class="text-lg font-semibold mt-8 text-balance">${item[0]}</h3><p class="text-sm text-neutral-500 mt-2 text-pretty">${item[1]}</p><button data-quick-add class="mt-6 text-sm font-semibold inline-flex items-center gap-2">Add to box <iconify-icon icon="solar:add-circle-linear" width="18"></iconify-icon></button></article>`).join('')}</div></div></section></main>`;
+    }
+
+    function renderLuxury() {
+        const pieces = [
+            [image('photo-1583391733956-6c78276477e2',700),'Handwoven Silk Saree','Very Much Indian','$189.00','Limited edition'],
+            [image('photo-1602173574767-37ac01994b2a',700),'Heritage Jewelry Set','Only Luxury','$149.00','Gift ready'],
+            [image('photo-1601972599720-36938d4ecd31',700),'Celebration Keepsake Box','Only Luxury','$89.00','Curated set'],
+            [image('photo-1590736969955-71cc94901144',700),'Brass Puja Collection','Shubhpuja','$119.00','Ships nationwide']
+        ];
+        return `${categoryHero('Only Luxury','Objects worth keeping.','Explore a curated edit of premium Indian fashion, jewelry, gifting, home, and celebration pieces from specialist makers.',image('photo-1610030469983-98e550d6193c',1400),'Shop the collection')}<main>${featureStrip([['solar:verified-check-linear','Curated makers','Every seller is reviewed for quality and fulfillment.'],['solar:gift-linear','Presentation ready','Premium packaging and gifting options are clearly marked.'],['solar:delivery-linear','Protected delivery','Shipping timelines and handling requirements are shown per store.']])}${commerceGrid(pieces,'The luxury edit','Distinctive pieces selected for weddings, festivals, gifting, and the home.')}<section class="bg-neutral-950 text-white"><div class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 md:py-16 grid lg:grid-cols-[1fr_auto] gap-7 items-center"><div><span class="text-xs font-semibold text-brand-green">CONCIERGE</span><h2 class="text-3xl md:text-4xl font-semibold mt-3 text-balance">Need help choosing a meaningful gift?</h2><p class="text-neutral-400 mt-3 text-pretty">Tell us the occasion, budget, and delivery date.</p></div><a href="contact.html" class="rounded-full bg-brand-green px-6 py-3 text-sm font-semibold text-center hover:bg-brand-dark transition-colors duration-150">Ask the team</a></div></section></main>`;
+    }
+
     function renderPage() {
         if (pageKey === 'shop-by-stores') return renderStores();
         if (pageKey === 'deals') return renderDeals(false);
@@ -240,15 +289,19 @@
         if (pageKey === 'gifting') return renderGifting();
         if (pageKey === 'aha') return renderAha();
         if (pageKey === 'catering') return renderCatering();
+        if (pageKey === 'events') return renderEvents();
+        if (pageKey === 'astrology') return renderAstrology();
+        if (pageKey === 'chai-tea-coffee') return renderChaiTeaCoffee();
+        if (pageKey === 'only-luxury') return renderLuxury();
         if (pageKey === 'privacy' || pageKey === 'terms') return renderLegal(pageKey);
         return renderAbout();
     }
 
     function updateLinks(root) {
         const links = {
-            'Quicklly': 'index.html', 'Grocery': 'category.html', 'Meal Kits': 'meal-kits.html', 'Meal Kit': 'meal-kits.html', 'Indian Sweets': 'indian-sweets.html', 'Indian Sweets & Snacks': 'indian-sweets.html', 'Roti Kit': 'roti-kit.html', 'Organic': 'organic.html', 'Organic Grocery': 'organic.html', 'Gifting': 'gifting.html', 'Aha': 'aha.html', 'aha': 'aha.html', 'Catering': 'catering.html', 'Astrology': 'category.html', 'Events': 'category.html', 'Chai Tea & Coffee Kit': 'category.html', 'Only Luxury': 'category.html',
+            'Quicklly': 'index.html', 'Grocery': 'category.html', 'Meal Kits': 'meal-kits.html', 'Meal Kit': 'meal-kits.html', 'Indian Sweets': 'indian-sweets.html', 'Indian Sweets & Snacks': 'indian-sweets.html', 'Roti Kit': 'roti-kit.html', 'Organic': 'organic.html', 'Organic Grocery': 'organic.html', 'Gifting': 'gifting.html', 'Aha': 'aha.html', 'aha': 'aha.html', 'Catering': 'catering.html', 'Astrology': 'astrology.html', 'Events': 'events.html', 'Chai Tea & Coffee Kit': 'chai-tea-coffee.html', 'Only Luxury': 'only-luxury.html',
             'Quicklly Pass': 'quicklly-pass.html', 'About Us': 'about.html', 'Careers': 'careers.html', 'Press': 'press.html', 'Blog': 'blog.html', 'Contact Us': 'contact.html', 'Help Center': 'faq.html', 'Privacy Policy': 'privacy.html', 'Terms of Service': 'terms.html',
-            'Grocery Stores': 'shop-by-stores.html', 'Grocery Delivery': 'category.html', 'Nationwide Shipping': 'shop-by-stores.html', 'Corporate Gifting': 'category.html', 'Return Policy': 'faq.html', 'Sell on Quicklly': 'contact.html', 'Become a Driver': 'contact.html', 'Affiliate Program': 'contact.html', 'Accessibility': 'privacy.html', 'Brand Ambassador': 'brand-ambassador.html', 'Student Ambassador': 'student-ambassador.html', 'Be a Hero': 'be-a-hero.html', 'Refer a Friend': 'refer-a-friend.html'
+            'Grocery Stores': 'shop-by-stores.html', 'Grocery Delivery': 'category.html', 'Nationwide Shipping': 'shop-by-stores.html', 'Corporate Gifting': 'category.html', 'Return Policy': 'faq.html', 'Sell on Quicklly': 'contact.html', 'Become a Driver': 'contact.html', 'Affiliate Program': 'contact.html', 'Accessibility': 'privacy.html', 'Brand Ambassador': 'brand-ambassador.html', 'Student Ambassador': 'student-ambassador.html', 'Be a Hero': 'be-a-hero.html', 'Refer a Friend': 'refer-a-friend.html', 'Your Account': 'my-account.html', 'My Account': 'my-account.html', 'Orders': 'my-orders.html', 'Sign Out': 'index.html'
         };
         root.querySelectorAll('a').forEach((anchor) => {
             const label = anchor.textContent.trim().replace(/\s+/g, ' ');
