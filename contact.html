@@ -10,18 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{'brand-green':'#10b981','brand-dark':'#059669','brand-light':'#ecfdf5'}}}}</script>
+    <script>tailwind.config={theme:{extend:{colors:{'brand-green':'#047857','brand-dark':'#065f46','brand-light':'#ecfdf5'}}}}</script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="public-pages.css">
+    <link rel="stylesheet" href="quicklly-accessibility.css">
 </head>
 <body data-page="contact" class="font-sans antialiased text-neutral-900 bg-white">
+<a href="#main-content" class="skip-link">Skip to main content</a>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:ring-2 focus:ring-brand-green">Skip to content</a>
 
     <!-- 1. Promotional Strip -->
     <div class="bg-neutral-900 text-white text-xs font-medium py-2 px-4 text-center flex justify-center items-center gap-2">
         <span>Get $10 off your first order over $50 with code:</span>
         <span class="text-brand-green font-bold tracking-wide">WELCOME10</span>
-        <button class="ml-4 opacity-70 hover:opacity-100 hidden sm:block" aria-label="Dismiss">
+        <button class="ml-4 opacity-70 hover:opacity-100 block" aria-label="Dismiss">
             <iconify-icon icon="solar:close-circle-linear" width="16"></iconify-icon>
         </button>
     </div>
@@ -35,7 +37,7 @@
                     <button id="mobile-menu-btn" class="text-neutral-900 p-1 rounded-lg hover:bg-neutral-100 cursor-pointer" aria-label="Open menu">
                         <iconify-icon icon="solar:hamburger-menu-linear" width="24"></iconify-icon>
                     </button>
-                    <a href="#" class="flex items-center py-0.5">
+                    <a href="index.html" class="flex items-center py-0.5">
                         <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-8 w-auto">
                     </a>
                 </div>
@@ -51,7 +53,7 @@
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
                 
                 <!-- Desktop Logo (Enlarged ~20%) -->
-                <a href="#" class="hidden md:flex items-center shrink-0 py-0.5">
+                <a href="index.html" class="hidden md:flex items-center shrink-0 py-0.5">
                     <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-10 lg:h-11 w-auto">
                 </a>
 
@@ -69,7 +71,7 @@
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <iconify-icon icon="solar:magnifer-linear" width="20" class="text-neutral-500"></iconify-icon>
                     </div>
-                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500">
+                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500" aria-label="Search groceries and stores">
                     <button class="absolute inset-y-1.5 right-1.5 px-4 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors">
                         Search
                     </button>
@@ -103,15 +105,15 @@
                         All Categories
                     </button>
                     <span class="w-px h-4 bg-neutral-200 shrink-0"></span>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Grocery</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
-                    <a href="#" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
+                    <a href="shop-by-stores.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Grocery</a>
+                    <a href="meal-kits.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
+                    <a href="indian-sweets.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
+                    <a href="roti-kit.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
+                    <a href="organic.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
+                    <a href="gifting.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
+                    <a href="aha.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
+                    <a href="catering.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
+                    <a href="quicklly-pass.html" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
                         <iconify-icon icon="solar:crown-star-bold" width="16"></iconify-icon>
                         Quicklly Pass
                     </a>
@@ -129,20 +131,20 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
                 <!-- Brand Col -->
                 <div class="lg:col-span-2">
-                    <a href="#" class="mb-4 block">
+                    <a href="index.html" class="mb-4 block">
                         <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-9 w-auto invert">
                     </a>
                     <p class="text-neutral-400 text-sm mb-6 max-w-sm">
                         The ultimate destination for authentic South Asian groceries, food, and culture, delivered to your door.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
+                        <a href="contact.html" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
                             <iconify-icon icon="mdi:instagram" width="24"></iconify-icon>
                         </a>
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
+                        <a href="contact.html" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
                             <iconify-icon icon="mdi:facebook" width="24"></iconify-icon>
                         </a>
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
+                        <a href="contact.html" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
                             <iconify-icon icon="mdi:twitter" width="24"></iconify-icon>
                         </a>
                     </div>
@@ -150,51 +152,51 @@
 
                 <!-- Links Cols -->
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Press</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Blog</a></li>
+                        <li><a href="about.html" class="hover:text-brand-green transition-colors">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-brand-green transition-colors">Careers</a></li>
+                        <li><a href="press.html" class="hover:text-brand-green transition-colors">Press</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-green transition-colors">Blog</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
+                        <li><a href="shop-by-stores.html" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
+                        <li><a href="meal-kits.html" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
+                        <li><a href="shop-by-stores.html" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
+                        <li><a href="quicklly-pass.html" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
+                        <li><a href="category.html" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Track Order</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Return Policy</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-green transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+                        <li><a href="order-tracking.html" class="hover:text-brand-green transition-colors">Track Order</a></li>
+                        <li><a href="order-help.html" class="hover:text-brand-green transition-colors">Return Policy</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="text-sm text-neutral-500">
-                    © 2023 Quicklly Inc. All rights reserved.
+                    © 2026 Quicklly Inc. All rights reserved.
                 </div>
                 <div class="flex gap-6 text-sm text-neutral-500">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Accessibility</a>
                 </div>
             </div>
         </div>
@@ -203,7 +205,7 @@
     <!-- Side Navigation Category Drawer -->
     <div id="side-drawer-backdrop" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300"></div>
     
-    <aside id="side-drawer" class="fixed top-0 left-0 bottom-0 w-[335px] max-w-[90vw] bg-[#fbfbfb] rounded-r-3xl z-[101] shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-neutral-200/50" aria-label="Category Menu">
+    <aside id="side-drawer" inert aria-hidden="true" class="fixed top-0 left-0 bottom-0 w-[335px] max-w-[90vw] bg-[#fbfbfb] rounded-r-3xl z-[101] shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-neutral-200/50" aria-label="Category Menu">
         <!-- Drawer Header -->
         <div class="bg-neutral-50 px-6 py-5 flex items-center justify-between border-b border-neutral-100/80">
             <div class="flex items-center gap-3">
@@ -230,7 +232,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="shop-by-stores.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:basket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Grocery</span>
@@ -239,7 +241,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="gifting.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:gift-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Gifting</span>
@@ -248,7 +250,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="aha.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:sticker-smile-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>aha</span>
@@ -257,7 +259,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="events.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:calendar-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Events</span>
@@ -266,7 +268,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="astrology.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Astrology</span>
@@ -275,7 +277,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="organic.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:leaf-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Organic Grocery</span>
@@ -284,7 +286,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="roti-kit.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:chef-hat-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Roti Kit</span>
@@ -293,7 +295,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="meal-kits.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:box-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Meal Kit</span>
@@ -302,7 +304,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="chai-tea-coffee.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:cup-hot-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Chai Tea & Coffee Kit</span>
@@ -311,7 +313,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="indian-sweets.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:cookie-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Indian Sweets & Snacks</span>
@@ -320,7 +322,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="catering.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:dish-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Catering</span>
@@ -329,7 +331,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="only-luxury.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:diamond-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Only Luxury</span>
@@ -350,7 +352,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="shop-by-stores.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:shop-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Grocery Stores</span>
@@ -371,7 +373,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="quicklly-pass.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:ticket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Quicklly Pass</span>
@@ -380,7 +382,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="brand-ambassador.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Brand Ambassador</span>
@@ -389,7 +391,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="student-ambassador.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:graduation-cap-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Student Ambassador</span>
@@ -398,7 +400,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="be-a-hero.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:shield-star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Be a Hero</span>
@@ -407,7 +409,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="refer-a-friend.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:users-group-two-rounded-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Refer a Friend</span>
@@ -428,7 +430,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="my-account.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Your Account</span>
@@ -437,7 +439,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="index.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:logout-3-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Sign Out</span>

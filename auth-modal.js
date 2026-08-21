@@ -42,6 +42,7 @@
                             </div>
 
                             <p id="auth-error" class="hidden mt-2 text-sm text-red-700" role="alert"></p>
+                            <div class="mt-3 text-right"><a href="forgot-password.html" class="text-sm font-semibold text-brand-dark hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded">Forgot password?</a></div>
                             <button type="submit" class="w-full mt-5 bg-brand-green hover:bg-brand-dark active:scale-[0.98] text-white rounded-full py-3.5 text-sm font-semibold transition-[transform,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2">Log in</button>
                         </form>
 
@@ -179,7 +180,17 @@
     }
 
     function syncHeaderAuthState() {
-        if (isAuthenticated()) return;
+        if (isAuthenticated()) {
+            let name = 'Account';
+            try { name = localStorage.getItem('quicklly-user-name') || name; } catch (_) { /* Use the generic account label. */ }
+            const accountLink = document.querySelector('#main-header a[href="my-account.html"]');
+            const accountLabel = accountLink?.querySelector('span:last-child');
+            if (accountLabel) accountLabel.textContent = `Hi, ${name}`;
+            accountLink?.setAttribute('aria-label', `Open ${name}'s account`);
+            const drawerGreeting = Array.from(document.querySelectorAll('#side-drawer h2')).find((heading) => heading.textContent.trim().startsWith('Hello'));
+            if (drawerGreeting) drawerGreeting.textContent = `Hello ${name}`;
+            return;
+        }
         const accountLink = document.querySelector('#main-header a[aria-label="Open Abu\'s account"]');
         if (accountLink) {
             accountLink.href = '#';
@@ -269,6 +280,7 @@
         document.querySelectorAll('button, a').forEach((element) => {
             const label = element.textContent.trim().replace(/\s+/g, ' ').toLowerCase();
             if (label === 'sign in' || label === 'login' || label === 'log in' || label === 'your account') {
+                if (isAuthenticated() && label === 'your account') return;
                 element.addEventListener('click', (event) => {
                     if (element.closest('#auth-modal')) return;
                     event.preventDefault();

@@ -1,6 +1,6 @@
 :root {
-    --quicklly-green: #10b981;
-    --quicklly-green-dark: #059669;
+    --quicklly-green: #047857;
+    --quicklly-green-dark: #065f46;
     --quicklly-text: #171717;
     --quicklly-muted: #737373;
     --quicklly-border: #e5e5e5;
@@ -14,7 +14,7 @@ img[src$="kaju_katli_sweets.png"], img[src*="organic-grocery-box.png"] { object-
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { scrollbar-width: none; }
 .page-shell-loading { min-height: 100dvh; display: grid; place-items: center; color: #525252; }
-.page-shell-loading::before { content: ''; width: 2rem; height: 2rem; border: 2px solid #e5e5e5; border-top-color: #10b981; border-radius: 9999px; animation: quicklly-spin .8s linear infinite; }
+.page-shell-loading::before { content: ''; width: 2rem; height: 2rem; border: 2px solid #e5e5e5; border-top-color: #047857; border-radius: 9999px; animation: quicklly-spin .8s linear infinite; }
 .legal-copy h2 { color: #171717; font-size: 1.25rem; line-height: 1.5; font-weight: 600; margin-top: 2rem; margin-bottom: .75rem; }
 .legal-copy p, .legal-copy li { color: #525252; font-size: .9375rem; line-height: 1.8; }
 .legal-copy ul { margin: .75rem 0 1rem 1.25rem; list-style: disc; }

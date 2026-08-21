@@ -7,6 +7,7 @@
         const addressBackdrop = document.getElementById('address-modal-backdrop');
         const addressModal = document.getElementById('address-modal');
         const activeLabels = {
+            'shop-by-stores': 'Grocery',
             'meal-kits': 'Meal Kits',
             'indian-sweets': 'Indian Sweets',
             'roti-kit': 'Roti Kit',

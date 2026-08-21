@@ -1,0 +1,1585 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quicklly UX Presentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Device Mockup Utilities */
+    .mockup-ring {
+      box-shadow: 0 0 0 12px #171717, inset 0 0 0 1px rgba(0,0,0,0.1);
+    }
+    .island {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 32px; background-color: #000; border-radius: 9999px; z-index: 100;
+    }
+    .home-indicator {
+      position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+      width: 130px; height: 4px; background-color: #171717; border-radius: 9999px; z-index: 100;
+    }
+    .home-indicator.white { background-color: #FFFFFF; }
+    
+    /* Content Fade Overlay */
+    .fade-overlay {
+      position: absolute; inset: 0; background-color: rgba(23, 23, 23, 0.4); z-index: 60;
+    }
+  </style>
+</head>
+<body class="p-16 antialiased text-[#171717]">
+  
+  <div class="grid gap-x-12 gap-y-24 max-w-[2400px] mx-auto grid-cols-3">
+
+    <!-- 01 — Splash Screen -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">01 — Splash Screen</span>
+      <div class="w-[393px] h-[852px] bg-[#047857] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="flex justify-between items-center px-6 pt-3.5 pb-2 text-sm font-medium text-white z-40 relative">
+          <span class="ml-2">9:41</span>
+          <div class="flex items-center gap-1.5 mr-2">
+            <iconify-icon icon="solar:graph-bold"></iconify-icon>
+            <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+            <iconify-icon icon="solar:battery-charge-bold" class="text-lg"></iconify-icon>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center px-8 relative">
+          <h1 class="text-4xl tracking-tighter font-semibold text-white mb-2">QUICKLLY</h1>
+          <p class="text-sm text-[#ECFDF5] text-center">Authentic South Asian groceries, delivered.</p>
+          <div class="absolute bottom-32 flex justify-center w-full">
+            <iconify-icon icon="solar:refresh-circle-linear" class="text-3xl text-[#ECFDF5] animate-spin"></iconify-icon>
+          </div>
+        </div>
+        <div class="home-indicator white"></div>
+      </div>
+    </div>
+
+    <!-- 02 — Sign Up -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">02 — Sign Up</span>
+      <div class="w-[393px] h-[852px] bg-white rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="flex justify-between items-center px-6 pt-3.5 pb-2 text-sm font-medium text-[#171717] z-40 relative">
+          <span class="ml-2">9:41</span>
+          <div class="flex items-center gap-1.5 mr-2">
+            <iconify-icon icon="solar:graph-bold"></iconify-icon>
+            <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+            <iconify-icon icon="solar:battery-charge-bold" class="text-lg"></iconify-icon>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar px-6 pt-8 pb-12 flex flex-col gap-6">
+          <h1 class="text-xl tracking-tighter font-semibold text-[#047857]">QUICKLLY</h1>
+          <div>
+            <h2 class="text-2xl tracking-tight font-semibold text-[#171717] mb-2">Create your account</h2>
+            <p class="text-sm text-[#737373]">Faster grocery and food delivery directly to your door.</p>
+          </div>
+          <div class="flex flex-col gap-4 mt-2">
+            <input type="text" placeholder="Full name" class="h-12 px-4 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] text-sm w-full outline-none">
+            <input type="email" placeholder="Email address" class="h-12 px-4 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] text-sm w-full outline-none">
+            <input type="tel" placeholder="Phone number" class="h-12 px-4 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] text-sm w-full outline-none">
+            <div class="relative">
+              <input type="password" placeholder="Password" class="h-12 pl-4 pr-10 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] text-sm w-full outline-none">
+              <iconify-icon icon="solar:eye-linear" class="absolute right-4 top-3.5 text-lg text-[#737373]"></iconify-icon>
+            </div>
+            <p class="text-xs text-[#737373] mt-2">By continuing, you agree to our Terms and Privacy policy.</p>
+          </div>
+          <div class="flex flex-col gap-3 mt-4">
+            <button class="w-full bg-[#047857] text-white font-medium text-sm py-3.5 rounded-full">Create Account</button>
+            <button class="w-full bg-white text-[#171717] font-medium text-sm py-3.5 rounded-full border border-[#E5E5E5] flex items-center justify-center gap-2">
+              <iconify-icon icon="solar:apple-bold" class="text-lg"></iconify-icon> Continue with Apple
+            </button>
+            <button class="w-full bg-white text-[#171717] font-medium text-sm py-3.5 rounded-full border border-[#E5E5E5] flex items-center justify-center gap-2">
+              <iconify-icon icon="solar:globus-linear" class="text-lg"></iconify-icon> Continue with Google
+            </button>
+          </div>
+          <p class="text-sm text-center text-[#737373] mt-auto pb-4">Already have an account? <span class="text-[#047857] font-medium">Log in</span></p>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 03 — Homepage – 131 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">03 — Homepage – 131</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-3.5 px-4 z-40 relative flex flex-col gap-3 shadow-sm">
+          <div class="flex justify-between items-center px-2 pt-2 pb-1 text-sm font-medium text-[#171717]">
+            <span class="ml-2">9:41</span>
+            <div class="flex items-center gap-1.5 mr-2">
+              <iconify-icon icon="solar:graph-bold"></iconify-icon>
+              <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+              <iconify-icon icon="solar:battery-charge-bold" class="text-lg"></iconify-icon>
+            </div>
+          </div>
+          <div class="flex justify-between items-center mt-1">
+            <div>
+              <div class="text-xs text-[#737373] flex items-center gap-1">Home <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon></div>
+              <div class="text-sm font-medium text-[#171717]">1400 N Lake Shore</div>
+            </div>
+            <div class="bg-[#047857] text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1">
+              <iconify-icon icon="solar:star-bold"></iconify-icon> PASS
+            </div>
+          </div>
+          <div class="relative">
+            <iconify-icon icon="solar:magnifer-linear" class="absolute left-3 top-2.5 text-[#737373] text-lg"></iconify-icon>
+            <input type="text" placeholder="Search products or stores..." class="w-full bg-[#F5F5F5] rounded-xl py-2.5 pl-10 pr-10 text-sm outline-none border border-transparent focus:border-[#047857]">
+            <iconify-icon icon="solar:microphone-2-linear" class="absolute right-3 top-2.5 text-[#047857] text-lg"></iconify-icon>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-24">
+          <div class="bg-[#047857] p-6 text-white flex justify-between items-center relative overflow-hidden rounded-b-xl">
+            <div class="relative z-10 w-2/3">
+              <h2 class="text-xl tracking-tight font-semibold mb-3">Get everything delivered in 3 hours or less</h2>
+              <button class="bg-white text-[#047857] text-xs font-medium px-4 py-2 rounded-full">Shop Now</button>
+            </div>
+            <iconify-icon icon="solar:box-minimalistic-linear" class="text-6xl text-[#065F46] absolute -right-2 -bottom-2 opacity-50"></iconify-icon>
+          </div>
+          <div class="p-4 grid grid-cols-3 gap-3">
+            <div class="bg-white p-3 rounded-xl shadow-sm flex flex-col items-center gap-2 border border-[#E5E5E5]">
+              <div class="w-12 h-12 bg-[#ECFDF5] rounded-full flex items-center justify-center text-[#047857] text-xl"><iconify-icon icon="solar:cart-3-bold"></iconify-icon></div>
+              <span class="text-xs font-medium text-center text-[#171717]">Grocery</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-sm flex flex-col items-center gap-2 border border-[#E5E5E5]">
+              <div class="w-12 h-12 bg-[#ECFDF5] rounded-full flex items-center justify-center text-[#047857] text-xl"><iconify-icon icon="solar:cup-hot-bold"></iconify-icon></div>
+              <span class="text-xs font-medium text-center text-[#171717]">Indian Sweets</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-sm flex flex-col items-center gap-2 border border-[#E5E5E5]">
+              <div class="w-12 h-12 bg-[#ECFDF5] rounded-full flex items-center justify-center text-[#047857] text-xl"><iconify-icon icon="solar:gift-bold"></iconify-icon></div>
+              <span class="text-xs font-medium text-center text-[#171717]">Gifting</span>
+            </div>
+          </div>
+          <div class="px-4 pb-4">
+            <div class="bg-gradient-to-r from-[#065F46] to-[#047857] rounded-xl p-4 text-white flex items-center justify-between shadow-sm">
+              <div>
+                <p class="text-xs text-[#ECFDF5]">Get $10 Off</p>
+                <p class="text-sm font-medium mt-1">From Atta to Aloo, your desi pantry in one click.</p>
+              </div>
+            </div>
+          </div>
+          <div class="px-4 pb-6">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-base font-semibold tracking-tight">Grocery &amp; Kitchen</h3>
+              <span class="text-xs text-[#047857] font-medium">See all</span>
+            </div>
+            <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+              <div class="flex flex-col gap-2 w-24 shrink-0">
+                <div class="w-24 h-24 bg-white rounded-none border border-[#E5E5E5] flex items-center justify-center text-[#737373] overflow-hidden"><img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover"></div>
+                <span class="text-xs text-[#171717] font-medium text-center">Fresh Produce</span>
+              </div>
+              <div class="flex flex-col gap-2 w-24 shrink-0">
+                <div class="w-24 h-24 bg-white rounded-none border border-[#E5E5E5] flex items-center justify-center text-[#737373] overflow-hidden"><img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" class="w-full h-full object-cover"></div>
+                <span class="text-xs text-[#171717] font-medium text-center">Organic</span>
+              </div>
+              <div class="flex flex-col gap-2 w-24 shrink-0">
+                <div class="w-24 h-24 bg-white rounded-none border border-[#E5E5E5] flex items-center justify-center text-[#737373] overflow-hidden"><img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" class="w-full h-full object-cover"></div>
+                <span class="text-xs text-[#171717] font-medium text-center">Meat &amp; Poultry</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-3 px-6 flex justify-between text-[#737373] text-xs z-40">
+          <div class="flex flex-col items-center gap-1 text-[#047857]"><iconify-icon icon="solar:home-2-bold" class="text-2xl"></iconify-icon>Home</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:cart-large-2-linear" class="text-2xl"></iconify-icon>Cart</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:star-circle-linear" class="text-2xl"></iconify-icon>Q Pass</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:history-linear" class="text-2xl"></iconify-icon>Buy Again</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:user-circle-linear" class="text-2xl"></iconify-icon>Profile</div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 04 — Store Listing -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">04 — Store Listing</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex flex-col gap-4 shadow-sm border-b border-[#E5E5E5]">
+          <div class="flex items-center gap-3">
+            <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+            <div class="flex-1 bg-[#F5F5F5] rounded-full p-1 flex">
+              <div class="flex-1 text-center text-xs font-medium bg-white shadow-sm rounded-full py-1.5 text-[#171717]">Delivery</div>
+              <div class="flex-1 text-center text-xs font-medium text-[#737373] py-1.5">Pickup</div>
+            </div>
+            <iconify-icon icon="solar:magnifer-linear" class="text-xl text-[#171717]"></iconify-icon>
+          </div>
+          <div class="flex gap-2 overflow-x-auto no-scrollbar">
+            <div class="px-4 py-1.5 bg-[#047857] text-white text-xs font-medium rounded-full shrink-0">Deals</div>
+            <div class="px-4 py-1.5 bg-white border border-[#E5E5E5] text-[#171717] text-xs font-medium rounded-full shrink-0">Fresh Produce</div>
+            <div class="px-4 py-1.5 bg-white border border-[#E5E5E5] text-[#171717] text-xs font-medium rounded-full shrink-0">Atta</div>
+            <div class="px-4 py-1.5 bg-white border border-[#E5E5E5] text-[#171717] text-xs font-medium rounded-full shrink-0">Paneer</div>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-24 p-4 flex flex-col gap-4">
+          <h2 class="text-lg font-semibold tracking-tight">Grocery stores near you</h2>
+          <div class="bg-white rounded-xl p-4 border border-[#E5E5E5] flex items-center gap-4">
+            <div class="w-14 h-14 bg-[#ECFDF5] text-[#047857] font-semibold text-lg flex items-center justify-center rounded-full shrink-0">QB</div>
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold text-[#171717]">Quicklly Bazaar Chicago</h3>
+              <p class="text-xs text-[#737373] mt-0.5">Delivery in 3 hours or less</p>
+              <div class="flex items-center gap-2 mt-1.5">
+                <span class="text-xs bg-[#F5F5F5] px-2 py-0.5 rounded text-[#171717]">Min $30</span>
+                <span class="text-xs text-[#047857] font-medium flex items-center gap-1"><iconify-icon icon="solar:check-circle-bold"></iconify-icon> Available</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-[#E5E5E5] flex items-center gap-4">
+            <div class="w-14 h-14 bg-[#F5F5F5] text-[#171717] font-semibold text-lg flex items-center justify-center rounded-full shrink-0">FF</div>
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold text-[#171717]">Fresh Farm</h3>
+              <p class="text-xs text-[#737373] mt-0.5">Delivery Tomorrow, 5:30 PM - 8:30 PM</p>
+              <div class="flex items-center gap-2 mt-1.5">
+                <span class="text-xs bg-[#F5F5F5] px-2 py-0.5 rounded text-[#171717]">Min $25</span>
+                <span class="text-xs text-[#047857] font-medium flex items-center gap-1"><iconify-icon icon="solar:check-circle-bold"></iconify-icon> Available</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#047857] rounded-xl p-4 text-white flex items-center justify-between shadow-sm mt-2">
+            <div>
+              <p class="text-xs text-[#ECFDF5]">Grocery Bonanza</p>
+              <p class="text-sm font-medium mt-1">Get free delivery on orders over $50</p>
+            </div>
+            <button class="bg-white text-[#047857] text-xs font-medium px-3 py-1.5 rounded-full">Explore</button>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-3 px-6 flex justify-between text-[#737373] text-xs z-40">
+          <div class="flex flex-col items-center gap-1 text-[#047857]"><iconify-icon icon="solar:home-2-bold" class="text-2xl"></iconify-icon>Home</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:cart-large-2-linear" class="text-2xl"></iconify-icon>Cart</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:star-circle-linear" class="text-2xl"></iconify-icon>Q Pass</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:history-linear" class="text-2xl"></iconify-icon>Buy Again</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:user-circle-linear" class="text-2xl"></iconify-icon>Profile</div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 05 — Store -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">05 — Store</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex flex-col gap-4 shadow-sm border-b border-[#E5E5E5]">
+          <div class="flex items-center gap-3">
+            <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+            <div class="flex-1">
+              <h1 class="text-base font-semibold tracking-tight text-[#171717]">Quicklly Bazaar Chicago</h1>
+              <p class="text-xs text-[#047857]">Delivery in 3 hours or less</p>
+            </div>
+            <iconify-icon icon="solar:info-circle-linear" class="text-xl text-[#737373]"></iconify-icon>
+          </div>
+          <div class="relative">
+            <iconify-icon icon="solar:magnifer-linear" class="absolute left-3 top-2.5 text-[#737373] text-lg"></iconify-icon>
+            <input type="text" placeholder="Search in Quicklly Bazaar Chicago" class="w-full bg-[#F5F5F5] rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none border border-transparent">
+          </div>
+          <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+            <div class="px-4 py-1.5 bg-[#047857] text-white text-xs font-medium rounded-full shrink-0">Buy Again</div>
+            <div class="px-4 py-1.5 bg-white border border-[#E5E5E5] text-[#171717] text-xs font-medium rounded-full shrink-0">Fresh Produce</div>
+            <div class="px-4 py-1.5 bg-white border border-[#E5E5E5] text-[#171717] text-xs font-medium rounded-full shrink-0">Atta</div>
+            <div class="px-4 py-1.5 bg-white border border-[#E5E5E5] text-[#171717] text-xs font-medium rounded-full shrink-0">Paneer</div>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-24 p-4 flex flex-col gap-6">
+          <div>
+            <h2 class="text-base font-semibold tracking-tight mb-3">Buy It Again</h2>
+            <div class="flex gap-4 overflow-x-auto no-scrollbar">
+              <div class="flex flex-col gap-2 w-[140px] shrink-0 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+                <div class="h-[120px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+                <div class="text-xs text-[#737373]">1 lb</div>
+                <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Organic Red Tomatoes</div>
+                <div class="flex justify-between items-center mt-1">
+                  <div class="text-sm font-semibold text-[#171717]">$3.49</div>
+                  <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 w-[140px] shrink-0 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+                <div class="h-[120px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+                <div class="text-xs text-[#737373]">1 Dozen</div>
+                <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Pasture-Raised Eggs</div>
+                <div class="flex justify-between items-center mt-1">
+                  <div class="text-sm font-semibold text-[#171717]">$6.99</div>
+                  <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="text-base font-semibold tracking-tight mb-3">Fresh Produce</h2>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex flex-col gap-2 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+                <div class="h-[140px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover"></div>
+                <div class="text-xs text-[#737373]">Bunch</div>
+                <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Fresh Coriander</div>
+                <div class="flex justify-between items-center mt-auto">
+                  <div class="text-sm font-semibold text-[#171717]">$1.29</div>
+                  <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+                <div class="h-[140px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://images.unsplash.com/photo-1550828520-4cb496926fc9?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+                <div class="text-xs text-[#737373]">1 pint</div>
+                <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Fresh Blueberries</div>
+                <div class="flex justify-between items-center mt-auto">
+                  <div class="text-sm font-semibold text-[#171717]">$4.99</div>
+                  <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-3 px-6 flex justify-between text-[#737373] text-xs z-40">
+          <div class="flex flex-col items-center gap-1 text-[#047857]"><iconify-icon icon="solar:home-2-bold" class="text-2xl"></iconify-icon>Home</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:cart-large-2-linear" class="text-2xl"></iconify-icon>Cart</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:star-circle-linear" class="text-2xl"></iconify-icon>Q Pass</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:history-linear" class="text-2xl"></iconify-icon>Buy Again</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:user-circle-linear" class="text-2xl"></iconify-icon>Profile</div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 06 — Cart with Grocery & Nationwide -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">06 — Cart with Grocery &amp; Nationwide</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Cart</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="p-4 border-b border-[#E5E5E5] flex justify-between items-center bg-[#F9FAFB]">
+              <div>
+                <h3 class="text-sm font-semibold text-[#171717]">Quicklly Bazaar Chicago</h3>
+                <p class="text-xs text-[#047857] mt-0.5">Local Delivery in 3 hours</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-semibold">$37.19</p>
+                <p class="text-xs text-[#737373]">7 items</p>
+              </div>
+            </div>
+            <div class="p-4 text-sm text-[#047857] font-medium flex items-center justify-between cursor-pointer">
+              View &amp; Edit Items <iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="p-4 border-b border-[#E5E5E5] flex justify-between items-center bg-[#F9FAFB]">
+              <div>
+                <h3 class="text-sm font-semibold text-[#171717]">World Fresh Market</h3>
+                <p class="text-xs text-[#047857] mt-0.5">Local Delivery</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-semibold">$46.50</p>
+                <p class="text-xs text-[#737373]">8 items</p>
+              </div>
+            </div>
+            <div class="p-4 text-sm text-[#047857] font-medium flex items-center justify-between cursor-pointer">
+              View &amp; Edit Items <iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="p-4 border-b border-[#E5E5E5] flex justify-between items-center bg-[#F9FAFB]">
+              <div>
+                <h3 class="text-sm font-semibold text-[#171717]">Almond House</h3>
+                <p class="text-xs text-[#737373] mt-0.5">Nationwide Shipping</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-semibold">$175.00</p>
+                <p class="text-xs text-[#737373]">3 items</p>
+              </div>
+            </div>
+            <div class="p-4 text-sm text-[#047857] font-medium flex items-center justify-between cursor-pointer">
+              View &amp; Edit Items <iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon>
+            </div>
+          </div>
+          <div class="bg-[#ECFDF5] border border-[#047857] rounded-xl p-3 flex items-start gap-3 mt-2">
+            <iconify-icon icon="solar:tag-price-bold" class="text-lg text-[#047857] mt-0.5"></iconify-icon>
+            <div>
+              <p class="text-sm font-medium text-[#047857]">Total Savings: $6.99</p>
+              <p class="text-xs text-[#065F46] mt-0.5">You're saving with Quicklly Pass</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Checkout</span>
+            <span class="font-semibold text-base">$258.69</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 07 — Cart with Store products -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">07 — Cart with Store products</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <div class="flex-1">
+            <h1 class="text-base font-semibold tracking-tight text-[#171717]">Quicklly Bazaar Chicago</h1>
+            <p class="text-xs text-[#737373]">7 items • $37.19</p>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-3">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-[#F5F5F5] rounded-none border border-[#E5E5E5] overflow-hidden shrink-0"><img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+              <div class="flex-1">
+                <h3 class="text-sm font-medium text-[#171717]">Organic Red Tomatoes</h3>
+                <p class="text-xs text-[#737373] mt-0.5">1 lb</p>
+                <div class="flex justify-between items-center mt-2">
+                  <span class="text-sm font-semibold">$3.49</span>
+                  <div class="flex items-center gap-3 bg-[#F5F5F5] rounded-full px-2 py-1 border border-[#E5E5E5]">
+                    <iconify-icon icon="solar:minus-linear" class="text-[#737373] text-sm"></iconify-icon>
+                    <span class="text-sm font-medium w-4 text-center">1</span>
+                    <iconify-icon icon="solar:add-linear" class="text-[#047857] text-sm"></iconify-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#F9FAFB] p-2.5 rounded-lg border border-[#E5E5E5] flex justify-between items-center cursor-pointer">
+              <div class="flex items-center gap-2 text-xs text-[#737373]">
+                <iconify-icon icon="solar:refresh-square-linear"></iconify-icon> Replace with best match
+              </div>
+              <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373] text-sm"></iconify-icon>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-3">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-[#F5F5F5] rounded-none border border-[#E5E5E5] overflow-hidden shrink-0"><img src="https://images.unsplash.com/photo-1550828520-4cb496926fc9?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+              <div class="flex-1">
+                <h3 class="text-sm font-medium text-[#171717]">Fresh Blueberries</h3>
+                <p class="text-xs text-[#737373] mt-0.5">1 pint</p>
+                <div class="flex justify-between items-center mt-2">
+                  <span class="text-sm font-semibold">$4.99</span>
+                  <div class="flex items-center gap-3 bg-[#F5F5F5] rounded-full px-2 py-1 border border-[#E5E5E5]">
+                    <iconify-icon icon="solar:minus-linear" class="text-[#737373] text-sm"></iconify-icon>
+                    <span class="text-sm font-medium w-4 text-center">2</span>
+                    <iconify-icon icon="solar:add-linear" class="text-[#047857] text-sm"></iconify-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#F9FAFB] p-2.5 rounded-lg border border-[#E5E5E5] flex justify-between items-center cursor-pointer">
+              <div class="flex items-center gap-2 text-xs text-[#737373]">
+                <iconify-icon icon="solar:phone-linear"></iconify-icon> Call before replacing
+              </div>
+              <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373] text-sm"></iconify-icon>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Checkout</span>
+            <span class="font-semibold text-base">$37.19</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 08 — Grocery Cart with Delivery & Pick-up option -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">08 — Cart Delivery/Pick-up</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-4 pt-[52px] px-4 z-40 relative flex flex-col gap-4 border-b border-[#E5E5E5]">
+          <div class="flex items-center gap-3">
+            <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+            <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Quicklly Bazaar Chicago</h1>
+          </div>
+          <div class="bg-[#F5F5F5] rounded-full p-1 flex">
+            <div class="flex-1 text-center text-xs font-medium bg-white shadow-sm rounded-full py-1.5 text-[#171717]">Delivery</div>
+            <div class="flex-1 text-center text-xs font-medium text-[#737373] py-1.5">Pickup</div>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-4">
+            <div class="flex justify-between items-start border-b border-[#E5E5E5] pb-4">
+              <div>
+                <h3 class="text-sm font-semibold text-[#171717]">Delivery Estimate</h3>
+                <p class="text-xs text-[#047857] mt-1">Today, in 3 hours or less</p>
+                <p class="text-xs text-[#737373] mt-1">To: Home, 1400 N Lake Shore</p>
+              </div>
+              <iconify-icon icon="solar:routing-2-bold" class="text-2xl text-[#E5E5E5]"></iconify-icon>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-[#737373]">Items (7)</span>
+              <span class="font-medium">$37.19</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-[#737373]">Replacement Pref</span>
+              <span class="font-medium text-[#171717] underline decoration-[#E5E5E5] underline-offset-2 cursor-pointer">Mixed</span>
+            </div>
+          </div>
+          <div class="bg-[#ECFDF5] border border-[#047857] rounded-xl p-3 flex items-start gap-3">
+            <iconify-icon icon="solar:tag-price-bold" class="text-lg text-[#047857] mt-0.5"></iconify-icon>
+            <div>
+              <p class="text-sm font-medium text-[#047857]">Total Savings: $2.50</p>
+              <p class="text-xs text-[#065F46] mt-0.5">You're saving with Quicklly Pass</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Checkout</span>
+            <span class="font-semibold text-base">$37.19</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 09 — If item is out of stock -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">09 — If item out of stock</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-20 relative border-b border-[#E5E5E5]">
+          <h1 class="text-base font-semibold tracking-tight text-[#171717]">Quicklly Bazaar Chicago</h1>
+        </div>
+        <!-- Mock Background -->
+        <div class="p-4 z-20 pointer-events-none opacity-40">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] h-32 w-full mb-4"></div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] h-32 w-full"></div>
+        </div>
+        
+        <div class="fade-overlay"></div>
+        
+        <!-- Bottom Sheet -->
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-3xl pt-2 pb-8 px-6 z-50 flex flex-col gap-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+          <div class="w-12 h-1 bg-[#E5E5E5] rounded-full mx-auto mb-2"></div>
+          <h2 class="text-lg font-semibold tracking-tight text-[#171717]">Choose if item is out of stock</h2>
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center gap-3 py-3 border-b border-[#E5E5E5]">
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0">
+                <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+              </div>
+              <span class="text-sm font-medium text-[#171717]">Replace with best match</span>
+            </div>
+            <div class="flex items-center gap-3 py-3 border-b border-[#E5E5E5]">
+              <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0"></div>
+              <span class="text-sm text-[#171717]">Call us before replacing</span>
+            </div>
+            <div class="flex items-center gap-3 py-3">
+              <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0"></div>
+              <span class="text-sm text-[#171717]">Do not replace</span>
+            </div>
+          </div>
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-3.5 rounded-full mt-2">Save</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 10 — If cart below $30 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">10 — Order Summary (&lt; $30)</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Order Summary</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex justify-between items-start">
+            <div class="flex gap-3">
+              <iconify-icon icon="solar:map-point-linear" class="text-xl text-[#047857] mt-0.5"></iconify-icon>
+              <div>
+                <h3 class="text-sm font-semibold text-[#171717]">Ramesh Jain</h3>
+                <p class="text-xs text-[#737373] mt-1">Chicago Riverwalk<br>Chicago, IL 60611</p>
+              </div>
+            </div>
+            <span class="text-xs text-[#047857] font-medium cursor-pointer">Change</span>
+          </div>
+          
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717] mt-2">Delivery Estimates</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]">
+              <h3 class="text-sm font-semibold">Quicklly Bazaar Chicago</h3>
+            </div>
+            <div class="p-3">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+                  <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+                </div>
+                <div>
+                  <span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span>
+                  <p class="text-xs text-[#737373] mt-0.5">Direct to you, in 3 hours</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]">
+              <h3 class="text-sm font-semibold">World Fresh Market</h3>
+            </div>
+            <div class="p-3 flex flex-col gap-4">
+              <div class="flex items-start gap-3 opacity-50">
+                <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0 mt-0.5"></div>
+                <div>
+                  <span class="text-sm text-[#171717]">Standard — $4.99</span>
+                  <p class="text-xs text-[#737373] mt-0.5">Tomorrow, 5:30 PM - 8:30 PM</p>
+                  <p class="text-xs text-[#D97706] font-medium mt-1">Minimum $30 for free delivery</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+                  <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+                </div>
+                <div>
+                  <span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span>
+                  <p class="text-xs text-[#737373] mt-0.5">Direct to you, today</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717] mt-2">Offers &amp; Savings</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-3 flex justify-between items-center cursor-pointer">
+            <div class="flex items-center gap-3 text-[#171717]">
+              <iconify-icon icon="solar:ticket-linear" class="text-xl text-[#047857]"></iconify-icon>
+              <span class="text-sm">Apply Promo Code</span>
+            </div>
+            <iconify-icon icon="solar:alt-arrow-right-linear" class="text-sm text-[#737373]"></iconify-icon>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Payment</span>
+            <span class="font-semibold text-base">$36.97</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 11 — Priority delivery with standard delivery option – 23 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">11 — Standard vs Priority (Promo)</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Order Summary</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717]">Delivery Estimates</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]">
+              <h3 class="text-sm font-semibold">Quicklly Bazaar Chicago</h3>
+            </div>
+            <div class="p-3 flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+              </div>
+              <div>
+                <span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span>
+                <p class="text-xs text-[#737373] mt-0.5">Direct to you, in 3 hours</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]">
+              <h3 class="text-sm font-semibold">World Fresh Market</h3>
+            </div>
+            <div class="p-3 flex flex-col gap-4">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0 mt-0.5"></div>
+                <div>
+                  <span class="text-sm text-[#171717]">Standard — Free</span>
+                  <p class="text-xs text-[#737373] mt-0.5">Tomorrow, 5:30 PM - 8:30 PM</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+                  <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+                </div>
+                <div>
+                  <span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span>
+                  <p class="text-xs text-[#737373] mt-0.5">Direct to you, today</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717] mt-2">Offers &amp; Savings</h2>
+          <div class="bg-[#ECFDF5] border border-[#047857] rounded-xl p-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <iconify-icon icon="solar:ticket-bold" class="text-xl text-[#047857]"></iconify-icon>
+              <div>
+                <span class="text-sm font-medium text-[#047857]">JOHNREF10 Applied</span>
+                <p class="text-xs text-[#065F46] mt-0.5">-$10.00 saved</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-[#B91C1C] cursor-pointer">Remove</span>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Payment</span>
+            <span class="font-semibold text-base">$76.50</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 12 — Priority delivery with standard delivery option – 24 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">12 — Mixed Local &amp; Nationwide</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Order Summary</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717]">Delivery Estimates</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]">
+              <h3 class="text-sm font-semibold">Quicklly Bazaar Chicago</h3>
+            </div>
+            <div class="p-3 flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+              </div>
+              <div>
+                <span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span>
+                <p class="text-xs text-[#737373] mt-0.5">Direct to you, in 3 hours</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]">
+              <h3 class="text-sm font-semibold">Almond House</h3>
+            </div>
+            <div class="p-3 flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+              </div>
+              <div>
+                <span class="text-sm font-medium text-[#171717]">Standard Shipping — Free</span>
+                <p class="text-xs text-[#737373] mt-0.5">Est. Wednesday, Aug 18, 2026</p>
+              </div>
+            </div>
+          </div>
+          
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717] mt-2">Offers &amp; Savings</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-3 flex justify-between items-center cursor-pointer">
+            <div class="flex items-center gap-3 text-[#171717]">
+              <iconify-icon icon="solar:ticket-linear" class="text-xl text-[#047857]"></iconify-icon>
+              <span class="text-sm">Apply Promo Code</span>
+            </div>
+            <iconify-icon icon="solar:alt-arrow-right-linear" class="text-sm text-[#737373]"></iconify-icon>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Payment</span>
+            <span class="font-semibold text-base">$217.18</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 13 — Promo codes -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">13 — Promo Codes</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex justify-between items-center border-b border-[#E5E5E5]">
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Promo codes</h1>
+          <iconify-icon icon="solar:close-circle-linear" class="text-2xl text-[#737373]"></iconify-icon>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar p-4 flex flex-col gap-6">
+          <div class="flex gap-2">
+            <input type="text" placeholder="Enter promo code" value="QUICKLLY10" class="flex-1 h-12 px-4 rounded-xl bg-white border border-[#E5E5E5] text-sm outline-none">
+            <button class="bg-[#047857] text-white font-medium text-sm px-6 rounded-xl">Apply</button>
+          </div>
+          
+          <div>
+            <h2 class="text-sm font-semibold tracking-tight text-[#171717] mb-3">Your available Promo codes</h2>
+            <div class="flex flex-col gap-3">
+              <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-3 border-l-4 border-l-[#047857]">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="text-base font-semibold text-[#171717]">$10 off on $30</h3>
+                    <p class="text-xs text-[#737373] mt-1 leading-relaxed">Download Quicklly App and Get $10 off $30. For First Time User Only. Only on App.</p>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center mt-2 pt-3 border-t border-dashed border-[#E5E5E5]">
+                  <span class="text-sm font-semibold text-[#171717] bg-[#F5F5F5] px-3 py-1 rounded border border-[#E5E5E5] tracking-widest">QUICKLLY10</span>
+                  <button class="text-sm font-medium text-[#047857]">Apply</button>
+                </div>
+              </div>
+              <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-3 border-l-4 border-l-[#047857]">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="text-base font-semibold text-[#171717]">$10 off on $50</h3>
+                    <p class="text-xs text-[#737373] mt-1 leading-relaxed">Exclusive savings for our new users on orders over $50.</p>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center mt-2 pt-3 border-t border-dashed border-[#E5E5E5]">
+                  <span class="text-sm font-semibold text-[#171717] bg-[#F5F5F5] px-3 py-1 rounded border border-[#E5E5E5] tracking-widest">NEWUSER10</span>
+                  <button class="text-sm font-medium text-[#047857]">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 14 — Promo codes – 2 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">14 — Promo Codes (Empty)</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex justify-between items-center border-b border-[#E5E5E5]">
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Promo codes</h1>
+          <iconify-icon icon="solar:close-circle-linear" class="text-2xl text-[#737373]"></iconify-icon>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar p-4 flex flex-col">
+          <div class="flex gap-2">
+            <input type="text" placeholder="Enter promo code" class="flex-1 h-12 px-4 rounded-xl bg-white border border-[#E5E5E5] text-sm outline-none">
+            <button class="bg-[#047857] text-white font-medium text-sm px-6 rounded-xl">Apply</button>
+          </div>
+          <div class="flex-1 flex flex-col items-center justify-center -mt-12 text-center px-8">
+            <div class="w-16 h-16 bg-[#E5E5E5] rounded-full flex items-center justify-center text-[#737373] mb-4">
+              <iconify-icon icon="solar:ticket-linear" class="text-3xl"></iconify-icon>
+            </div>
+            <h2 class="text-base font-semibold text-[#171717] mb-2">No available offers this time</h2>
+            <p class="text-sm text-[#737373]">If you have a promo code, enter it above.</p>
+          </div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 15 — Delivery instructions -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">15 — Delivery instructions</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-20 relative border-b border-[#E5E5E5]">
+          <h1 class="text-base font-semibold tracking-tight text-[#171717]">Order Summary</h1>
+        </div>
+        <div class="p-4 z-20 pointer-events-none opacity-40">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] h-32 w-full mb-4"></div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] h-32 w-full"></div>
+        </div>
+        <div class="fade-overlay"></div>
+        
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-3xl pt-2 pb-8 px-6 z-50 flex flex-col gap-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+          <div class="w-12 h-1 bg-[#E5E5E5] rounded-full mx-auto mb-2"></div>
+          <h2 class="text-lg font-semibold tracking-tight text-[#171717]">Delivery instructions</h2>
+          <textarea placeholder="Example: Please leave the order at the door" class="w-full h-32 bg-[#F5F5F5] border border-[#E5E5E5] rounded-xl p-4 text-sm outline-none resize-none"></textarea>
+          <div class="bg-[#F9FAFB] rounded-lg p-3 flex items-start gap-2 border border-[#E5E5E5]">
+            <iconify-icon icon="solar:info-circle-linear" class="text-[#737373] mt-0.5"></iconify-icon>
+            <p class="text-xs text-[#737373] leading-relaxed">Orders from multiple stores may be delivered separately based on store availability.</p>
+          </div>
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-3.5 rounded-full mt-2">Update</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 16 — Wallet balance -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">16 — Wallet balance</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-20 relative border-b border-[#E5E5E5]"><h1 class="text-base font-semibold tracking-tight">Order Summary</h1></div>
+        <div class="p-4 z-20 pointer-events-none opacity-40"><div class="bg-white rounded-xl border border-[#E5E5E5] h-64 w-full"></div></div>
+        <div class="fade-overlay"></div>
+        
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-3xl pt-2 pb-8 px-6 z-50 flex flex-col gap-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+          <div class="w-12 h-1 bg-[#E5E5E5] rounded-full mx-auto mb-2"></div>
+          <div class="flex justify-between items-center">
+            <h2 class="text-lg font-semibold tracking-tight text-[#171717]">Apply Wallet Balance</h2>
+            <span class="text-sm font-semibold text-[#047857]">$24.81 Available</span>
+          </div>
+          <div class="relative">
+            <span class="absolute left-4 top-3.5 text-[#171717] font-medium">$</span>
+            <input type="number" placeholder="0.00" value="10.00" class="w-full h-12 bg-white border border-[#E5E5E5] rounded-xl pl-8 pr-4 text-sm font-medium outline-none focus:border-[#047857]">
+          </div>
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-3.5 rounded-full mt-2">Apply</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 17 — Rewards points -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">17 — Rewards points</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-20 relative border-b border-[#E5E5E5]"><h1 class="text-base font-semibold tracking-tight">Order Summary</h1></div>
+        <div class="p-4 z-20 pointer-events-none opacity-40"><div class="bg-white rounded-xl border border-[#E5E5E5] h-64 w-full"></div></div>
+        <div class="fade-overlay"></div>
+        
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-3xl pt-2 pb-8 px-6 z-50 flex flex-col gap-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+          <div class="w-12 h-1 bg-[#E5E5E5] rounded-full mx-auto mb-2"></div>
+          <div class="flex justify-between items-start">
+            <h2 class="text-lg font-semibold tracking-tight text-[#171717]">Redeem Rewards</h2>
+            <div class="text-right">
+              <span class="text-sm font-semibold text-[#047857]">1,280 pts</span>
+              <p class="text-xs text-[#737373] mt-0.5">($12.80 available)</p>
+            </div>
+          </div>
+          <input type="number" placeholder="Enter points" value="500" class="w-full h-12 bg-white border border-[#E5E5E5] rounded-xl px-4 text-sm font-medium outline-none focus:border-[#047857]">
+          <p class="text-xs text-[#047857] font-medium text-center">Redeeming 500 points ($5.00)</p>
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-3.5 rounded-full">Apply</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 18 — Priority delivery with standard delivery option – 25 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">18 — Standard Free Selected</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Order Summary</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717]">Delivery Estimates</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]"><h3 class="text-sm font-semibold">Quicklly Bazaar Chicago</h3></div>
+            <div class="p-3 flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5"><div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div></div>
+              <div><span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span><p class="text-xs text-[#737373] mt-0.5">Direct to you, in 3 hours</p></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]"><h3 class="text-sm font-semibold">World Fresh Market</h3></div>
+            <div class="p-3 flex flex-col gap-4">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5"><div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div></div>
+                <div><span class="text-sm font-medium text-[#171717]">Standard — Free</span><p class="text-xs text-[#737373] mt-0.5">Tomorrow, 5:30 PM - 8:30 PM</p></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0 mt-0.5"></div>
+                <div><span class="text-sm text-[#171717]">Priority — +$4.99</span><p class="text-xs text-[#737373] mt-0.5">Direct to you, today</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Payment</span><span class="font-semibold text-base">$86.50</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 19 — Priority delivery with standard delivery option – 26 -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">19 — Standard Fee Selected</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Order Summary</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <h2 class="text-sm font-semibold tracking-tight text-[#171717]">Delivery Estimates</h2>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]"><h3 class="text-sm font-semibold">Quicklly Bazaar Chicago</h3></div>
+            <div class="p-3 flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5"><div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div></div>
+              <div><span class="text-sm font-medium text-[#171717]">Priority — +$4.99</span><p class="text-xs text-[#737373] mt-0.5">Direct to you, in 3 hours</p></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="bg-[#F9FAFB] p-3 border-b border-[#E5E5E5]"><h3 class="text-sm font-semibold">World Fresh Market</h3></div>
+            <div class="p-3 flex flex-col gap-4">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0 mt-0.5"><div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div></div>
+                <div><span class="text-sm font-medium text-[#737373] mt-0.5">Tomorrow, 5:30 PM - 8:30 PM<p></p></span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0 mt-0.5"></div>
+                <div><span class="text-sm text-[#171717]">Priority — +$4.99</span><p class="text-xs text-[#737373] mt-0.5">Direct to you, today</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset- px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full flex justify-between px-6 items-center">
+            <span>Proceed to Payment</span><span class="font-semibold text-base">$91.49</span>
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 20 — Payment Selection -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">20 — Payment Selection</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z          &lt;iconify-icon icon=" solar:arrow-left-linear"="">
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Payment</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-6">
+          <div>
+            <h2 class="text-sm font-semibold tracking-tight text-[#171717] mb-3">Saved Cards</h2>
+            <div class="bg-white rounded-xl border border-[#047857] p-4 flex items-center gap-4 bg-[#ECFDF5]">
+              <div class="w-10 h-7 bg-white rounded border border-[#E5E5E5] flex items-center justify-center text-xs font-bold italic text-[#1E3A8A]">VISA</div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-[#171717]">•••• 4242</p>
+                <p class="text-xs text-[#737373]">Expires 12/24</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-2 border-[#047857] flex items-center justify-center shrink-0">
+                <div class="w-2.5 h-2.5 bg-[#047857] rounded-full"></div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex items-center gap-4 mt-3">
+              <div class="w-10 h-7 bg-white rounded border border-[#E5E5E5] flex items-center justify-center text-xs font-bold italic text-[#B91C1C]">MC</div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-[#171717]">•••• 5555</p>
+                <p class="text-xs text-[#737373]">Expires 08/26</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0"></div>
+            </div>
+            <div class="flex items-center gap-3 mt-4 text-[#047857] font-medium text-sm cursor-pointer">
+              <iconify-icon icon="solar:add-circle-linear" class="text-lg"></iconify-icon> Add New Card
+            </div>
+          </div>
+          <div>
+            <h2 class="text-sm font-semibold tracking-tight text-[#171717] mb-3">Other Methods</h2>
+            <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex items-center gap-4">
+              <iconify[#171717]">
+              <div class="flex-1 text-sm font-medium text-[#171717]">Apple Pay</div>
+              <div class="w-5 h-5 rounded-full border-2 border-[#E5E5E5] shrink-0"></div>
+            </iconify[#171717]"></div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40 flex flex-col gap-3">
+          <div class="flex justify-between items-center px-2">
+            <span class="text-sm text-[#737373]">Total to pay</span>
+            <span class="text-lg font-bold text-[#171717]">$91.49</span>
+          </div>
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full">Place Order</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 21 — Add New Card -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">21 — Add New Card</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5]">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Add Card</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-medium text-[#171717] ml-1">Card Number</label>
+            <div class="relative">
+              <input type="text" placeholder="0000 0000 0000 0000" class="w-full h-12 bg-white border border-[#E5E5E5] rounded-xl pl-10 pr-4 text-sm outline-none focus:border-[#047857]">
+              <iconify-icon icon="solar:card-linear" class="absolute left-3.5 top-3.5 text-[#737373] text-lg"></iconify-icon>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium text-[#171717] ml-1">Expiry Date</label>
+              <input type="text" placeholder="MM/YY" class="w-full h-12 bg-white border border-[#E5E5E5] rounded-xl px-4 text-sm outline-none focus:border-[#047857]">
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium text-[#171717] ml-1">CVV</label>
+              <input type="password" placeholder="123" class="w-full h-12 bg-white border border-[#E5E5E5] rounded-xl px-4 text-sm outline-none focus:border-[#047857]">
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-medium text-[#171717] ml-1">Cardholder Name</label>
+            <input type="text" placeholder="John Doe" class="w-full h-12 bg-white border border-[#E5E5E5] rounded-xl px-4 text-sm outline-none focus:border-[#047857]">
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <div class="w-5 h-5 rounded border border-[#047857] bg-[#047857] flex items-center justify-center text-white"><iconify-icon icon="solar:check-read-linear" class="text-sm"></iconify-icon></div>
+            <span class="text-sm text-[#171717]">Save this card for future payments</span>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full">Save Card</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 22 — Order Success -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">22 — Order Success</span>
+      <div class="w-[393px] h-[852px] bg-[#047857] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="flex justify-between items-center px-6 pt-3.5 pb-2 text-sm font-medium text-white z-40 relative">
+          <span class="ml-2">9:41</span>
+          <div class="flex items-center gap-1.5 mr-2">
+            <iconify-icon icon="solar:graph-bold"></iconify-icon>
+            <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+            <iconify-icon icon="solar:battery-charge-bold" class="text-lg"></iconify-icon>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center-white/20 rounded-full flex items-center justify-center mb-6">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-icon&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;h1 class=" text-3xl="" tracking-tight="" font-semibold="" text-white="" mb-2"="">Order Placed!
+          <p class="text-sm text-[#ECFDF5] mb-8">Your order #Q129384 is confirmed and being prepared by the store.</p>
+          sm border border-white/20"&gt;
+            <div class="flex justify-between items-center border-b border-white/20 pb-3 mb-3">
+              <span class="text-[#ECFDF5] text-sm">Estimated Delivery</span>
+              <span class="text-white font-semibold text-sm">Today, 12:30 PM</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-[#ECFDF5] text-sm">Quicklly Bazaar Chicago</span>
+              <span class="text-white font-semibold text-sm">3 Items</span>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 pb-8 pt-4 px-6 z-40 flex flex-col gap-3">
+          <button class="w-full bg-white text-[#047857] font-medium text-sm py-4 rounded-full shadow-lg">Track Order</button>
+          <button class="w-full bg-transparent text-white font-medium text-sm py-4 rounded-full border border-white/30">Back to Home</button>
+        </div>
+        <div class="home-indicator white"></div>
+      </div>
+    </div>
+
+    <!-- 23 — Order Tracking -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">23 — Order Tracking</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&amp;q=80" class="w-full h-full object-cover opacity-60">
+        </div>
+        <div class="bg-white/90 backdrop-blur-md pb-3 pt-[52px] px-4 z-40 relative flex items-center justify-between border-b border-[#E5E5E5]/50 shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-[#E5E5E5]">
+              <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+            </div>
+          </div>
+          <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-[#E5E5E5] text-[#047857]">
+            <iconify-icon icon="solar:phone-bold" class="text-xl"></iconify-icon>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-3xl pt-2 pb-8 px-6 z-50 flex flex-col gap-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+          <div class="w-12 h-1 bg-[#E5E5E5] rounded-full mx-auto mb-2"></div>
+          <div class="flex justify-between items-end">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-[#171717]">12:30 PM</h2>
+              <p class="text-sm text-[#737373] mt-1">Estimated delivery time</p>
+            </div>
+            <span class="bg-[#ECFDF5] text-[#047857] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">On the way</span>
+          </div>
+          
+          <div class="flex items-center gap-0 mt-2">
+            <div class="h-2 flex-1 bg-[#047857] rounded-l-full"></div>
+            <div class="w-1 h-2 bg-white"></div>
+            <div class="h-2 flex-1 bg-[#047857]"></div>
+            <div class="w-1 h-2 bg-white"></div>
+            <div class="h-2 flex-1 bg-[#047857] rounded-r-full"></div>
+          </div>
+
+          <div class="bg-[#F9FAFB] rounded-xl border border-[#E5E5E5] p-4 mt-2 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-[#E5E5E5] shrink-0">
+              <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&amp;q=80" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold text-[#171717]">Rajesh K.</h3>
+              <p class="text-xs text-[#737373]">Toyota Prius • AB1234</p>
+            </div>
+            <div class="flex items-center gap-1 text-sm font-semibold text-[#171717]">
+              <iconify-icon icon="solar:star-bold" class="text-[#F59E0B]"></iconify-icon> 4.9
+            </div>
+          </div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 24 — Quicklly Pass -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">24 — Quicklly Pass Sales</span>
+      <div class="w-[393px] h-[852px] bg-white rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-[#047857] h-64 absolute top-0 inset-x-0 z-0"></div>
+        <div class="flex justify-between items-center px-6 pt-3.5 pb-2 text-sm font-medium text-white z-4flex items-center gap-1.5 mr-2">
+            <iconify-icon icon="solar:graph-bold"></iconify-icon>
+            <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+            <iconify-icon icon="solar:battery-charge-bold" class="text-lg"></iconify-icon>
+          </div>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto no-scrollbar z-40 relative pb-32">
+          <div class="px-6 pt-6 pb-12 flex flex-col items-center text-center text-white">
+            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
+              <iconify-icon icon="solar:star-circle-bold" class="text-4xl text-white"></iconify-icon>
+            </div>
+            <h1 class="text-3xl tracking-tighter font-semibold mb-2">Quicklly Pass</h1>
+            <p class="text-sm text-[#ECFDF5] px-4">Unlimited free delivery on grocery, food, and nationwide orders.</p>
+          </div>
+          
+          <div class="bg-white rounded-t-3xl -mt-6 pt-8 px-6 flex flex-col gap-6 min-h-screen border-t border-[#E5E5E5]">
+            <div class="flex flex-col gap-4">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-[#ECFDF5] flex items-center justify-center text-[#047857] shrink-0 mt-1">
+                  <iconify-icon icon="solar:box-minimalistic-bold" class="text-xl"></iconify-icon>
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-[#171717]">Free Local Delivery</h3>
+                  <p class="text-sm text-[#737373] mt-1">Get unlimited free delivery on all orders over $30 from local stores.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-[#ECFDF5] flex items-center justify-center text-[#047857] shrink-0 mt-1">
+                  <iconify-icon icon="solar:tag-price-bold" class="text-xl"></iconify-icon>
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-[#171717]">Exclusive Discounts</h3>
+                  <p class="text-sm text-[#737373] mt-1">Access member-only pricing and save up to 15% on daily essentials.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-[#ECFDF5] flex items-center justify-center text-[#047857] shrink-0 mt-1">
+                  <iconify-icon icon="solar:routing-2-bold" class="text-xl"></iconify-icon>
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-[#171717]">Nationwide Shipping Free</h3>
+                  <p class="text-sm text-[#737373] mt-1">No shipping fees on Indian sweets and premium items across the US.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-[#F9FAFB] border border-[#E5E5E5] rounded-xl p-1 flex mt-2">
+              <div class="flex-1 bg-white shadow-sm rounded-lg py-3 text-center border border-[#E5E5E5]">
+                <p class="text-xs text-[#737373] font-medium uppercase tracking-wider">Monthly</p>
+                <p class="text-xl font-bold text-[#171717] mt-1">$9.99<span class="text-xs font-normal text-[#737373]">/mo</span></p>
+              </div>
+              <div class="flex-1 rounded-lg py-3 text-center">
+                <p class="text-xs text-[#737373] font-medium uppercase tracking-wider">Annual</p>
+                <p class="text-xl font-bold text-[#171717]yr&lt;/span&gt;&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=" absolute="" bottom-0="" inset-x-0="" bg-white="" border-t="" border-[#e5e5e5]="" pb-8="" pt-4="" px-4="" z-40"="">
+          <button class="w-full bg-[#047857]&gt;
+        &lt;/div&gt;
+        &lt;div class=" home-indicator"=""></button></p></div>
+      </div>
+    </div>
+
+    <!-- 25 — User Profile -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">25 — User Profile</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-6 pt-[60px] px-6 z-40 relative border-b border-[#E5E5E5] flex items-center gap-4 shadow-sm">
+          <div class="w-16 h-16 rounded-full overflow-hidden bg-[#E5E5E5] border border-[#E5E5E5] shrink-0">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&amp;q=80" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h1 class="text-xl font-semibold tracking-tight text-[#171717]">Priya Patel</h1>
+            <p class="text-sm text-[#737373] mt-0.5">priya.patel@example.com</p>
+            <div class="bg-[#ECFDF5] text-[#047857] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider inline-block mt-1.5 border border-[#047857]">Q Pass Active</div>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-24 p-4 flex flex-col gap-2">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="p-4 flex items-center justify-between border-b border-[#E5E5E5] cursor-pointer">
+              <div class="flex items-center gap-3 text-[#171717]">
+                <iconify-icon icon="solar:box-linear" class="text-xl text-[#737373]"></iconify-icon>
+                <span class="text-sm font-medium">Orders</span>
+              </div>
+              <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373]"></iconify-icon>
+            </div>
+            <div class="p-4 flex items-center justify-between border-b border-[#E5E5E5] cursor-pointer">
+              <div class="flex items-center gap-3 text-[#171717]">
+                <iconify-icon icon="solar:map-point-linear" class="text-xl text-[#737373]"></iconify-icon>
+                <span class="text-sm font-medium">Addresses</span>
+              </div>
+              <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373]"></iconify-icon>
+            </div>
+            <div class="p-4 flex items-center justify-between border-b border-[#E5E5E5] cursor-pointer">
+              <div class="flex items-center gap-3 text-[#171717]">
+                <iconify-icon icon="solar:wallet-money-linear" class="text-xl text-[#737373]"></iconify-icon>
+                <span class="text-sm font-medium">Wallet &amp; Rewards</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-[#047857]">$24.81</span>
+                <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373]"></iconify-icon>
+              </div>
+            </div>
+            <div class="p-4 flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-3 text-[#171717]">
+                <iconify-icon icon="solar:card-linear" class="text-xl text-[#737373]"></iconify-icon>
+                <span class="text-sm font-medium">Payment Methods</span>
+              </div>
+              <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373]"></iconify-icon>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden mt-2">
+            <div class="p-4 flex items-center justify-between border-b border-[#E5E5E5] cursor-pointer">
+              <div class="flex items-center gap-3 text-[#171717]">
+                <iconify-icon icon="solar:settings-linear" class="text-xl text-[#737373]"></iconify-icon>
+                <span class="text-sm font-medium">Settings</span>
+              </div>
+              <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[#737373]"></iconify-icon>
+            </div>
+            <div class="p-4 flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-3 text-[#171717]">
+                <iconify-icon icon="solar:help-linear" class="text-xl text-[#737373]"></iconify-icon>
+                <span class="text-sm font-medium">Help &amp; Support</span>
+              </div>
+              <iconify-icon icon="solar:alt-            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;button class=" bg-white="" rounded-xl="" border="" border-[#e5e5e5]="" p-4="" text-center="" mt-2="" text-[#b91c1c]="" font-medium="" text-sm"="">
+            Log Out
+          
+        </iconify-icon></div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-3 px-6 flex justify-between text-[#737373] text-xs z-40">
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:home-2-linear" class="text-2xl"></iconify-icon>Home</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:cart-large-2-linear" class="text-2xl"></iconify-icon>Cart</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:star-circle-linear" class="text-2xl"></iconify-icon>Q Pass</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:history-linear" class="text-2xl"></iconify-icon>Buy Again</div>
+          <div class="flex flex-col items-center gap-1 text-[#047857]"><iconify-icon icon="solar:user-circle-bold" class="text-2xl"></iconify-icon>Profile</div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 26 — Manage Addresses -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">26 — Manage Addresses</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5] shadow-sm">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Addresses</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-24 p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#047857] p-4 bg-[#ECFDF5]">
+            <div class="flex justify-between items-start">
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:home-2-bold" class="text-xl text-[#047857] mt-0.5"></iconify-icon>
+                <div>
+                  <h3 class="text-sm font-semibold text-[#171717]">Home (Default)</h3>
+                  <p class="text-xs text-[#737373] mt-1 leading-relaxed">1400 N Lake Shore Dr, Apt 21B<br>Chicago, IL 60610</p>
+                  <p class="text-xs text-[#171717] mt-2 font-medium">Delivery Instructions: Leave at door</p>
+                </div>
+              </div>
+              <iconify-icon icon="solar:pen-linear" class="text-lg text-[#737373]"></iconify-icon>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4">
+            <div class="flex justify-between items-start">
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:buildings-linear" class="text-xl text-[#737373] mt-0.5"></iconify-icon>
+                <div>
+                  <h3 class="text-sm font-semibold text-[#171717]">Work</h3>
+                  <p class="text-xs text-[#737373] mt-1 leading-relaxed">200 E Randolph St, Suite 5100<br>Chicago, IL 60601</p>
+                </div>
+              </div>
+              <iconify-icon icon="solar:pen-linear" class="text-lg text-[#737373]"></iconify-icon>
+            </div>
+          </div>
+          <button class="w-full bg-white text-[#047857] font-medium text-sm py-4 rounded-xl border border-[#047857] border-dashed flex items-center justify-center gap-2">
+            <iconify-icon icon="solar:add-circle-linear" class="text-lg"></iconify-icon> Add New Address
+          </button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 27 — Order History -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">27 — Order History</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center gap-3 border-b border-[#E5E5E5] shadow-sm">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Orders</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="p-4 border-b border-[#E5E5E5]">
+              <div class="flex justify-between items-center mb-2">
+                <span class="bg-[#ECFDF5] text-[#047857] text-xs font-semibold px-2 py-1 rounded">Delivered</span>
+                <span class="text-xs text-[#737373]">Oct 12, 2023</span>
+              </div>
+              <h3 class="text-sm font-semibold text-[#171717]">Quicklly Bazaar Chicago</h3>
+              <p class="text-xs text-[#737373] mt-1">Order #Q129384 • 7 Items • $42.18</p>
+            </div>
+            <div class="p-3 bg-[#F9FAFB] flex justify-between items-center">
+              <button class="text-sm font-medium text-[#171717] px-4 py-1.5 border border-[#E5E5E5] rounded-full bg-white">Rate Store</button>
+              <button class="text-sm font-medium text-white px-4 py-1.5 border border-[#047857] rounded-full bg-[#047857]">Reorder</button>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
+            <div class="p-4 border-b border-[#E5E5E5]">
+              <div class="flex justify-between items-center mb-2">
+                <span class="bg-[#F5F5F5] text-[#171717] text-xs font-semibold px-2 py-1 rounded">Delivered</span>
+                <span class="text-xs text-[#737373]">Sep 28, 2023</span>
+              </div>
+              <h3 class="text-sm font-semibold text-[#171717]">Almond House</h3>
+              <p class="text-xs text-[#737373] mt-1">Order #Q118273 • 3 Items • $175.00</p>
+            </div>
+            <div class="p-3 bg-[#F9FAFB] flex justify-end items-center">
+              <button class="text-sm font-medium text-white px-4 py-1.5 border border-[#047857] rounded-full bg-[#047857]">Reorder</button>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden opacity-60">
+            <div class="p-4 border-b border-[#E5E5E5]">
+              <div class="flex justify-between items-center mb-2">
+                <span class="bg-[#FEF2F2] text-[#B91C1C] text-xs font-semibold[#737373]">Aug 05, 2023</span>
+              </div>
+              <h3 class="text-sm font-semibold text-[#171717]">World Fresh Market</h3>
+              <p class="text-xs text-[#737373] mt-1">Order #Q092384 • 2 Items • $18.50</p>
+            </div>
+          </div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 28 — Order Details -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">28 — Order Details</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex items-center justify-between border-b border-[#E5E5E5] shadow-sm">
+          <div class="flex items-center gap-3">
+            <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+            <h1 class="text-base font-semibold tracking-tight text-[#171717]">Order #Q129384</h1>
+          </div>
+          <span class="text-xs font-semibold text-[#047857] bg-[#ECFDF5] px-2 py-1 rounded">Delivered</span>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-32 p-4 flex flex-col gap-4">
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-2">
+            <h2 class="text-sm font-semibold text-[#171717]">Quicklly Bazaar Chicago</h2>
+            <p class="text-xs text-[#737373]">Delivered on Oct 12, 2023 at 1:45 PM</p>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-4">
+            <h3 class="text-sm font-semibold text-[#171717] border-b border-[#E5E5E5] pb-2">Items (7)</h3>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <span class="text- flex items-center justify-center rounded">1</span>
+                <div>
+                  <p class="text-sm text-[#171717]">Organic Red Tomatoes</p>
+                  <p class="text-xs text-[#737373]">1 lb</p>
+                </div>
+              </div>
+              <span class="text-sm font-medium">$3.49</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <span class="text-sm font-medium text-[#047857] bg-[#ECFDF5] w-6 h-6 flex items-center justify-center rounded">2</span>
+                <div>
+                  <p class="text-sm text-[#171717]">Fresh Blueberries</p>
+                  <p< div="">
+              <span class="text-sm font-medium">$9.98</span>
+            </p<></div>
+            <div class="pt-2 border-t border-[#E5E5E5] text-xs font-medium text-[#047857] cursor-pointer">
+              View all 7 items
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-[#E5E5E5] p-4 flex flex-col gap-3 text-sm">
+            <h3 class="font-semibold text-[#171717] border-b border-[#E5E5E5] pb-2">Summary</h3>
+            <div class="flex justify-between text-[#737373]"><span>Subtotal</span><span>$37.19</span></div>
+            <div class="flex justify-between text-[#737373]"><span>Delivery Fee</span><span>$0.00</span></div>
+            <div class="flex justify-between text-[#737373]"><span>Taxes &amp; Fees</span><span>$4.99</span></div>
+            <div class="flex justify-between font-bold text-[#171717] border-t border-[#E5E5E5] pt-2"><span>Total</span><span>$42.18</span></div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-4 px-4 z-40">
+          <button class="w-full bg-[#047857] text-white font-medium text-sm py-4 rounded-full">Reorder All Items</button>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- 29 — Buy Again (Search / Categories) -->
+    <div class="flex flex-col items-center gap-4">
+      <span class="text-sm font-medium text-[#737373] tracking-tight">29 — Buy Again</span>
+      <div class="w-[393px] h-[852px] bg-[#F5F5F5] rounded-[48px] mockup-ring relative overflow-hidden flex flex-col shrink-0">
+        <div class="island"></div>
+        <div class="bg-white pb-3 pt-[52px] px-4 z-40 relative flex flex-col gap-4 shadow-sm border-b border-[#E5E5E5]">
+          <h1 class="text-lg font-semibold tracking-tight text-[#171717]">Buy Again</h1>
+          <div class="relative">
+            <iconify-icon icon="solar:magnifer-linear" class="absolute left-3 top-2.5 text-[#737373] text-lg"></iconify-icon>
+            <input type="text" placeholder="Search your past purchases..." class="w-full bg-[#F5F5F5] rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none border border-transparent focus:border-[#047857]">
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar pb-24 p-4 flex flex-col gap-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+              <div class="h-[140px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+              <div class="text-xs text-[#737373]">1 lb</div>
+              <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Organic Red Tomatoes</div>
+              <div class="flex justify-between items-center mt-auto">
+                <div class="text-sm font-semibold text-[#171717]">$3.49</div>
+                <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+              <div class="h-[140px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://images.unsplash.com/photo-1550828520-4cb496926fc9?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+              <div class="text-xs text-[#737373]">1 pint</div>
+              <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Fresh Blueberries</div>
+              <div class="flex justify-between items-center mt-auto">
+                <div class="text-sm font-semibold text-[#171717]">$4.99</div>
+                <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+              <div class="h-[140px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?w=200&amp;q=80" class="w-full h-full object-cover"></div>
+              <div class="text-xs text-[#737373]">1 Dozen</div>
+              <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Pasture-Raised Eggs</div>
+              <div class="flex justify-between items-center mt-auto">
+                <div class="text-sm font-semibold text-[#171717]">$6.99</div>
+                <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 bg-white p-2 rounded-xl border border-[#E5E5E5]">
+              <div class="h-[140px] bg-[#F5F5F5] rounded-none overflow-hidden"><img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" class="w-full h-full object-cover"></div>
+              <div class="text-xs text-[#737373]">1 lb</div>
+              <div class="text-sm font-medium text-[#171717] leading-tight line-clamp-2 h-10">Fresh Chicken Breast</div>
+              <div class="flex justify-between items-center mt-auto">
+                <div class="text-sm font-semibold text-[#171717]">$5.49</div>
+                <div class="bg-[#ECFDF5] border border-[#047857] text-[#047857] w-7 h-7 flex items-center justify-center rounded-full"><iconify-icon icon="solar:add-linear"></iconify-icon></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-[#E5E5E5] pb-8 pt-3 px-6 flex justify-between text-[#737373] text-xs z-40">
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:home-2-linear" class="text-2xl"></iconify-icon>Home</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:cart-large-2-linear" class="text-2xl"></iconify-icon>Cart</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:star-circle-linear" class="text-2xl"></iconify-icon>Q Pass</div>
+          <div class="flex flex-col items-center gap-1 text-[#047857]"><iconify-icon icon="solar:history-bold" class="text-2xl"></iconify-icon>Buy Again</div>
+          <div class="flex flex-col items-center gap-1"><iconify-icon icon="solar:user-circle-linear" class="text-2xl">
+
+  </iconify-icon></div>
+
+</div></div></div></div></div></div></div></div></div></div></body></html>

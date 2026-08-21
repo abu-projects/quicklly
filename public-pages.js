@@ -5,7 +5,7 @@
     const image = (id, width = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&q=82&w=${width}`;
 
     const pageMeta = {
-        'shop-by-stores': ['Shop by stores', 'Local favorites and nationwide specialists, all in one place.'],
+        'shop-by-stores': ['Shop by stores', 'Choose a local store, then browse its categories and available items.'],
         deals: ['Deals & promotions', 'Fresh picks and pantry staples at prices worth planning around.'],
         'search-results': ['Search results', 'Find products, stores, and meal kits across Quicklly.'],
         'quicklly-pass': ['Quicklly Pass', 'Delivery savings and member benefits for people who order often.'],
@@ -60,14 +60,14 @@
 
     function renderStores() {
         const stores = [
-            ['Patel Brothers', 'Same-day delivery', '4.8', image('photo-1542838132-92c53300491e', 700)],
-            ['Quicklly Indian Grocery', 'Nationwide shipping', '4.7', image('photo-1604719312566-8912e9227c6a', 700)],
-            ['Fresh Farms', 'Fresh produce & pantry', '4.6', image('photo-1578916171728-46686eac8d58', 700)],
-            ['Kamdar Plaza', 'Chicago favorites', '4.7', image('photo-1610348725531-843dff563e2c', 700)],
-            ['Very Much Indian', 'Specialty groceries', '4.5', image('photo-1534723452862-4c874018d66d', 700)],
-            ['Almond House', 'Sweets & gifting', '4.9', image('photo-1579113800032-c38bd7635818', 700)]
+            ['patel-brothers', 'Patel Brothers', 'Same-day delivery', '4.8', image('photo-1542838132-92c53300491e', 700)],
+            ['quicklly-indian-grocery', 'Quicklly Indian Grocery Nationwide', 'Delivery in 3–4 days', '3.6', image('photo-1604719312566-8912e9227c6a', 700)],
+            ['fresh-farms', 'Fresh Farms', 'Fresh produce & pantry', '4.6', image('photo-1578916171728-46686eac8d58', 700)],
+            ['kamdar-plaza', 'Kamdar Plaza', 'Chicago favorites', '4.7', image('photo-1610348725531-843dff563e2c', 700)],
+            ['very-much-indian', 'Very Much Indian', 'Specialty groceries', '4.5', image('photo-1534723452862-4c874018d66d', 700)],
+            ['almond-house', 'Almond House', 'Sweets & gifting', '4.9', image('photo-1579113800032-c38bd7635818', 700)]
         ];
-        return `${breadcrumb('Shop by stores')}<main><section class="max-w-[1360px] mx-auto px-4 md:px-8 py-10 md:py-14"><div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-9"><div><span class="text-xs font-semibold text-brand-dark">STORES NEAR 60601</span><h1 class="text-4xl md:text-5xl font-semibold mt-3 text-balance">Shop beyond grocery</h1><p class="mt-4 text-neutral-600 max-w-2xl text-pretty">Browse trusted local stores and nationwide specialists selected for quality, range, and reliable fulfillment.</p></div><label class="relative w-full lg:w-80"><span class="sr-only">Search stores</span><iconify-icon icon="solar:magnifer-linear" width="19" class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500"></iconify-icon><input type="search" placeholder="Search stores" class="w-full pl-11 pr-4 py-3 rounded-xl bg-neutral-100 border border-transparent focus:bg-white focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none"></label></div><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">${stores.map(store => `<a href="category.html" class="group block"><div class="aspect-[4/3] bg-neutral-100 overflow-hidden"><img src="${store[3]}" alt="${store[0]} storefront" class="size-full object-cover group-hover:scale-105 transition-transform duration-200"></div><div class="pt-4 flex justify-between gap-4"><div><h2 class="text-lg font-semibold group-hover:text-brand-dark transition-colors">${store[0]}</h2><p class="text-sm text-neutral-500 mt-1">${store[1]}</p></div><span class="text-sm font-semibold tabular-nums flex items-start gap-1"><iconify-icon icon="solar:star-bold" class="text-brand-green" width="16"></iconify-icon>${store[2]}</span></div></a>`).join('')}</div></section><section class="bg-neutral-950 text-white"><div class="max-w-[1360px] mx-auto px-4 md:px-8 py-12 flex flex-col md:flex-row md:items-center justify-between gap-6"><div><h2 class="text-2xl md:text-3xl font-semibold text-balance">Can’t find your neighborhood store?</h2><p class="text-neutral-400 mt-2">Tell us which store you want to see on Quicklly.</p></div><a href="contact.html" class="inline-flex justify-center rounded-full bg-brand-green hover:bg-brand-dark px-6 py-3 text-sm font-semibold transition-colors duration-150">Suggest a store</a></div></section></main>`;
+        return `${breadcrumb('Indian Grocery Delivery Chicago IL')}<main><section class="max-w-[1360px] mx-auto px-4 md:px-8 py-10 md:py-14"><span class="text-xs font-semibold text-brand-dark">SHOP GROCERY</span><h1 class="text-4xl md:text-5xl font-semibold mt-3 text-balance">Grocery</h1><p class="mt-4 text-neutral-600 max-w-2xl text-pretty">Choose what you’re shopping for, then select a nearby store and browse the categories and items it carries.</p><div class="mt-10 flex items-end justify-between gap-5"><div><span class="text-xs font-semibold text-brand-dark">NEAR 60601</span><h2 class="text-3xl md:text-4xl font-semibold mt-3 text-balance">Grocery stores near you</h2></div><a href="shop-by-stores.html" data-preserve-href class="text-sm font-semibold text-brand-dark hover:underline">View All</a></div><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 mt-8">${stores.slice(0, 3).map(store => `<a href="category.html?store=${store[0]}" data-preserve-href class="group block" aria-label="Shop ${store[1]}"><div class="aspect-[4/3] bg-neutral-100 overflow-hidden"><img src="${store[4]}" alt="${store[1]} storefront" class="size-full object-cover group-hover:scale-105 transition-transform duration-200"></div><div class="pt-4 flex justify-between gap-4"><div><h3 class="text-lg font-semibold group-hover:text-brand-dark transition-colors">${store[1]}</h3><p class="text-sm text-neutral-500 mt-1">${store[2]}</p></div><span class="text-sm font-semibold tabular-nums flex items-start gap-1"><iconify-icon icon="solar:star-bold" class="text-brand-green" width="16"></iconify-icon>${store[3]}</span></div></a>`).join('')}</div></section></main>`;
     }
 
     function renderDeals(searchMode = false) {
@@ -299,9 +299,9 @@
 
     function updateLinks(root) {
         const links = {
-            'Quicklly': 'index.html', 'Grocery': 'category.html', 'Meal Kits': 'meal-kits.html', 'Meal Kit': 'meal-kits.html', 'Indian Sweets': 'indian-sweets.html', 'Indian Sweets & Snacks': 'indian-sweets.html', 'Roti Kit': 'roti-kit.html', 'Organic': 'organic.html', 'Organic Grocery': 'organic.html', 'Gifting': 'gifting.html', 'Aha': 'aha.html', 'aha': 'aha.html', 'Catering': 'catering.html', 'Astrology': 'astrology.html', 'Events': 'events.html', 'Chai Tea & Coffee Kit': 'chai-tea-coffee.html', 'Only Luxury': 'only-luxury.html',
+            'Quicklly': 'index.html', 'Grocery': 'shop-by-stores.html?view=grocery', 'Meal Kits': 'meal-kits.html', 'Meal Kit': 'meal-kits.html', 'Indian Sweets': 'indian-sweets.html', 'Indian Sweets & Snacks': 'indian-sweets.html', 'Roti Kit': 'roti-kit.html', 'Organic': 'organic.html', 'Organic Grocery': 'organic.html', 'Gifting': 'gifting.html', 'Restaurant': 'food-delivery.html', 'Aha': 'aha.html', 'aha': 'aha.html', 'Catering': 'catering.html', 'Astrology': 'astrology.html', 'Events': 'events.html', 'Chai Tea & Coffee Kit': 'chai-tea-coffee.html', 'Only Luxury': 'only-luxury.html',
             'Quicklly Pass': 'quicklly-pass.html', 'About Us': 'about.html', 'Careers': 'careers.html', 'Press': 'press.html', 'Blog': 'blog.html', 'Contact Us': 'contact.html', 'Help Center': 'faq.html', 'Privacy Policy': 'privacy.html', 'Terms of Service': 'terms.html',
-            'Grocery Stores': 'shop-by-stores.html', 'Grocery Delivery': 'category.html', 'Nationwide Shipping': 'shop-by-stores.html', 'Corporate Gifting': 'category.html', 'Return Policy': 'faq.html', 'Sell on Quicklly': 'contact.html', 'Become a Driver': 'contact.html', 'Affiliate Program': 'contact.html', 'Accessibility': 'privacy.html', 'Brand Ambassador': 'brand-ambassador.html', 'Student Ambassador': 'student-ambassador.html', 'Be a Hero': 'be-a-hero.html', 'Refer a Friend': 'refer-a-friend.html', 'Your Account': 'my-account.html', 'My Account': 'my-account.html', 'Orders': 'my-orders.html', 'Sign Out': 'index.html'
+            'Grocery Stores': 'shop-by-stores.html?view=stores', 'Grocery Delivery': 'shop-by-stores.html?view=grocery', 'Nationwide Shipping': 'direct-from-india.html', 'Corporate Gifting': 'gifting.html', 'Return Policy': 'order-help.html', 'Sell on Quicklly': 'contact.html', 'Become a Driver': 'contact.html', 'Affiliate Program': 'contact.html', 'Accessibility': 'privacy.html', 'Brand Ambassador': 'brand-ambassador.html', 'Student Ambassador': 'student-ambassador.html', 'Be a Hero': 'be-a-hero.html', 'Refer a Friend': 'refer-a-friend.html', 'Your Account': 'my-account.html', 'My Account': 'my-account.html', 'Orders': 'my-orders.html', 'Sign Out': 'index.html'
         };
         root.querySelectorAll('a').forEach((anchor) => {
             const label = anchor.textContent.trim().replace(/\s+/g, ' ');
@@ -341,8 +341,12 @@
 
         const searchInput = document.querySelector('header input[placeholder*="Search groceries"]');
         const searchButton = searchInput?.parentElement.querySelector('button');
-        searchButton?.addEventListener('click', () => { window.location.href = 'search-results.html'; });
-        searchInput?.addEventListener('keydown', event => { if (event.key === 'Enter') window.location.href = 'search-results.html'; });
+        const submitSearch = () => {
+            const query = searchInput?.value.trim() || '';
+            window.location.href = `search-results.html${query ? `?q=${encodeURIComponent(query)}` : ''}`;
+        };
+        searchButton?.addEventListener('click', submitSearch);
+        searchInput?.addEventListener('keydown', event => { if (event.key === 'Enter') submitSearch(); });
         document.querySelectorAll('[data-auth-open]').forEach(button => button.addEventListener('click', () => window.QuickllyAuth?.open('login')));
         window.QuickllyAuth?.bindTriggers();
 

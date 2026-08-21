@@ -16,8 +16,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-green': '#10b981',
-                        'brand-dark': '#059669',
+                        'brand-green': '#047857',
+                        'brand-dark': '#065f46',
                         'brand-light': '#ecfdf5',
                     }
                 }
@@ -32,8 +32,8 @@
     <style>
         :root {
             --quicklly-black: #000000;
-            --quicklly-green: #10b981;
-            --quicklly-green-dark: #059669;
+            --quicklly-green: #047857;
+            --quicklly-green-dark: #065f46;
             --quicklly-green-light: #ecfdf5;
             --quicklly-white: #ffffff;
             --quicklly-background: #ffffff;
@@ -78,7 +78,7 @@
             height: 16px;
             width: 16px;
             border-radius: 50%;
-            background: #10b981;
+            background: #047857;
             cursor: pointer;
             margin-top: -6px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -87,18 +87,20 @@
             width: 100%;
             height: 4px;
             cursor: pointer;
-            background: #10b981;
+            background: #047857;
             border-radius: 2px;
         }
     </style>
+    <link rel="stylesheet" href="quicklly-accessibility.css">
 </head>
 <body class="font-sans antialiased text-neutral-900 bg-white">
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- 1. Promotional Strip (IDENTICAL TO index.html) -->
     <div class="bg-neutral-900 text-white text-xs font-medium py-2 px-4 text-center flex justify-center items-center gap-2">
         <span>Get $10 off your first order over $50 with code:</span>
         <span class="text-brand-green font-bold tracking-wide">WELCOME10</span>
-        <button class="ml-4 opacity-70 hover:opacity-100 hidden sm:block" aria-label="Dismiss">
+        <button class="ml-4 opacity-70 hover:opacity-100 block" aria-label="Dismiss">
             <iconify-icon icon="solar:close-circle-linear" width="16"></iconify-icon>
         </button>
     </div>
@@ -112,7 +114,7 @@
                     <button id="mobile-menu-btn" class="text-neutral-900 p-1 rounded-lg hover:bg-neutral-100 cursor-pointer" aria-label="Open menu">
                         <iconify-icon icon="solar:hamburger-menu-linear" width="24"></iconify-icon>
                     </button>
-                    <a href="#" class="flex items-center py-0.5">
+                    <a href="index.html" class="flex items-center py-0.5">
                         <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-8 w-auto">
                     </a>
                 </div>
@@ -128,7 +130,7 @@
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
                 
                 <!-- Desktop Logo -->
-                <a href="#" class="hidden md:flex items-center shrink-0 py-0.5">
+                <a href="index.html" class="hidden md:flex items-center shrink-0 py-0.5">
                     <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-10 lg:h-11 w-auto">
                 </a>
 
@@ -146,7 +148,7 @@
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <iconify-icon icon="solar:magnifer-linear" width="20" class="text-neutral-500"></iconify-icon>
                     </div>
-                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500">
+                    <input type="text" placeholder="Search groceries, meals, stores..." class="w-full pl-11 pr-24 py-3 bg-neutral-100 focus:bg-white border border-transparent focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-500" aria-label="Search groceries and stores">
                     <button class="absolute inset-y-1.5 right-1.5 px-4 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors">
                         Search
                     </button>
@@ -158,10 +160,10 @@
                         <iconify-icon icon="solar:user-circle-linear" width="20"></iconify-icon>
                         Sign In
                     </button>
-                    <button class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
+                    <a href="my-orders.html" class="flex items-center gap-2 px-3.5 py-2 rounded-lg hover:bg-neutral-100 text-sm font-medium text-neutral-700 transition-colors">
                         <iconify-icon icon="solar:box-linear" width="20"></iconify-icon>
                         Orders
-                    </button>
+                    </a>
                     <button class="flex items-center gap-2 px-4 py-2 ml-1 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors group">
                         <iconify-icon icon="solar:cart-large-2-linear" width="20"></iconify-icon>
                         Cart • <span id="cart-count" class="bg-brand-green text-white text-xs font-bold px-2 py-0.5 rounded-full ml-0.5">2</span>
@@ -179,15 +181,15 @@
                         All Categories
                     </button>
                     <span class="w-px h-4 bg-neutral-200 shrink-0"></span>
-                    <a href="#" class="shrink-0 text-brand-green font-semibold border-b-2 border-brand-green pb-1 -mb-1">Grocery</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
-                    <a href="#" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
-                    <a href="#" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
+                    <a href="shop-by-stores.html" class="shrink-0 text-brand-green font-semibold border-b-2 border-brand-green pb-1 -mb-1">Grocery</a>
+                    <a href="meal-kits.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Meal Kits</a>
+                    <a href="indian-sweets.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Indian Sweets</a>
+                    <a href="roti-kit.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Roti Kit</a>
+                    <a href="organic.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Organic</a>
+                    <a href="gifting.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Gifting</a>
+                    <a href="aha.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Aha</a>
+                    <a href="catering.html" class="shrink-0 hover:text-brand-green hover:border-b-2 border-brand-green pb-1 -mb-1 transition-colors">Catering</a>
+                    <a href="quicklly-pass.html" class="shrink-0 text-brand-green font-semibold hover:text-brand-dark transition-colors flex items-center gap-1">
                         <iconify-icon icon="solar:crown-star-bold" width="16"></iconify-icon>
                         Quicklly Pass
                     </a>
@@ -196,6 +198,7 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- ============================================================ -->
     <!-- CATEGORY BROWSE PAGE — REDESIGNED CONTENT AREA               -->
     <!-- ============================================================ -->
@@ -205,22 +208,22 @@
         <div class="max-w-[1360px] mx-auto px-4 md:px-8 py-3.5">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white border border-neutral-200/80 p-2 flex items-center justify-center shadow-xs shrink-0">
-                        <img src="imgs/quicly-logo-black.png" alt="Quicklly Store" class="logo-img h-4 w-auto">
+                    <div class="size-10 overflow-hidden rounded-full border border-neutral-200/80 bg-white flex items-center justify-center shadow-xs shrink-0">
+                        <img id="selected-store-logo" src="https://cdn.quicklly.com/seller/upload_images/store/1754923750-quicklly-bazaar-chicago.png" alt="Quicklly Bazaar Chicago" class="logo-img size-full rounded-xl object-cover">
                     </div>
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h1 class="text-sm md:text-base font-bold text-neutral-900 tracking-tight">Quicklly Indian Grocery Nationwide</h1>
+                            <h1 id="selected-store-name" class="text-sm md:text-base font-bold text-neutral-900">Quicklly Indian Grocery Nationwide</h1>
                         </div>
                         <div class="flex items-center gap-2.5 text-xs text-neutral-500 mt-0.5 flex-wrap">
                             <span class="flex items-center gap-1 font-semibold text-neutral-800">
-                                <iconify-icon icon="solar:star-bold" class="text-amber-400" width="13"></iconify-icon> 3.6
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400" width="13"></iconify-icon> <span id="selected-store-rating" class="tabular-nums">3.6</span>
                             </span>
                             <span>•</span>
-                            <span>$50 minimum order</span>
+                            <span id="selected-store-minimum">$50 minimum order</span>
                             <span>•</span>
                             <span class="flex items-center gap-1 text-emerald-700 font-medium">
-                                <iconify-icon icon="solar:delivery-linear" width="13"></iconify-icon> Delivery in 3–4 days
+                                <iconify-icon icon="solar:delivery-linear" width="13"></iconify-icon> <span id="selected-store-delivery">Delivery in 3–4 days</span>
                             </span>
                         </div>
                     </div>
@@ -228,7 +231,7 @@
 
                 <!-- Store Search Input -->
                 <div class="w-full md:w-64 relative">
-                    <input type="text" placeholder="Search this store..." class="w-full pl-9 pr-4 py-2 bg-white border border-neutral-200 focus:border-brand-green rounded-xl text-xs outline-none transition-all placeholder:text-neutral-400">
+                    <input id="selected-store-search" type="search" placeholder="Search this store..." class="w-full pl-9 pr-4 py-2 bg-white border border-neutral-200 focus:border-brand-green rounded-xl text-xs outline-none transition-colors duration-150 placeholder:text-neutral-400">
                     <iconify-icon icon="solar:magnifer-linear" width="14" class="absolute left-3 top-2.5 text-neutral-400"></iconify-icon>
                 </div>
             </div>
@@ -243,7 +246,11 @@
             <ol id="breadcrumb-container" class="flex items-center gap-1.5 text-xs text-neutral-500 flex-wrap">
                 <li><a href="index.html" class="hover:text-brand-green transition-colors">Home</a></li>
                 <li><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
-                <li id="breadcrumb-lvl1"><a href="#" onclick="switchCategoryLevel(1); return false;" class="hover:text-brand-green transition-colors font-medium">Grocery</a></li>
+                <li><a href="shop-by-stores.html" data-preserve-href class="hover:text-brand-green transition-colors font-medium">Grocery stores</a></li>
+                <li><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
+                <li id="breadcrumb-store" class="font-medium text-neutral-700">Quicklly Indian Grocery Nationwide</li>
+                <li><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
+                <li id="breadcrumb-lvl1"><a href="shop-by-stores.html" onclick="switchCategoryLevel(1); return false;" class="hover:text-brand-green transition-colors font-medium">Grocery</a></li>
                 <li id="breadcrumb-lvl2-sep" class="hidden"><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
                 <li id="breadcrumb-lvl2" class="hidden"><a href="#" onclick="switchCategoryLevel(2); return false;" class="hover:text-brand-green transition-colors font-medium"></a></li>
                 <li id="breadcrumb-lvl3-sep" class="hidden"><iconify-icon icon="solar:alt-arrow-right-linear" width="12" class="text-neutral-300"></iconify-icon></li>
@@ -268,7 +275,7 @@
                     <!-- Circular category tiles rendered dynamically -->
                 </div>
                 <!-- Carousel Scroll Right Arrow Button -->
-                <button type="button" id="scroll-categories-right" onclick="scrollCategoriesRight()" class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-neutral-200 shadow-md flex items-center justify-center text-neutral-700 hover:text-brand-green hover:border-brand-green transition-all z-10 cursor-pointer" aria-label="Next categories">
+                <button type="button" id="scroll-categories-right" onclick="scrollCategoriesRight()" class="absolute right-0 top-1/2 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-neutral-200 bg-white text-neutral-700 shadow-md transition-colors duration-150 hover:border-brand-green hover:text-brand-green" aria-label="Next categories">
                     <iconify-icon icon="solar:alt-arrow-right-linear" width="18"></iconify-icon>
                 </button>
             </div>
@@ -441,25 +448,26 @@
     </div>
 
     <!-- 17. Global Footer (IDENTICAL TO index.html) -->
+    </main>
     <footer class="bg-neutral-950 text-white pt-16 pb-8 border-t border-neutral-900">
         <div class="max-w-[1360px] mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-16">
                 <!-- Brand Col -->
                 <div class="lg:col-span-2">
-                    <a href="#" class="mb-4 block">
+                    <a href="index.html" class="mb-4 block">
                         <img src="imgs/quicly-logo-black.png" alt="Quicklly" class="logo-img h-9 w-auto invert">
                     </a>
                     <p class="text-neutral-400 text-sm mb-6 max-w-sm">
                         The ultimate destination for authentic South Asian groceries, food, and culture, delivered to your door.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
+                        <a href="contact.html" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
                             <iconify-icon icon="mdi:instagram" width="24"></iconify-icon>
                         </a>
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
+                        <a href="contact.html" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
                             <iconify-icon icon="mdi:facebook" width="24"></iconify-icon>
                         </a>
-                        <a href="#" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
+                        <a href="contact.html" class="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
                             <iconify-icon icon="mdi:twitter" width="24"></iconify-icon>
                         </a>
                     </div>
@@ -467,51 +475,51 @@
 
                 <!-- Links Cols -->
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Company</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Press</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Blog</a></li>
+                        <li><a href="about.html" class="hover:text-brand-green transition-colors">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-brand-green transition-colors">Careers</a></li>
+                        <li><a href="press.html" class="hover:text-brand-green transition-colors">Press</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-green transition-colors">Blog</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Services</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
+                        <li><a href="shop-by-stores.html" class="hover:text-brand-green transition-colors">Grocery Delivery</a></li>
+                        <li><a href="meal-kits.html" class="hover:text-brand-green transition-colors">Meal Kits</a></li>
+                        <li><a href="shop-by-stores.html" class="hover:text-brand-green transition-colors">Nationwide Shipping</a></li>
+                        <li><a href="quicklly-pass.html" class="hover:text-brand-green transition-colors">Quicklly Pass</a></li>
+                        <li><a href="category.html" class="hover:text-brand-green transition-colors">Corporate Gifting</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Support</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Track Order</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Return Policy</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-green transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Contact Us</a></li>
+                        <li><a href="order-tracking.html" class="hover:text-brand-green transition-colors">Track Order</a></li>
+                        <li><a href="order-help.html" class="hover:text-brand-green transition-colors">Return Policy</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h4>
+                    <h2 class="text-sm font-semibold mb-4 tracking-wide text-neutral-100">Partner</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
-                        <li><a href="#" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Sell on Quicklly</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Become a Driver</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-green transition-colors">Affiliate Program</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="text-sm text-neutral-500">
-                    © 2023 Quicklly Inc. All rights reserved.
+                    © 2026 Quicklly Inc. All rights reserved.
                 </div>
                 <div class="flex gap-6 text-sm text-neutral-500">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Accessibility</a>
                 </div>
             </div>
         </div>
@@ -520,7 +528,7 @@
     <!-- Side Navigation Category Drawer (IDENTICAL TO index.html) -->
     <div id="side-drawer-backdrop" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300"></div>
     
-    <aside id="side-drawer" class="fixed top-0 left-0 bottom-0 w-[335px] max-w-[90vw] bg-[#fbfbfb] rounded-r-3xl z-[101] shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-neutral-200/50" aria-label="Category Menu">
+    <aside id="side-drawer" inert aria-hidden="true" class="fixed top-0 left-0 bottom-0 w-[335px] max-w-[90vw] bg-[#fbfbfb] rounded-r-3xl z-[101] shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-neutral-200/50" aria-label="Category Menu">
         <!-- Drawer Header -->
         <div class="bg-neutral-50 px-6 py-5 flex items-center justify-between border-b border-neutral-100/80">
             <div class="flex items-center gap-3">
@@ -547,7 +555,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="shop-by-stores.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:basket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Grocery</span>
@@ -556,7 +564,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="gifting.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:gift-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Gifting</span>
@@ -565,7 +573,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="aha.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:sticker-smile-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>aha</span>
@@ -574,7 +582,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="events.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:calendar-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Events</span>
@@ -583,7 +591,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="astrology.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Astrology</span>
@@ -592,7 +600,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="organic.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:leaf-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Organic Grocery</span>
@@ -601,7 +609,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="roti-kit.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:chef-hat-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Roti Kit</span>
@@ -610,7 +618,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="meal-kits.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:box-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Meal Kit</span>
@@ -619,7 +627,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="chai-tea-coffee.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:cup-hot-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Chai Tea & Coffee Kit</span>
@@ -628,7 +636,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="indian-sweets.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:cookie-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Indian Sweets & Snacks</span>
@@ -637,7 +645,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="catering.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:dish-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Catering</span>
@@ -646,7 +654,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="only-luxury.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:diamond-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Only Luxury</span>
@@ -667,7 +675,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="shop-by-stores.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:shop-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Grocery Stores</span>
@@ -688,7 +696,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="quicklly-pass.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:ticket-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Quicklly Pass</span>
@@ -697,7 +705,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="brand-ambassador.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Brand Ambassador</span>
@@ -706,7 +714,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="student-ambassador.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:graduation-cap-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Student Ambassador</span>
@@ -715,7 +723,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="be-a-hero.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:shield-star-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Be a Hero</span>
@@ -724,7 +732,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="refer-a-friend.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:users-group-two-rounded-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Refer a Friend</span>
@@ -745,7 +753,7 @@
                 </div>
                 <ul class="space-y-1 text-sm font-medium text-neutral-800">
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="my-account.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:user-circle-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Your Account</span>
@@ -754,7 +762,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
+                        <a href="index.html" class="flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-neutral-200/50 transition-colors group">
                             <div class="flex items-center gap-3">
                                 <iconify-icon icon="solar:logout-3-linear" width="20" class="text-neutral-700 group-hover:text-brand-green transition-colors"></iconify-icon>
                                 <span>Sign Out</span>
@@ -1012,6 +1020,35 @@
         // ==========================================
         // CATEGORY BROWSE DATA & LOGIC
         // ==========================================
+        const stores = {
+            'quicklly-indian-grocery': { name: 'Quicklly Bazaar Chicago', rating: '4.3', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1754923750-quicklly-bazaar-chicago.png' },
+            'patel-brothers': { name: 'World Fresh Market', rating: '4.0', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1601862199-world-fresh-market.png' },
+            'fresh-farms': { name: 'Fresh Farms', rating: '4.7', minimum: '$30 minimum order', delivery: 'Delivery today', logo: 'https://cdn.quicklly.com/seller/upload_images/store/ff.png' },
+            'kamdar-plaza': { name: 'Metro Spice Mart', rating: '4.0', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1758653125-metro-spice-mart.png' },
+            'very-much-indian': { name: 'Al Noor Meat Market', rating: '4.3', minimum: '$10 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1706648482-al-noor-meat-market.png' },
+            'almond-house': { name: 'Sundarbans Fish Bazar', rating: '3.7', minimum: '$10 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1599070362-sundarbans-fish-bazar.png' },
+            'masalas': { name: 'Masalas', rating: '3.9', minimum: '$10 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1607637070-masalas.png' },
+            'farm-supermarket': { name: 'Farm Supermarket', rating: '3.3', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1763679830-farm-supermarket.png' },
+            'kabul-mart': { name: 'Kabul Mart', rating: '2.3', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1763679903-kabul-mart.png' },
+            'al-tayyab': { name: 'Al-Tayyab Zabiha Halal Meat and Grocery', rating: '2.2', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1763679973-al-tayyab-zabiha-halal-meat-and-grocery.png' },
+            'awami-bazaar': { name: 'Awami Bazaar', rating: '2.7', minimum: '$30 minimum order', delivery: 'Same-day delivery', logo: 'https://cdn.quicklly.com/seller/upload_images/store/1763680169-awami-bazaar.png' }
+        };
+        const storeSlug = new URLSearchParams(window.location.search).get('store') || 'quicklly-indian-grocery';
+        const selectedStore = stores[storeSlug] || stores['quicklly-indian-grocery'];
+
+        function applyStoreContext() {
+            document.getElementById('selected-store-name').textContent = selectedStore.name;
+            document.getElementById('selected-store-rating').textContent = selectedStore.rating;
+            document.getElementById('selected-store-minimum').textContent = selectedStore.minimum;
+            document.getElementById('selected-store-delivery').textContent = selectedStore.delivery;
+            const storeLogo = document.getElementById('selected-store-logo');
+            storeLogo.src = selectedStore.logo;
+            storeLogo.alt = selectedStore.name;
+            document.getElementById('breadcrumb-store').textContent = selectedStore.name;
+            document.getElementById('selected-store-search').placeholder = `Search ${selectedStore.name}...`;
+            document.title = `${selectedStore.name} | Quicklly`;
+        }
+
         const categoryData = {
             1: {
                 title: 'Grocery',
@@ -1020,12 +1057,12 @@
                 subcatHeading: 'Shop Grocery',
                 gridHeading: 'All Grocery',
                 subcategories: [
-                    { name: 'Atta & Flour', img: 'imgs/aashirvaad_atta.png', count: '18 items' },
-                    { name: 'Masalas & Spices', img: 'imgs/mdh_garam_masala.png', count: '34 items' },
-                    { name: 'Dals & Pulses', img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=200', count: '22 items' },
-                    { name: 'Rice & Grains', img: 'imgs/royal_basmati_rice.png', count: '16 items' },
-                    { name: 'Oils & Ghee', img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=200', count: '14 items' },
-                    { name: 'Snacks & Namkeen', img: 'imgs/haldiram_aloo_bhujia.png', count: '22 items' },
+                    { name: 'Atta & Flour', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1774638886-aashirvaad-whole-wheat-atta.png', count: '18 items' },
+                    { name: 'Masalas & Spices', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1633030828-mdh-garam-masala.jpg', count: '34 items' },
+                    { name: 'Dals & Pulses', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1633013102-goya-peeled-fave-beans.jpg', count: '22 items' },
+                    { name: 'Rice & Grains', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1699556455-royal-basmati-rice.jfif', count: '16 items' },
+                    { name: 'Oils & Ghee', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1496298687-hemani-fennel-oil.jpg', count: '14 items' },
+                    { name: 'Snacks & Namkeen', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1758653790-haldirams-aloo-bhujia.jpg', count: '22 items' },
                 ]
             },
             2: {
@@ -1035,10 +1072,10 @@
                 subcatHeading: 'Shop by type',
                 gridHeading: 'All Masalas & Spices',
                 subcategories: [
-                    { name: 'Chaat Masala', img: 'imgs/mdh_garam_masala.png', count: '12 items' },
-                    { name: 'Biryani Masala', img: 'imgs/mdh_garam_masala.png', count: '16 items' },
-                    { name: 'Garam Masala', img: 'imgs/mdh_garam_masala.png', count: '24 items' },
-                    { name: 'Whole Spices', img: 'https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&q=80&w=200', count: '20 items' },
+                    { name: 'Chaat Masala', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1699126880-everest-chat-masala.jpg', count: '12 items' },
+                    { name: 'Biryani Masala', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1635212696-mdh-karahi-gosht.jpg', count: '16 items' },
+                    { name: 'Garam Masala', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1633030828-mdh-garam-masala.jpg', count: '24 items' },
+                    { name: 'Whole Spices', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1781810697-coriander-seeds-just-by-quicklly.jpg', count: '20 items' },
                 ]
             },
             3: {
@@ -1051,15 +1088,41 @@
             }
         };
 
+        const department = new URLSearchParams(window.location.search).get('department') || 'grocery';
+        const departmentData = {
+            festive: ['Rakhi Specials', 'Celebrate Raksha Bandhan with sweets, gifts, and festive grocery essentials.', ['Rakhi Sweets', 'Gift Boxes', 'Puja Essentials', 'Festive Snacks'], ['https://cdn.quicklly.com/upload_images/product/thumb/1516468997-haldirams-kaju-katli.jpg', 'https://cdn.quicklly.com/upload_images/category/thumb/rakhi-specials-grocery-icon.png?v=1', 'https://cdn.quicklly.com/upload_images/category/thumb/rakhi-specials-grocery-icon.png?v=1', 'https://cdn.quicklly.com/upload_images/product/thumb/1758653790-haldirams-aloo-bhujia.jpg']],
+            fresh: ['Go Fresh', 'Shop fresh fruits, vegetables, herbs, and everyday produce from this store.', ['Fresh Fruits', 'Fresh Vegetables', 'Herbs & Greens', 'Fresh Coconut'], ['https://cdn.quicklly.com/upload_images/product/thumb/1602190311-kiwifruit-reg.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1604176119-potato-white-potatoes.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1604177050-fresh-cilantro.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1498141976-coconut-fresh.jpg']],
+            beverages: ['Foods & Beverages', 'Browse tea, coffee, juices, pantry drinks, and refreshing favorites.', ['Tea & Chai', 'Coffee', 'Juices', 'Soft Drinks'], ['https://cdn.quicklly.com/upload_images/product/thumb/1732998932-taj-mahal-tea.jpg', 'https://cdn.quicklly.com/upload_images/category/thumb/bevarage-icon.png?v=1', 'https://cdn.quicklly.com/upload_images/product/thumb/1499452099-juice-orange.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1784397151-frooti.jpg']],
+            meat: ['Meat Products', 'Shop halal meat, poultry, seafood, and frozen protein available from this store.', ['Chicken', 'Goat & Lamb', 'Seafood', 'Frozen Meat'], ['https://cdn.quicklly.com/upload_images/category/thumb/meat-icon.png?v=1', 'https://cdn.quicklly.com/upload_images/category/thumb/meat-icon.png?v=1', 'https://cdn.quicklly.com/upload_images/category/thumb/meat-icon.png?v=1', 'https://cdn.quicklly.com/upload_images/category/thumb/meat-icon.png?v=1']],
+            organic: ['Organic', 'Browse organic produce, pantry staples, snacks, and cooking essentials.', ['Organic Produce', 'Organic Staples', 'Organic Snacks', 'Organic Spices'], ['https://cdn.quicklly.com/upload_images/product/thumb/1644100656-jica-organic-vada-mix.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1633016181-durvesh-pink-salt-organic-coarse.jpg', 'https://cdn.quicklly.com/upload_images/category/thumb/organic.png?v=1', 'https://cdn.quicklly.com/upload_images/product/thumb/1633048920-jiva-organic-meat-masala.jpg']],
+            'personal-care': ['Personal Care', 'Shop hair care, skin care, oral care, and Ayurvedic personal essentials.', ['Hair Care', 'Skin Care', 'Oral Care', 'Ayurveda'], ['https://cdn.quicklly.com/upload_images/product/thumb/1496298904-elina-shikakai-hair-pack.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1633029400-chandrika-soap.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1496294164-medimix-moistrising-soap.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1496293862-hesh-multani.jpg']],
+            household: ['Household', 'Browse cleaning, kitchen, storage, and household essentials.', ['Cleaning', 'Kitchen', 'Storage', 'Puja & Home'], ['https://cdn.quicklly.com/upload_images/product/thumb/1624827861-comet-powder-cleanser-with-bleach.jpeg', 'https://cdn.quicklly.com/upload_images/product/thumb/1547334441-rin-bar-soap.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1633025813-rin-soap.jpg', 'https://cdn.quicklly.com/upload_images/product/thumb/1496293548-hem-vanilla-incense.jpg']]
+        };
+        if (departmentData[department]) {
+            const selectedDepartment = departmentData[department];
+            categoryData[1] = {
+                ...categoryData[1],
+                title: selectedDepartment[0],
+                desc: selectedDepartment[1],
+                subcatHeading: `Shop ${selectedDepartment[0]}`,
+                gridHeading: `All ${selectedDepartment[0]}`,
+                subcategories: selectedDepartment[2].map((name, index) => ({
+                    name,
+                    img: selectedDepartment[3][index],
+                    count: `${12 + (index * 4)} items`
+                }))
+            };
+        }
+
         const products = [
-            { id: 1, name: 'MDH Garam Masala', brand: 'MDH', size: '100 g', price: 2.99, img: 'imgs/mdh_garam_masala.png', badge: 'In Stock' },
-            { id: 2, name: 'Aashirvaad Whole Wheat Atta', brand: 'AASHIRVAAD', size: '10 lbs', price: 12.99, img: 'imgs/aashirvaad_atta.png', badge: 'Best Seller' },
-            { id: 3, name: 'Brooke Bond Taj Mahal Tea', brand: 'BROOKE BOND', size: '900 g', price: 13.59, oldPrice: 15.99, discount: '15% OFF', img: 'imgs/taj_mahal_tea.png' },
-            { id: 4, name: "Haldiram's Aloo Bhujia", brand: "HALDIRAM'S", size: '400 g', price: 4.49, img: 'imgs/haldiram_aloo_bhujia.png' },
-            { id: 5, name: 'Royal Basmati Rice', brand: 'ROYAL', size: '10 lbs', price: 18.99, img: 'imgs/royal_basmati_rice.png' },
-            { id: 6, name: 'Fresh Kaju Katli Box', brand: 'KAMDAR PLAZA', size: '1 lb', price: 14.99, img: 'imgs/kaju_katli_sweets.png' },
-            { id: 7, name: 'Maggi Masala Noodles', brand: 'MAGGI', size: '8 pack', price: 6.49, img: 'imgs/mdh_garam_masala.png', badge: 'Popular' },
-            { id: 8, name: 'Everest Kitchen King', brand: 'EVEREST', size: '100 g', price: 3.29, img: 'imgs/mdh_garam_masala.png' },
+            { id: 1, category: 'Masalas & Spices', name: 'MDH Garam Masala', brand: 'MDH', size: '100 g', price: 2.99, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1633030828-mdh-garam-masala.jpg', badge: 'In Stock' },
+            { id: 2, category: 'Atta & Flour', name: 'Aashirvaad Whole Wheat Atta', brand: 'AASHIRVAAD', size: '10 lbs', price: 12.99, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1774638886-aashirvaad-whole-wheat-atta.png', badge: 'Best Seller' },
+            { id: 3, category: 'Masalas & Spices', name: 'Brooke Bond Taj Mahal Tea', brand: 'BROOKE BOND', size: '900 g', price: 13.59, oldPrice: 15.99, discount: '15% OFF', img: 'https://cdn.quicklly.com/upload_images/product/thumb/1732998932-taj-mahal-tea.jpg' },
+            { id: 4, category: 'Snacks & Namkeen', name: "Haldiram's Aloo Bhujia", brand: "HALDIRAM'S", size: '400 g', price: 4.49, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1758653790-haldirams-aloo-bhujia.jpg' },
+            { id: 5, category: 'Rice & Grains', name: 'Royal Basmati Rice', brand: 'ROYAL', size: '10 lbs', price: 18.99, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1699556455-royal-basmati-rice.jfif' },
+            { id: 6, category: 'Snacks & Namkeen', name: 'Haldirams Kaju Katli', brand: 'HALDIRAMS', size: '1 lb', price: 14.99, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1516468997-haldirams-kaju-katli.jpg' },
+            { id: 7, category: 'Snacks & Namkeen', name: 'Maggi 2 Min Masala Noodle', brand: 'MAGGI', size: '8 pack', price: 6.49, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1784401367-maggi-2-min-masala-noodle.jpg', badge: 'Popular' },
+            { id: 8, category: 'Masalas & Spices', name: 'Everest Kitchen King', brand: 'EVEREST', size: '100 g', price: 3.29, img: 'https://cdn.quicklly.com/upload_images/product/thumb/1758653753-everest-kitchen-king-masla.jpg' },
         ];
 
         let currentLevel = 1;
@@ -1079,13 +1142,13 @@
             heading.textContent = data.subcatHeading || 'Shop Category';
 
             grid.innerHTML = data.subcategories.map(sub => `
-                <div onclick="handleSubcatClick('${sub.name}', ${level})" class="group flex flex-col items-center cursor-pointer shrink-0">
-                    <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-26 md:h-26 rounded-full bg-white border border-neutral-200/80 shadow-xs flex items-center justify-center p-3.5 group-hover:border-brand-green/60 group-hover:shadow-md transition-all duration-200 relative">
-                        <img src="${sub.img}" alt="${sub.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform" style="mix-blend-mode:multiply">
-                    </div>
-                    <span class="text-xs sm:text-xs font-bold text-neutral-900 group-hover:text-brand-green text-center mt-2.5 max-w-[100px] leading-tight line-clamp-2">${sub.name}</span>
-                    <span class="text-[10px] text-neutral-400 text-center mt-0.5">${sub.count}</span>
-                </div>
+                <button type="button" onclick="handleSubcatClick('${sub.name}', ${level})" class="group flex shrink-0 flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Browse ${sub.name} in ${selectedStore.name}">
+                    <span class="relative flex size-20 items-center justify-center rounded-full border border-neutral-200/80 bg-white p-3.5 shadow-xs transition-colors duration-150 group-hover:border-brand-green/60 sm:size-24">
+                        <img src="${sub.img}" alt="" class="size-full object-contain" style="mix-blend-mode:multiply">
+                    </span>
+                    <span class="mt-2.5 max-w-[100px] text-center text-xs font-bold leading-tight text-neutral-900 group-hover:text-brand-green line-clamp-2">${sub.name}</span>
+                    <span class="mt-0.5 text-center text-[10px] text-neutral-400">${sub.count}</span>
+                </button>
             `).join('');
         }
 
@@ -1102,19 +1165,22 @@
         }
 
         // Render Product Cards with PLUS BUTTON
-        function renderProducts() {
+        function renderProducts(category = null) {
             const grid = document.getElementById('product-grid');
-            grid.innerHTML = products.map(p => `
-                <div class="group flex flex-col bg-white border border-neutral-200/80 rounded-2xl p-4 hover:border-neutral-300 hover:shadow-md transition-all duration-200">
+            const visibleProducts = category ? products.filter((product) => product.category === category) : products;
+            grid.innerHTML = visibleProducts.map(p => `
+                <article class="group flex flex-col rounded-2xl border border-neutral-200/80 bg-white p-4 transition-colors duration-150 hover:border-neutral-300">
                     
                     <!-- Image Container -->
                     <div class="aspect-square bg-neutral-50/60 rounded-xl mb-3 relative flex items-center justify-center p-4 overflow-hidden">
                         ${p.discount ? `<span class="absolute top-2.5 left-2.5 bg-brand-light text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded-full z-10">${p.discount}</span>` : ''}
                         
-                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" style="mix-blend-mode:multiply">
+                        <a href="product-details.html?store=${storeSlug}&product=${p.id}&department=${department}" data-preserve-href class="block size-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="View ${p.name}">
+                            <img src="${p.img}" alt="${p.name}" class="size-full object-contain" style="mix-blend-mode:multiply">
+                        </a>
                         
                         <!-- PLUS ADD TO CART BUTTON (Req #10) -->
-                        <button type="button" onclick="quickAdd(this)" class="absolute right-3 bottom-3 z-10 grid size-10 place-items-center rounded-full border border-neutral-200 bg-white text-neutral-950 shadow-sm transition-colors duration-150 hover:border-brand-green hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Add ${p.name} to cart">
+                        <button type="button" class="absolute right-3 bottom-3 z-10 grid size-10 place-items-center rounded-full border border-neutral-200 bg-white text-neutral-950 shadow-sm transition-colors duration-150 hover:border-brand-green hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Add ${p.name} to cart">
                             <iconify-icon icon="solar:add-circle-linear" width="21"></iconify-icon>
                         </button>
                     </div>
@@ -1123,7 +1189,7 @@
                     <span class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-0.5">${p.brand}</span>
                     
                     <!-- Title -->
-                    <h4 class="text-xs sm:text-sm font-bold text-neutral-900 leading-snug line-clamp-2 mb-1 group-hover:text-brand-green transition-colors cursor-pointer">${p.name}</h4>
+                    <h4 class="mb-1 text-xs font-bold leading-snug text-neutral-900 sm:text-sm line-clamp-2"><a href="product-details.html?store=${storeSlug}&product=${p.id}&department=${department}" data-preserve-href class="transition-colors duration-150 hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green">${p.name}</a></h4>
                     
                     <!-- Size -->
                     <p class="text-[11px] text-neutral-500 mb-2">${p.size}</p>
@@ -1134,8 +1200,9 @@
                         ${p.oldPrice ? `<span class="text-xs text-neutral-400 line-through">$${p.oldPrice.toFixed(2)}</span>` : ''}
                         ${p.badge ? `<span class="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full ml-auto">${p.badge}</span>` : ''}
                     </div>
-                </div>
+                </article>
             `).join('');
+            document.getElementById('toolbar-count').textContent = `Showing ${visibleProducts.length} of ${visibleProducts.length}`;
         }
 
         // Switch category level
@@ -1154,7 +1221,6 @@
             document.getElementById('category-page-desc').textContent = data.desc;
             document.getElementById('product-count-badge').textContent = data.count + ' products';
             document.getElementById('products-grid-heading').textContent = data.gridHeading;
-            document.getElementById('toolbar-count').textContent = 'Showing ' + products.length + ' of ' + data.count;
 
             // Breadcrumb
             const lvl2Sep = document.getElementById('breadcrumb-lvl2-sep');
@@ -1177,26 +1243,8 @@
             }
 
             renderSubcategories(level);
+            renderProducts(level === 1 ? null : categoryData[2].title);
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Quick Add Interaction
-        function quickAdd(btn) {
-            const cartEl = document.getElementById('cart-count');
-            let c = parseInt(cartEl.textContent) || 2;
-            c++;
-            cartEl.textContent = c;
-
-            // Feedback animation
-            const orig = btn.innerHTML;
-            btn.innerHTML = '<iconify-icon icon="solar:check-circle-bold" width="21"></iconify-icon>';
-            btn.classList.remove('bg-white', 'text-neutral-950', 'border-neutral-200');
-            btn.classList.add('bg-neutral-900', 'text-white', 'border-neutral-900');
-            setTimeout(() => {
-                btn.innerHTML = orig;
-                btn.classList.remove('bg-neutral-900', 'text-white', 'border-neutral-900');
-                btn.classList.add('bg-white', 'text-neutral-950', 'border-neutral-200');
-            }, 700);
         }
 
         function resetAllFilters() {
@@ -1539,8 +1587,8 @@
         // ==========================================
         // INITIALIZE
         // ==========================================
+        applyStoreContext();
         switchCategoryLevel(1);
-        renderProducts();
     </script>
 
     <script src="auth-modal.js?v=2026082102"></script>
