@@ -13,6 +13,17 @@
     'imgs/royal_basmati_rice.png': 'https://cdn.quicklly.com/upload_images/product/thumb/1699556455-royal-basmati-rice.jfif',
     'imgs/kaju_katli_sweets.png': 'https://cdn.quicklly.com/upload_images/product/thumb/1516468997-haldirams-kaju-katli.jpg'
   };
+  const productionProductPrices = {
+    'MDH Garam Masala': 2.99,
+    'Aashirvaad Whole Wheat Atta': 12.99,
+    'Brooke Bond Taj Mahal Tea': 13.59,
+    "Haldiram's Aloo Bhujia": 4.49,
+    'Haldiram’s Aloo Bhujia': 4.49,
+    'Royal Basmati Rice': 18.99,
+    'Haldirams Kaju Katli': 14.99,
+    'Maggi 2 Min Masala Noodle': 6.49,
+    'Everest Kitchen King': 3.29
+  };
   const checkoutState = readCheckoutState();
 
   function applyProductionProductImages() {
@@ -34,10 +45,19 @@
     try { localStorage.setItem(CHECKOUT_KEY, JSON.stringify(checkoutState)); } catch (_) { /* Checkout still works within the current page. */ }
   }
 
+  function normalizeStoreName(store) {
+    const value = String(store || '').trim();
+    if (!value || /^\d+(?:\.\d+)?\s*(?:oz|lbs?|g|gm|kg|pack|count|bunch)$/i.test(value)) return 'Quicklly Indian Grocery Nationwide';
+    if (value === 'Quicklly Market') return 'Quicklly Indian Grocery Nationwide';
+    if (value === 'Patel Brothers') return 'World Fresh Market';
+    if (value === 'Kamdar Plaza') return 'Metro Spice Mart';
+    return value;
+  }
+
   function readCart() {
     try {
       const value = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-      return Array.isArray(value) ? value.filter((item) => item && item.id && item.quantity > 0) : [];
+      return Array.isArray(value) ? value.filter((item) => item && item.id && item.quantity > 0).map((item) => ({ ...item, store: normalizeStoreName(item.store), price: Number(item.price) > 0 ? Number(item.price) : (productionProductPrices[item.name] || 0) })) : [];
     } catch (_) {
       return [];
     }
@@ -79,7 +99,7 @@
       || '';
     const pageStore = $('#selected-store-name')?.textContent.trim()
       || (document.body.dataset.page === 'product-details' ? main.querySelector('main h1')?.parentElement?.querySelector('p.text-xs')?.textContent.trim() : '');
-    const store = pageStore || card?.dataset.storeName || cardHeading?.previousElementSibling?.textContent.trim() || 'Quicklly Indian Grocery Nationwide';
+    const store = normalizeStoreName(pageStore || card?.dataset.storeName || 'Quicklly Indian Grocery Nationwide');
     return {
       id: control.dataset.productId || params.get('product') || `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}:${store.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
       name,
@@ -275,9 +295,9 @@
         <div id="commerce-global-ui">
           <dialog id="global-cart-drawer" class="fixed inset-y-0 left-auto right-0 m-0 h-dvh max-h-none w-full max-w-none overflow-hidden bg-transparent p-0 backdrop:bg-black/50 sm:max-w-[460px]" aria-labelledby="global-cart-title">
             <div data-cart-panel class="flex h-dvh translate-x-full flex-col bg-white shadow-xl transition-transform duration-200">
-              <header class="flex items-start justify-between gap-5 border-b border-neutral-200 px-5 py-5 sm:px-6"><div><p data-cart-summary class="text-xs font-semibold text-brand-dark">0 STORES · 0 ITEMS</p><h2 id="global-cart-title" class="mt-1 text-2xl font-semibold text-balance">Your Cart</h2></div><button type="button" data-cart-close class="grid size-10 place-items-center rounded-full border border-neutral-200 text-neutral-700 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Close cart"><iconify-icon icon="solar:close-circle-linear" width="22"></iconify-icon></button></header>
+              <header class="flex items-center justify-between gap-5 border-b border-neutral-200 px-5 py-5 sm:px-6"><h2 id="global-cart-title" class="text-2xl font-semibold text-balance">My Cart</h2><button type="button" data-cart-close class="grid size-10 place-items-center rounded-full border border-neutral-200 text-neutral-700 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Close cart"><iconify-icon icon="solar:close-circle-linear" width="22"></iconify-icon></button></header>
               <div data-cart-contents class="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6"></div>
-              <footer data-cart-footer class="border-t border-neutral-200 bg-white px-5 pt-5 sm:px-6" style="padding-bottom:max(1.25rem,env(safe-area-inset-bottom))"><div class="flex items-end justify-between gap-4"><div><p class="text-xs text-neutral-500">Estimated subtotal</p><p data-cart-subtotal class="mt-1 text-2xl font-semibold tabular-nums">$0.00</p></div><p class="text-xs text-neutral-500">Fees calculated at checkout</p></div><div class="mt-4 grid gap-3"><a href="checkout.html" class="flex min-h-12 items-center justify-between rounded-full bg-brand-green px-6 text-sm font-semibold text-white hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2"><span>Proceed to Checkout</span><iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon></a><a href="checkout.html?view=full" class="inline-flex min-h-11 items-center justify-center rounded-full border border-neutral-300 px-5 text-sm font-semibold text-neutral-950 hover:border-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green">View Full Cart</a></div></footer>
+              <footer data-cart-footer class="border-t border-neutral-200 bg-white px-5 pt-5 sm:px-6" style="padding-bottom:max(1.25rem,env(safe-area-inset-bottom))"><p class="flex items-center gap-2 pb-4 text-sm font-semibold"><iconify-icon icon="solar:delivery-linear" width="20" class="text-brand-green"></iconify-icon>Free Delivery Over $30</p><a href="checkout.html" class="flex min-h-12 w-full items-center justify-between rounded-full bg-brand-green px-6 text-sm font-semibold text-white hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2"><span>Proceed to Checkout</span><span data-cart-subtotal class="tabular-nums">$0.00</span></a></footer>
             </div>
           </dialog>
           <dialog id="replacement-dialog" class="w-[min(94vw,760px)] p-0 bg-transparent backdrop:bg-black/50" aria-labelledby="replacement-title">
@@ -400,32 +420,41 @@
     });
   }
 
+  function minimumForStore(store) {
+    if (['Al Noor Meat Market', 'Sundarbans Fish Bazar', 'Masalas'].includes(store)) return 10;
+    if (['Fresh Farms', 'Quicklly Bazaar Chicago', 'World Fresh Market', 'Metro Spice Mart', 'Farm Supermarket', 'Kabul Mart', 'Al-Tayyab Zabiha Halal Meat and Grocery', 'Awami Bazaar'].includes(store)) return 30;
+    return 50;
+  }
+
   function renderCartState(items = readCart()) {
     const count = cartCount(items);
     $$('[id="cart-count"]').forEach((badge) => { badge.textContent = String(count); });
     renderCheckoutState(items);
     const contents = $('[data-cart-contents]');
     const footer = $('[data-cart-footer]');
-    const summary = $('[data-cart-summary]');
-    if (!contents || !footer || !summary) return;
+    if (!contents || !footer) return;
 
     const stores = items.reduce((groups, item) => {
       const key = item.store || 'Quicklly Indian Grocery Nationwide';
       (groups[key] ||= []).push(item);
       return groups;
     }, {});
-    summary.textContent = `${Object.keys(stores).length} ${Object.keys(stores).length === 1 ? 'STORE' : 'STORES'} · ${count} ${count === 1 ? 'ITEM' : 'ITEMS'}`;
     $('[data-cart-subtotal]').textContent = money(cartSubtotal(items));
     footer.classList.toggle('hidden', items.length === 0);
 
     if (!items.length) {
-      contents.innerHTML = '<div class="grid min-h-full place-items-center py-12 text-center"><div><iconify-icon icon="solar:cart-large-2-linear" width="42" class="text-neutral-400"></iconify-icon><h3 class="mt-4 text-xl font-semibold">Your cart is empty</h3><p class="mt-2 text-sm text-neutral-500 text-pretty">Add products to start your order.</p><a href="shop-by-stores.html" class="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white">Start shopping</a></div></div>';
+      contents.innerHTML = '<div class="grid min-h-full place-items-center px-6 py-12 text-center"><div><iconify-icon icon="solar:cart-large-2-linear" width="42" class="text-neutral-400"></iconify-icon><h3 class="mt-4 text-xl font-semibold text-balance">Your cart is empty</h3><p class="mt-2 text-sm text-neutral-500 text-pretty">Add products to start your order.</p><a href="shop-by-stores.html?view=grocery" class="mt-5 inline-flex min-h-11 items-center justify-center rounded bg-neutral-950 px-5 text-sm font-semibold text-white">Start shopping</a></div></div>';
       return;
     }
 
-    contents.innerHTML = Object.entries(stores).map(([store, storeItems], storeIndex) => {
+    const campaign = `<section class="overflow-hidden rounded-xl border border-emerald-200 bg-white" aria-label="Unlocked cart offer"><div class="flex min-h-11 items-center justify-between gap-4 bg-brand-light px-4 py-3 text-brand-dark"><h3 class="text-sm font-semibold text-balance">Rakhi Special Unlocked</h3><span class="shrink-0 text-xs font-semibold tabular-nums">Valid for 30 mins</span></div><p class="px-4 py-3 text-sm leading-5 text-neutral-600 text-pretty">Based on your cart, you've unlocked exclusive Raksha Bandhan deals. Celebrate the bond!</p></section>`;
+
+    contents.innerHTML = campaign + Object.entries(stores).map(([store, storeItems], storeIndex) => {
       const storeTotal = storeItems.reduce((total, item) => total + item.price * item.quantity, 0);
-      return `<section class="${storeIndex ? 'mt-6 border-t border-neutral-300 pt-5' : ''}" aria-labelledby="drawer-store-${storeIndex}"><div class="flex items-start justify-between gap-4"><div><h3 id="drawer-store-${storeIndex}" class="font-semibold">${store}</h3><p class="mt-1 text-xs text-neutral-500">${storeItems.length} selected ${storeItems.length === 1 ? 'product' : 'products'}</p></div><span class="text-sm font-semibold tabular-nums">${money(storeTotal)}</span></div><div class="mt-4 divide-y divide-neutral-200">${storeItems.map((item) => `<article class="grid grid-cols-[64px_1fr] gap-4 py-4"><div class="size-16 bg-neutral-50"><img src="${item.image}" alt="${item.name}" class="size-full object-contain p-2"></div><div><div class="flex items-start justify-between gap-3"><div><h4 class="text-sm font-semibold text-pretty">${item.name}</h4><p class="mt-1 text-xs text-neutral-500">${item.size || ''}</p></div><span class="text-sm font-semibold tabular-nums">${money(item.price * item.quantity)}</span></div><div class="mt-3 inline-flex items-center rounded-full border border-neutral-300"><button type="button" data-cart-item="${item.id}" data-drawer-qty="-1" class="grid size-8 place-items-center" aria-label="Decrease ${item.name} quantity">−</button><span class="min-w-7 text-center text-xs font-semibold tabular-nums" aria-live="polite">${item.quantity}</span><button type="button" data-cart-item="${item.id}" data-drawer-qty="1" class="grid size-8 place-items-center" aria-label="Increase ${item.name} quantity">+</button></div><button type="button" data-cart-remove="${item.id}" class="ml-3 text-xs font-semibold text-red-700">Remove</button></div></article>`).join('')}</div></section>`;
+      const minimum = minimumForStore(store);
+      const remaining = Math.max(0, minimum - storeTotal);
+      const progress = Math.min(100, (storeTotal / minimum) * 100);
+      return `<section class="${storeIndex ? 'mt-6 border-t border-neutral-300 pt-5' : 'mt-6'}" aria-labelledby="drawer-store-${storeIndex}"><div class="flex items-start justify-between gap-4"><h3 id="drawer-store-${storeIndex}" class="font-semibold text-balance">${store}</h3><span class="text-sm font-semibold tabular-nums">${money(storeTotal)}</span></div><p class="mt-2 text-xs text-neutral-500">Minimum Order Value: <span class="tabular-nums">${money(minimum)}</span></p><div class="mt-2 h-1.5 overflow-hidden rounded-full bg-neutral-200" role="progressbar" aria-label="Progress toward ${store} minimum order" aria-valuemin="0" aria-valuemax="${minimum}" aria-valuenow="${Math.min(storeTotal, minimum).toFixed(2)}"><div class="h-full rounded-full bg-brand-green" style="width:${progress}%"></div></div><p class="mt-2 text-xs ${remaining ? 'text-neutral-600' : 'font-semibold text-brand-dark'}">${remaining ? `Add ${money(remaining)} to reach the order minimum of ${money(minimum)}` : 'Order minimum reached'}</p><div class="mt-3 divide-y divide-neutral-200">${storeItems.map((item) => `<article class="grid grid-cols-[64px_1fr] gap-4 py-4"><div class="size-16 rounded-xl bg-neutral-50"><img src="${item.image}" alt="${item.name}" class="size-full object-contain p-2"></div><div class="min-w-0"><div class="flex items-start justify-between gap-3"><div class="min-w-0"><h4 class="line-clamp-2 text-sm font-semibold text-pretty">${item.name}</h4><p class="mt-1 text-sm font-semibold tabular-nums">${money(item.price)}</p></div><button type="button" data-cart-remove="${item.id}" class="shrink-0 rounded-full px-2 py-1 text-xs font-semibold text-neutral-600 hover:bg-red-50 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Remove ${item.name} from cart">Remove</button></div><div class="mt-3 flex items-end justify-between gap-3"><div><p class="text-xs text-neutral-500">One Time · ${item.size || ''}</p><p class="mt-2 text-sm font-semibold tabular-nums">${money(item.price * item.quantity)}</p></div><div class="inline-flex items-center rounded-full border border-neutral-300 bg-white"><button type="button" data-cart-item="${item.id}" data-drawer-qty="-1" class="grid size-9 place-items-center rounded-full hover:bg-neutral-100" aria-label="Decrease ${item.name} quantity">−</button><span class="min-w-7 text-center text-xs font-semibold tabular-nums" aria-live="polite">${item.quantity}</span><button type="button" data-cart-item="${item.id}" data-drawer-qty="1" class="grid size-9 place-items-center rounded-full hover:bg-neutral-100" aria-label="Increase ${item.name} quantity">+</button></div></div></div></article>`).join('')}</div></section>`;
     }).join('');
   }
 
